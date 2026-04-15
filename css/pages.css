@@ -1,0 +1,331 @@
+/* ============================================================
+   pages.css — page-specific layouts (hero, Lotus page)
+   ============================================================ */
+
+/* ── Homepage Hero ──────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    135deg,
+    #1a1410 0%,
+    #241c10 45%,
+    #1e1a12 100%
+  );
+}
+.hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 75% 40%, rgba(160, 133, 72, 0.10) 0%, transparent 65%),
+    radial-gradient(ellipse at 10% 80%, rgba(160, 133, 72, 0.05) 0%, transparent 55%);
+}
+.hero__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.18;
+}
+.hero .container {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(var(--nav-h) + var(--space-xl));
+  padding-bottom: var(--space-xl);
+}
+.hero__content {
+  max-width: 720px;
+}
+.hero__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  margin-bottom: var(--space-md);
+}
+.hero__headline {
+  color: var(--c-cream);
+  margin-bottom: var(--space-md);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+.hero__sub {
+  font-size: 1.08rem;
+  color: var(--c-text-2);
+  line-height: 1.75;
+  margin-bottom: var(--space-lg);
+  max-width: 540px;
+}
+.hero__cta-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.hero__scroll-line {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--c-gold-dim), transparent);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.25; transform: scaleY(0.9); }
+  50%      { opacity: 0.85; transform: scaleY(1.1); }
+}
+
+/* ── Homepage section backgrounds ───────────────────────── */
+.ibk-difference { background: var(--c-dark); }
+.capabilities   { background: var(--c-dark-2); }
+.projects       { background: var(--c-dark); }
+.philosophy     { background: var(--c-dark-2); }
+.contact        { background: var(--c-dark); }
+
+/* ═══════════════════════════════════════════════════════════
+   RUMAH LOTUS PAGE
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Lotus hero ─────────────────────────────────────────── */
+.lotus-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.lotus-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    to bottom,
+    #1a1410 0%,
+    #231c12 40%,
+    #1e1810 100%
+  );
+}
+.lotus-hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 60% 30%, rgba(160, 133, 72, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 90%, rgba(160, 133, 72, 0.04) 0%, transparent 50%);
+}
+.lotus-hero__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+}
+.lotus-hero .container {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(var(--nav-h) + var(--space-xl));
+  padding-bottom: var(--space-xl);
+  width: 100%;
+}
+.lotus-hero__content { max-width: 760px; }
+.lotus-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+.lotus-hero__back {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-text-3);
+  transition: color var(--t-fast);
+}
+.lotus-hero__back:hover { color: var(--c-gold); }
+.lotus-hero__back::before { content: '← '; margin-right: 0.15em; }
+.lotus-hero__divider {
+  width: 1px; height: 14px;
+  background: var(--c-border-mid);
+}
+.lotus-hero__eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  font-weight: 500;
+}
+.lotus-hero__headline {
+  font-size: clamp(2.8rem, 7vw, 5.8rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--c-cream);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.01em;
+}
+.lotus-hero__sub {
+  font-size: 1.1rem;
+  color: var(--c-text-2);
+  max-width: 580px;
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+/* ── Live status badge ──────────────────────────────────── */
+.lotus-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(160, 133, 72, 0.08);
+  border: 1px solid var(--c-gold-dim);
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-gold-light);
+  font-weight: 500;
+}
+.lotus-status__pulse {
+  width: 8px; height: 8px;
+  background: var(--c-gold);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(160, 133, 72, 0.45);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 8px rgba(160, 133, 72, 0);
+  }
+}
+
+/* ── Lotus overview grid ────────────────────────────────── */
+.lotus-overview { background: var(--c-dark-2); }
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--c-border);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.overview-stat {
+  background: var(--c-dark-2);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.overview-stat__label {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-text-3);
+  margin-bottom: 0.3rem;
+}
+.overview-stat__value {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 300;
+  color: var(--c-cream);
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+.overview-stat__unit {
+  font-size: 0.82rem;
+  color: var(--c-text-3);
+  letter-spacing: 0.02em;
+}
+
+/* ── Lotus technology grid (12 items) ───────────────────── */
+.lotus-tech { background: var(--c-dark); }
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+.tech-item {
+  background: var(--c-dark-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: var(--space-md);
+  transition: border-color var(--t-mid), transform var(--t-mid);
+}
+.tech-item:hover {
+  border-color: var(--c-gold-dim);
+  transform: translateY(-2px);
+}
+.tech-item__num {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--c-gold-dim);
+  opacity: 0.55;
+  margin-bottom: var(--space-sm);
+  line-height: 1;
+}
+.tech-item__title {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--c-cream);
+  margin-bottom: 0.55rem;
+  letter-spacing: 0;
+}
+.tech-item__text {
+  font-size: 0.87rem;
+  color: var(--c-text-2);
+  line-height: 1.65;
+}
+
+/* ── Follow-the-build CTA ───────────────────────────────── */
+.lotus-cta {
+  background: var(--c-dark-2);
+  border-top: 1px solid var(--c-border);
+  text-align: center;
+}
+.lotus-cta .section__title { margin-bottom: var(--space-sm); }
+.lotus-cta .section__lead { margin: 0 auto var(--space-md); max-width: 600px; }
+.lotus-cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: var(--space-md);
+}
+
+/* ── Lotus responsive ───────────────────────────────────── */
+@media (max-width: 1024px) {
+  .overview-grid { grid-template-columns: repeat(2, 1fr); }
+  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .tech-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .overview-grid { grid-template-columns: 1fr; }
+}

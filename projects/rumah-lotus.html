@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rumah Lotus — proyek hunian unggulan IBK di PIK2. Tiga lantai, smart home terintegrasi, atap hijau, dan standar material premium.">
+  <title>Rumah Lotus — IBK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__container">
+      <a href="../index.html" class="nav__logo" aria-label="IBK Home">IBK</a>
+      <div class="nav__links" id="nav-links">
+        <a href="../index.html#about"        class="nav__link" data-i18n="nav.about">Tentang Kami</a>
+        <a href="../index.html#capabilities" class="nav__link" data-i18n="nav.capabilities">Kemampuan</a>
+        <a href="../index.html#projects"     class="nav__link" data-i18n="nav.projects">Proyek</a>
+        <a href="../index.html#contact"      class="nav__link" data-i18n="nav.contact">Kontak</a>
+      </div>
+      <div class="nav__actions">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language / Ganti bahasa">
+          <span class="lang-toggle__option active" id="lang-id">ID</span>
+          <span class="lang-toggle__divider">/</span>
+          <span class="lang-toggle__option" id="lang-en">EN</span>
+        </button>
+        <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- LOTUS HERO -->
+  <section class="lotus-hero" aria-label="Rumah Lotus hero">
+    <div class="lotus-hero__bg" aria-hidden="true">
+      <img src="../images/lotus/lotus-hero.jpg" alt="" class="lotus-hero__bg-img" loading="eager">
+    </div>
+    <div class="container">
+      <div class="lotus-hero__content">
+        <div class="lotus-hero__meta">
+          <a href="../index.html" class="lotus-hero__back" data-i18n="lotus.back">Kembali ke Beranda</a>
+          <span class="lotus-hero__divider" aria-hidden="true"></span>
+          <span class="lotus-hero__eyebrow" data-i18n="lotus.eyebrow">Proyek Unggulan · Sedang Berjalan</span>
+        </div>
+        <h1 class="lotus-hero__headline" data-i18n="lotus.headline">Rumah Lotus</h1>
+        <p class="lotus-hero__sub" data-i18n="lotus.sub">Hunian tiga lantai di PIK2 — dibangun dengan standar material premium dan teknologi smart home terintegrasi.</p>
+        <div class="lotus-status">
+          <span class="lotus-status__pulse" aria-hidden="true"></span>
+          <span data-i18n="lotus.status">Konstruksi Berjalan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="section lotus-overview">
+    <div class="container">
+      <div class="overview-grid">
+        <div class="overview-stat">
+          <span class="overview-stat__label" data-i18n="lotus.stat1_label">Luas Bangunan</span>
+          <span class="overview-stat__value">480</span>
+          <span class="overview-stat__unit" data-i18n="lotus.stat1_unit">m²</span>
+        </div>
+        <div class="overview-stat">
+          <span class="overview-stat__label" data-i18n="lotus.stat2_label">Jumlah Lantai</span>
+          <span class="overview-stat__value">3</span>
+          <span class="overview-stat__unit" data-i18n="lotus.stat2_unit">lantai</span>
+        </div>
+        <div class="overview-stat">
+          <span class="overview-stat__label" data-i18n="lotus.stat3_label">Mulai Konstruksi</span>
+          <span class="overview-stat__value">Q1 2025</span>
+          <span class="overview-stat__unit">&nbsp;</span>
+        </div>
+        <div class="overview-stat">
+          <span class="overview-stat__label" data-i18n="lotus.stat4_label">Target Selesai</span>
+          <span class="overview-stat__value">Q4 2025</span>
+          <span class="overview-stat__unit">&nbsp;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDING TECHNOLOGY (12 items) -->
+  <section class="section lotus-tech">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__eyebrow" data-i18n="lotus.tech_eyebrow">Teknologi Bangunan</p>
+        <h2 class="section__title" data-i18n="lotus.tech_title">Apa yang Membangun Rumah Lotus</h2>
+        <p class="section__lead" data-i18n="lotus.tech_lead">Dua belas sistem teknologi bangunan bekerja bersama — dari pondasi hingga atap hijau.</p>
+      </div>
+      <div class="tech-grid">
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">01</div><h3 class="tech-item__title" data-i18n="lotus.tech1_title">Pondasi Tiang Pancang</h3><p class="tech-item__text" data-i18n="lotus.tech1_text">Pondasi bored pile diameter 40cm, kedalaman 12m. Dirancang untuk beban 3 lantai + kolam renang atap.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">02</div><h3 class="tech-item__title" data-i18n="lotus.tech2_title">Struktur Beton K-350</h3><p class="tech-item__text" data-i18n="lotus.tech2_text">Seluruh kolom dan balok menggunakan beton K-350. Mix design dikontrol oleh laboratorium independen per batch.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">03</div><h3 class="tech-item__title" data-i18n="lotus.tech3_title">Baja Tulangan BJTD-40</h3><p class="tech-item__text" data-i18n="lotus.tech3_text">Tulangan ulir SNI di seluruh elemen struktural. Lebih kuat 67% dibanding baja polos standar pasar.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">04</div><h3 class="tech-item__title" data-i18n="lotus.tech4_title">Waterproofing Crystalline</h3><p class="tech-item__text" data-i18n="lotus.tech4_text">Sistem waterproofing kristal pada basement dan lantai dasar. Self-healing — merapatkan retak mikro secara otomatis.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">05</div><h3 class="tech-item__title" data-i18n="lotus.tech5_title">Smart Home Terintegrasi</h3><p class="tech-item__text" data-i18n="lotus.tech5_text">Sistem otomasi KNX untuk pencahayaan, HVAC, tirai, dan keamanan. Dikontrol via app atau panel sentuh.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">06</div><h3 class="tech-item__title" data-i18n="lotus.tech6_title">HVAC Sistem VRV</h3><p class="tech-item__text" data-i18n="lotus.tech6_text">Variable refrigerant volume — efisiensi energi hingga 40% lebih tinggi dibanding AC split konvensional.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">07</div><h3 class="tech-item__title" data-i18n="lotus.tech7_title">Panel Surya 10 kWp</h3><p class="tech-item__text" data-i18n="lotus.tech7_text">Atap dilengkapi 24 panel surya 415Wp dengan inverter hybrid. Estimasi tagihan listrik turun 60–70%.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">08</div><h3 class="tech-item__title" data-i18n="lotus.tech8_title">Atap Hijau (Green Roof)</h3><p class="tech-item__text" data-i18n="lotus.tech8_text">Lapisan tanaman di dek rooftop — insulasi termal alami, mengurangi beban AC, dan menyerap air hujan.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">09</div><h3 class="tech-item__title" data-i18n="lotus.tech9_title">Instalasi Listrik NYM</h3><p class="tech-item__text" data-i18n="lotus.tech9_text">Semua kabel NYM 2.5mm² dengan conduit PVC. ELCB per zona. Kapasitas daya 23.000 VA.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">10</div><h3 class="tech-item__title" data-i18n="lotus.tech10_title">Sistem CCTV &amp; Akses</h3><p class="tech-item__text" data-i18n="lotus.tech10_text">16 kamera IP 4K dengan night vision. Akses pintu via fingerprint + kartu RFID + app.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">11</div><h3 class="tech-item__title" data-i18n="lotus.tech11_title">Plumbing Sistem Dua Jalur</h3><p class="tech-item__text" data-i18n="lotus.tech11_text">Pipa HDPE untuk air bersih, PVC AW untuk drainase. Instalasi tanpa sambungan di dalam dinding.</p></article>
+        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">12</div><h3 class="tech-item__title" data-i18n="lotus.tech12_title">Akustik Ruangan</h3><p class="tech-item__text" data-i18n="lotus.tech12_text">Dinding kamar tidur dengan rockwool insulasi 5cm + gypsum double layer. Reduksi suara 35–40 dB.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section lotus-cta">
+    <div class="container">
+      <p class="section__eyebrow" data-i18n="lotus.cta_eyebrow">Ikuti Progresnya</p>
+      <h2 class="section__title" data-i18n="lotus.cta_title">Proyek Ini Masih Berjalan</h2>
+      <p class="section__lead" data-i18n="lotus.cta_sub">Update progres konstruksi tersedia untuk klien dan prospek serius. Hubungi kami untuk mendapatkan akses laporan bulanan.</p>
+      <div class="lotus-cta-actions">
+        <a href="https://wa.me/6281234567890?text=Halo%20IBK%2C%20saya%20tertarik%20mengikuti%20progres%20Rumah%20Lotus."
+           class="btn btn--primary" target="_blank" rel="noopener noreferrer"
+           data-i18n="lotus.cta_primary">Diskusi via WhatsApp</a>
+        <a href="../index.html" class="btn btn--ghost" data-i18n="lotus.cta_secondary">Kembali ke Beranda</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="../index.html" class="footer__logo" aria-label="IBK Home">IBK</a>
+          <p class="footer__tagline" data-i18n="footer.tagline">Kontraktor design-build terintegrasi penuh di Jakarta.</p>
+        </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <h5 class="footer__links-title" data-i18n="footer.nav_title">Navigasi</h5>
+          <a href="../index.html#about"        data-i18n="nav.about">Tentang Kami</a>
+          <a href="../index.html#capabilities" data-i18n="nav.capabilities">Kemampuan</a>
+          <a href="../index.html#projects"     data-i18n="nav.projects">Proyek</a>
+          <a href="../index.html#contact"      data-i18n="nav.contact">Kontak</a>
+        </nav>
+        <div class="footer__contact">
+          <h5 class="footer__links-title" data-i18n="footer.contact_title">Kontak</h5>
+          <a href="https://wa.me/6281234567890">+62 812-3456-7890</a>
+          <a href="mailto:hello@ibk-konstruksi.com">hello@ibk-konstruksi.com</a>
+          <span data-i18n="contact.address">Jakarta Selatan, DKI Jakarta</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p data-i18n="footer.copyright">© 2025 PT. Indobangun Berjaya Konstruksi. Seluruh hak cipta dilindungi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

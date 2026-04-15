@@ -1,0 +1,183 @@
+/* ============================================================
+   base.css — CSS variables, reset, typography, layout primitives
+   IBK Website
+   ============================================================ */
+
+/* ── Design tokens ──────────────────────────────────────── */
+:root {
+  /* Colours */
+  --c-dark:        #1a1410;
+  --c-dark-2:      #231c14;
+  --c-dark-3:      #2e2418;
+  --c-gold:        #a08548;
+  --c-gold-light:  #c4a96e;
+  --c-gold-dim:    #6b5a32;
+  --c-cream:       #f5f0e8;
+  --c-cream-dark:  #ede6d6;
+  --c-text-1:      #f0ebe3;
+  --c-text-2:      #b8a88a;
+  --c-text-3:      #7a6e60;
+  --c-border:      rgba(160, 133, 72, 0.18);
+  --c-border-mid:  rgba(160, 133, 72, 0.35);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans:  'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Spacing */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  6rem;
+  --space-2xl: 9rem;
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-pad: 1.5rem;
+  --nav-h:         72px;
+
+  /* Motion */
+  --ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --t-fast: 150ms;
+  --t-mid:  300ms;
+  --t-slow: 500ms;
+
+  /* Radius */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 16px;
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background-color: var(--c-dark);
+  color: var(--c-text-1);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img, video, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+input, textarea, select { font: inherit; color: inherit; }
+ul, ol { list-style: none; }
+table { border-collapse: collapse; width: 100%; }
+
+/* ── Typography ─────────────────────────────────────────── */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--c-cream);
+}
+h1 { font-size: clamp(2.6rem, 5.5vw, 5rem); font-style: italic; }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+h4 { font-size: 1.05rem; font-weight: 400; font-family: var(--font-sans); }
+h5 { font-size: 0.9rem; font-weight: 500; font-family: var(--font-sans); }
+
+/* ── Container ──────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* ── Section base ───────────────────────────────────────── */
+.section {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+.section__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--space-lg);
+}
+.section__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  margin-bottom: var(--space-sm);
+}
+.section__title {
+  color: var(--c-cream);
+  margin-bottom: var(--space-sm);
+}
+.section__lead {
+  color: var(--c-text-2);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* ── Buttons ────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--r-sm);
+  border: 1px solid transparent;
+  transition: all var(--t-mid) var(--ease);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn--primary {
+  background: var(--c-gold);
+  color: var(--c-dark);
+}
+.btn--primary:hover {
+  background: var(--c-gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px -10px rgba(160, 133, 72, 0.4);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--c-cream);
+  border-color: rgba(245, 240, 232, 0.25);
+}
+.btn--ghost:hover {
+  border-color: var(--c-gold);
+  color: var(--c-gold-light);
+}
+.btn--outline {
+  background: transparent;
+  color: var(--c-gold);
+  border-color: var(--c-gold-dim);
+  padding: 0.7rem 1.5rem;
+  font-size: 0.78rem;
+  align-self: flex-start;
+}
+.btn--outline:hover {
+  background: rgba(160, 133, 72, 0.08);
+  border-color: var(--c-gold);
+}
+.btn--full { width: 100%; }
+
+/* ── Utilities ──────────────────────────────────────────── */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
