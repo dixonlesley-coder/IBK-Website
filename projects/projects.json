@@ -1,0 +1,391 @@
+{
+  "$comment": "IBK project manifest. To add a project: append an entry here, create images/projects/<slug>/ with hero.jpg + numbered gallery photos (01.jpg, 02.jpg, …), copy projects/_template.html to projects/<slug>.html and change the slug on line 2. See MAINTAINING.md for the full walkthrough.",
+
+  "projects": [
+    {
+      "slug": "rumah-lotus",
+      "name": "Rumah Lotus",
+      "tracks": ["residential", "commercial"],
+      "sector": "residential",
+      "status": "in-progress",
+      "year": "2025–2026",
+      "location": {
+        "id": "PIK2, Jakarta",
+        "en": "PIK2, Jakarta"
+      },
+      "value_display": {
+        "id": "IDR 60 Miliar",
+        "en": "IDR 60 Billion"
+      },
+      "value_short": {
+        "id": "IDR 60M",
+        "en": "IDR 60B"
+      },
+      "scope": {
+        "id": "Struktur + Arsitektur + MEP Lengkap",
+        "en": "Structure + Architecture + Full MEP"
+      },
+      "owner": null,
+      "brand": null,
+      "standard": {
+        "id": "IBK 16jt/m² Design-Build System",
+        "en": "IBK 16M/m² Design-Build System"
+      },
+      "card_eyebrow": {
+        "id": "Residensial Mewah · PIK2, Jakarta",
+        "en": "Luxury Residential · PIK2, Jakarta"
+      },
+      "card_text": {
+        "id": "Design-build penuh — struktur, arsitektur, dan MEP lengkap dalam satu kontrak. Sistem IDR 16jt/m² bersama Beta Design Studio.",
+        "en": "Full design-build — structure, architecture, and full MEP under one contract. IDR 16M/m² system delivered with Beta Design Studio."
+      },
+      "intro": {
+        "id": "Proyek residensial mewah IBK di PIK2, Jakarta — rumah tiga lantai yang dirancang bersama Beta Design Studio. Setiap spesifikasi dipilih untuk bertahan puluhan tahun: beton K-400, waterproofing tiga lapis, WPC dinding dan plafon, lantai sintered stone, dan finishing bebas cat sepenuhnya.",
+        "en": "IBK's luxury residential flagship in PIK2, Jakarta — a three-storey home designed with Beta Design Studio. Every specification chosen to last decades: K-400 concrete, triple-layer waterproofing, WPC wall and ceiling, sintered stone floors, and a fully zero-paint finish."
+      },
+      "hero_image": "images/projects/rumah-lotus/hero.jpg",
+      "gallery": [
+        "images/projects/rumah-lotus/01.jpg",
+        "images/projects/rumah-lotus/02.jpg",
+        "images/projects/rumah-lotus/03.jpg"
+      ],
+      "featured": true,
+      "detail_page": "projects/rumah-lotus.html"
+    },
+
+    {
+      "slug": "hilton-bandung",
+      "name": "Hilton Bandung",
+      "tracks": ["commercial"],
+      "sector": "hospitality",
+      "status": "in-progress",
+      "year": "2025–2026",
+      "location": {
+        "id": "Bandung, Jawa Barat",
+        "en": "Bandung, West Java"
+      },
+      "value_display": {
+        "id": "IDR 43,3 Miliar",
+        "en": "IDR 43.3 Billion"
+      },
+      "value_short": {
+        "id": "IDR 43,3M",
+        "en": "IDR 43.3B"
+      },
+      "scope": {
+        "id": "Sistem Pemadam Kebakaran, Elektrikal, HVAC",
+        "en": "Fire Suppression, Electrical, HVAC"
+      },
+      "owner": "PT. Layana Buana Hotelindo",
+      "brand": "Hilton Hotels & Resorts",
+      "card_eyebrow": {
+        "id": "Perhotelan · Bandung · Standar Merek Internasional",
+        "en": "Hospitality · Bandung · International Brand Standard"
+      },
+      "card_text": {
+        "id": "Proyek merek hotel internasional pertama IBK — Fire Suppression, Elektrikal, dan HVAC sesuai standar Hilton Hotels & Resorts.",
+        "en": "IBK's first international hotel brand project — Fire Suppression, Electrical, and HVAC delivered to Hilton Hotels & Resorts brand standard."
+      },
+      "intro": {
+        "id": "Proyek merek hotel internasional pertama IBK. Membuktikan kemampuan kami memenuhi standar teknik dan keselamatan kebakaran kelas dunia — membuka pintu ke jaringan proyek Marriott, IHG, dan Accor.",
+        "en": "IBK's first international hotel brand project. Demonstrates our capability to meet global brand engineering and fire safety standards — opening the door to the Marriott, IHG, and Accor pipeline."
+      },
+      "hero_image": "images/commercial/hilton-bandung.jpg",
+      "gallery": [],
+      "featured": true,
+      "detail_page": "projects/hilton-bandung.html"
+    },
+
+    {
+      "slug": "subang-hat-factory",
+      "name": "Subang Prosperity Hat Factory",
+      "tracks": ["commercial"],
+      "sector": "industrial",
+      "status": "in-progress",
+      "year": "2025–2026",
+      "location": {
+        "id": "Subang, Jawa Barat",
+        "en": "Subang, West Java"
+      },
+      "value_display": {
+        "id": "IDR 100 Miliar",
+        "en": "IDR 100 Billion"
+      },
+      "value_short": {
+        "id": "IDR 100M",
+        "en": "IDR 100B"
+      },
+      "scope": {
+        "id": "Struktur + MEP Lengkap",
+        "en": "Structure + Full MEP"
+      },
+      "card_eyebrow": {
+        "id": "Industri · Subang · Struktur + MEP Lengkap",
+        "en": "Industrial · Subang · Structure + Full MEP"
+      },
+      "card_text": {
+        "id": "Pabrik topi berskala industri dengan struktur pre-engineered steel, pondasi berat, dan MEP lengkap. Program mengikuti milestone pemasangan mesin klien.",
+        "en": "Industrial-scale hat factory with pre-engineered steel structure, heavy-duty foundations, and full MEP. Programme built around client machinery installation milestones."
+      },
+      "intro": {
+        "id": "Pengerjaan penuh untuk pabrik manufaktur kelas industri — kontrak langsung tanpa perantara. Menyesuaikan program konstruksi dengan tanggal pemasangan mesin dan mulai produksi klien.",
+        "en": "Full-scope delivery for an industrial manufacturing facility — directly contracted, no intermediary. Programme built around client machinery installation and production start dates."
+      },
+      "hero_image": "images/projects/subang-hat-factory/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/subang-hat-factory.html"
+    },
+
+    {
+      "slug": "hdc-hyperscale",
+      "name": "HDC Hyperscale DC Cikarang",
+      "tracks": ["commercial"],
+      "sector": "datacenter",
+      "status": "completed",
+      "year": "2021–2022",
+      "location": {
+        "id": "Cikarang, Jawa Barat",
+        "en": "Cikarang, West Java"
+      },
+      "value_display": {
+        "id": "IDR 40 Miliar",
+        "en": "IDR 40 Billion"
+      },
+      "value_short": {
+        "id": "IDR 40M",
+        "en": "IDR 40B"
+      },
+      "scope": {
+        "id": "Mekanikal — HVAC Kepadatan Tinggi, Pipa Pendingin, Fire Suppression",
+        "en": "Mechanical — High-Density HVAC, Chilled Water, Fire Suppression"
+      },
+      "card_eyebrow": {
+        "id": "Pusat Data Hyperscale · Cikarang",
+        "en": "Hyperscale Data Center · Cikarang"
+      },
+      "card_text": {
+        "id": "Mekanikal MEP untuk pusat data hyperscale — HVAC kepadatan tinggi, redundansi, dan komisioning sesuai milestone operasional.",
+        "en": "Mechanical MEP for a hyperscale data center — high-density HVAC, redundancy, and commissioning aligned to operational milestones."
+      },
+      "hero_image": "images/projects/hdc-hyperscale/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/hdc-hyperscale.html"
+    },
+
+    {
+      "slug": "scbd-data-center",
+      "name": "SCBD Data Center",
+      "tracks": ["commercial"],
+      "sector": "datacenter",
+      "status": "completed",
+      "year": "2021–2022",
+      "location": {
+        "id": "SCBD, Jakarta",
+        "en": "SCBD, Jakarta"
+      },
+      "value_display": {
+        "id": "IDR 35,5 Miliar",
+        "en": "IDR 35.5 Billion"
+      },
+      "value_short": {
+        "id": "IDR 35,5M",
+        "en": "IDR 35.5B"
+      },
+      "scope": {
+        "id": "Mekanikal — HVAC, Pipa Pendingin, Fire Suppression",
+        "en": "Mechanical — HVAC, Chilled Water, Fire Suppression"
+      },
+      "card_eyebrow": {
+        "id": "Pusat Data · SCBD Jakarta",
+        "en": "Data Center · SCBD Jakarta"
+      },
+      "card_text": {
+        "id": "Pekerjaan mekanikal pusat data di distrik keuangan Jakarta — HVAC dan fire suppression terintegrasi.",
+        "en": "Mechanical data center works in Jakarta's financial district — HVAC and fire suppression delivered together."
+      },
+      "hero_image": "images/projects/scbd-data-center/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/scbd-data-center.html"
+    },
+
+    {
+      "slug": "vasanta-innopark",
+      "name": "Vasanta Innopark",
+      "tracks": ["commercial"],
+      "sector": "commercial",
+      "status": "completed",
+      "year": "2019–2021",
+      "location": {
+        "id": "Cibitung, Bekasi",
+        "en": "Cibitung, Bekasi"
+      },
+      "value_display": {
+        "id": "IDR 36 Miliar",
+        "en": "IDR 36 Billion"
+      },
+      "value_short": {
+        "id": "IDR 36M",
+        "en": "IDR 36B"
+      },
+      "scope": {
+        "id": "Plumbing, Sprinkler, HVAC",
+        "en": "Plumbing, Sprinkler, HVAC"
+      },
+      "card_eyebrow": {
+        "id": "Apartemen · Cibitung",
+        "en": "Apartment · Cibitung"
+      },
+      "card_text": {
+        "id": "Plumbing, sistem sprinkler, dan HVAC untuk kompleks apartemen multi-menara.",
+        "en": "Plumbing, sprinkler systems, and HVAC for a multi-tower apartment complex."
+      },
+      "hero_image": "images/projects/vasanta-innopark/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/vasanta-innopark.html"
+    },
+
+    {
+      "slug": "bsi-tower-jakarta",
+      "name": "BSI Tower Jakarta",
+      "tracks": ["commercial"],
+      "sector": "commercial",
+      "status": "completed",
+      "year": "2024–2025",
+      "location": {
+        "id": "Jakarta",
+        "en": "Jakarta"
+      },
+      "value_display": {
+        "id": "IDR 14,5 Miliar",
+        "en": "IDR 14.5 Billion"
+      },
+      "value_short": {
+        "id": "IDR 14,5M",
+        "en": "IDR 14.5B"
+      },
+      "scope": {
+        "id": "Plumbing, Sistem Pemadam Kebakaran",
+        "en": "Plumbing, Fire Suppression"
+      },
+      "card_eyebrow": {
+        "id": "Menara Kantor · Jakarta",
+        "en": "Office Tower · Jakarta"
+      },
+      "card_text": {
+        "id": "Plumbing dan sistem pemadam kebakaran untuk menara kantor institusi keuangan besar.",
+        "en": "Plumbing and fire suppression for a major financial institution's office tower."
+      },
+      "hero_image": "images/projects/bsi-tower/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/bsi-tower-jakarta.html"
+    },
+
+    {
+      "slug": "rs-rengasdengklok",
+      "name": "RS Rengasdengklok",
+      "tracks": ["commercial"],
+      "sector": "healthcare",
+      "status": "completed",
+      "year": "2024–2025",
+      "location": {
+        "id": "Rengasdengklok, Karawang",
+        "en": "Rengasdengklok, Karawang"
+      },
+      "value_display": {
+        "id": "IDR 13,9 Miliar",
+        "en": "IDR 13.9 Billion"
+      },
+      "value_short": {
+        "id": "IDR 13,9M",
+        "en": "IDR 13.9B"
+      },
+      "scope": {
+        "id": "Plumbing, Pemadam Kebakaran, Elektrikal",
+        "en": "Plumbing, Fire, Electrical"
+      },
+      "card_eyebrow": {
+        "id": "Rumah Sakit · Karawang",
+        "en": "Hospital · Karawang"
+      },
+      "card_text": {
+        "id": "MEP rumah sakit berstandar layanan kesehatan — plumbing, sistem pemadam kebakaran, dan elektrikal.",
+        "en": "Healthcare-grade hospital MEP — plumbing, fire suppression, and electrical."
+      },
+      "hero_image": "images/projects/rs-rengasdengklok/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/rs-rengasdengklok.html"
+    },
+
+    {
+      "slug": "rs-adhyaksa-banten",
+      "name": "RS Adhyaksa Banten",
+      "tracks": ["commercial"],
+      "sector": "healthcare",
+      "status": "completed",
+      "year": "2023–2024",
+      "location": {
+        "id": "Banten",
+        "en": "Banten"
+      },
+      "value_display": {
+        "id": "IDR 12,2 Miliar",
+        "en": "IDR 12.2 Billion"
+      },
+      "value_short": {
+        "id": "IDR 12,2M",
+        "en": "IDR 12.2B"
+      },
+      "scope": {
+        "id": "Plumbing, Sistem Pemadam Kebakaran",
+        "en": "Plumbing, Fire Suppression"
+      },
+      "card_eyebrow": {
+        "id": "Rumah Sakit · Banten",
+        "en": "Hospital · Banten"
+      },
+      "card_text": {
+        "id": "Plumbing dan sistem pemadam kebakaran untuk fasilitas rumah sakit di Banten.",
+        "en": "Plumbing and fire suppression for a Banten hospital facility."
+      },
+      "hero_image": "images/projects/rs-adhyaksa/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/rs-adhyaksa-banten.html"
+    },
+
+    {
+      "slug": "ibk-head-office",
+      "name": "IBK Head Office — Pluit",
+      "tracks": ["commercial"],
+      "sector": "commercial",
+      "status": "completed",
+      "year": "Completed",
+      "location": {
+        "id": "Pluit, Jakarta Utara",
+        "en": "Pluit, North Jakarta"
+      },
+      "value_display": {
+        "id": "IDR 60 Miliar",
+        "en": "IDR 60 Billion"
+      },
+      "value_short": {
+        "id": "IDR 60M",
+        "en": "IDR 60B"
+      },
+      "scope": {
+        "id": "Kantor Komersial — Ruang Lingkup Penuh (6 Lantai)",
+        "en": "Commercial Office — Full Scope (6 Floors)"
+      },
+      "card_eyebrow": {
+        "id": "Kantor Pusat · Pluit",
+        "en": "Head Office · Pluit"
+      },
+      "card_text": {
+        "id": "Kantor pusat IBK sendiri — ruang lingkup penuh di 6 lantai, dibangun sesuai standar IBK.",
+        "en": "IBK's own head office — full scope across 6 floors, built to our own standard."
+      },
+      "hero_image": "images/projects/ibk-head-office/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/ibk-head-office.html"
+    }
+  ]
+}
