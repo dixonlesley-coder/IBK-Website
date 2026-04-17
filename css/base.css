@@ -5,20 +5,23 @@
 
 /* ── Design tokens ──────────────────────────────────────── */
 :root {
-  /* Colours */
-  --c-dark:        #1a1410;
-  --c-dark-2:      #231c14;
-  --c-dark-3:      #2e2418;
-  --c-gold:        #a08548;
-  --c-gold-light:  #c4a96e;
-  --c-gold-dim:    #6b5a32;
-  --c-cream:       #f5f0e8;
-  --c-cream-dark:  #ede6d6;
-  --c-text-1:      #f0ebe3;
-  --c-text-2:      #b8a88a;
-  --c-text-3:      #7a6e60;
-  --c-border:      rgba(160, 133, 72, 0.18);
-  --c-border-mid:  rgba(160, 133, 72, 0.35);
+  /* Colours — matched to IBK 2026 company profile (navy + gold) */
+  --c-dark:        #0c1933;
+  --c-dark-2:      #11224a;
+  --c-dark-3:      #162b5c;
+  --c-gold:        #c9a860;
+  --c-gold-light:  #e0c686;
+  --c-gold-dim:    #8a7440;
+  --c-cream:       #f5efde;
+  --c-cream-dark:  #e9dfc5;
+  --c-text-1:      #f0ead9;
+  --c-text-2:      #b9b2a0;
+  --c-text-3:      #7a8099;
+  --c-border:      rgba(201, 168, 96, 0.18);
+  --c-border-mid:  rgba(201, 168, 96, 0.38);
+  /* IBK brand accent (logo badge) */
+  --c-brand-red:   #e31e24;
+  --c-brand-blue:  #1e9de3;
 
   /* Typography */
   --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
