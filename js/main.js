@@ -5,12 +5,8 @@
 (function () {
   'use strict';
 
-  /* ── Config: IBK WhatsApp number ─────────────────────────
-     Replace the digits below with the real IBK WhatsApp
-     Business number. Format: country code + number, digits only.
-     Example: '6281234567890'  (i.e. +62 812-3456-7890)
-     ────────────────────────────────────────────────────── */
-  var WA_NUMBER = '6281234567890';
+  /* IBK WhatsApp: country code + number, digits only. */
+  var WA_NUMBER = '6282110952505';
 
   /* ── Contact form → WhatsApp redirect ──────────────────── */
   var form = document.getElementById('contact-form');
