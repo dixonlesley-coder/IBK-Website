@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PT. Indobangun Berjaya Konstruksi — kontraktor design-build terintegrasi penuh di Jakarta. Kami membangun untuk bertahan dua puluh tahun.">
-  <title>IBK — Kontraktor Design-Build Jakarta</title>
+  <meta name="description" content="PT. Indobangun Berjaya Konstruksi — Kontraktor design-build terintegrasi penuh. Pilih Residensial Mewah atau Komersial, Industri &amp; Perhotelan.">
+  <title>IBK — Design. Build. Deliver.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -12,319 +12,90 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
 </head>
-<body>
+<body class="choice-page">
 
-  <!-- NAV -->
-  <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
+  <!-- NAV (minimal for landing) -->
+  <nav class="nav nav--landing" id="main-nav" role="navigation" aria-label="Main navigation">
     <div class="nav__container">
       <a href="index.html" class="nav__logo" aria-label="IBK Home">IBK</a>
-      <div class="nav__links" id="nav-links">
-        <a href="#about"        class="nav__link" data-i18n="nav.about">Tentang Kami</a>
-        <a href="#capabilities" class="nav__link" data-i18n="nav.capabilities">Kemampuan</a>
-        <a href="#projects"     class="nav__link" data-i18n="nav.projects">Proyek</a>
-        <a href="#contact"      class="nav__link" data-i18n="nav.contact">Kontak</a>
-      </div>
       <div class="nav__actions">
         <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language / Ganti bahasa">
           <span class="lang-toggle__option active" id="lang-id">ID</span>
           <span class="lang-toggle__divider">/</span>
           <span class="lang-toggle__option" id="lang-en">EN</span>
         </button>
-        <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="hero" aria-label="Hero">
-    <div class="hero__bg" aria-hidden="true">
-      <img src="images/hero/hero-bg.jpg" alt="" class="hero__bg-img" loading="eager">
-    </div>
+  <!-- CHOICE HERO -->
+  <section class="choice" aria-label="Choose service">
+    <div class="choice__bg" aria-hidden="true"></div>
     <div class="container">
-      <div class="hero__content">
-        <p class="hero__eyebrow" data-i18n="hero.eyebrow">Jakarta · Kontraktor Design-Build</p>
-        <h1 class="hero__headline" data-i18n="hero.headline">Bangun Sekali.<br>Bertahan Dua Puluh Tahun.</h1>
-        <p class="hero__sub" data-i18n="hero.sub">PT. Indobangun Berjaya Konstruksi — kontraktor design-build terintegrasi penuh di Jakarta. Satu tim, satu visi, satu standar kualitas.</p>
-        <div class="hero__cta-group">
-          <a href="#projects" class="btn btn--primary" data-i18n="hero.cta_primary">Lihat Proyek Kami</a>
-          <a href="#contact"  class="btn btn--ghost"   data-i18n="hero.cta_secondary">Hubungi Kami</a>
-        </div>
-      </div>
-    </div>
-    <div class="hero__scroll-indicator" aria-hidden="true"><span class="hero__scroll-line"></span></div>
-  </section>
+      <header class="choice__header">
+        <p class="choice__eyebrow" data-i18n="choice.eyebrow">PT. Indobangun Berjaya Konstruksi · Est. 2015</p>
+        <h1 class="choice__headline" data-i18n="choice.headline">Design. Build. Deliver.</h1>
+        <p class="choice__sub" data-i18n="choice.sub">Kontraktor design-build terintegrasi penuh — IDR 300M+ proyek diserahkan. Pilih fokus Anda untuk melihat program yang sesuai.</p>
+      </header>
 
-  <!-- IBK DIFFERENCE -->
-  <section class="section ibk-difference" id="about">
-    <div class="container">
-      <div class="section__header">
-        <p class="section__eyebrow" data-i18n="diff.eyebrow">Filosofi Kami</p>
-        <h2 class="section__title" data-i18n="diff.title">Perbedaan IBK</h2>
-        <p class="section__lead" data-i18n="diff.lead">Banyak kontraktor bisa membangun. Kami membangun untuk bertahan dua puluh tahun ke depan — dengan biaya kepemilikan yang lebih rendah, bukan hanya harga awal yang lebih murah.</p>
-      </div>
-      <div class="diff-grid">
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">01</div>
-          <h3 class="diff-card__title" data-i18n="diff.card1_title">Design-Build Terintegrasi</h3>
-          <p class="diff-card__text" data-i18n="diff.card1_text">Arsitek, insinyur struktur, dan tim lapangan kami bekerja dalam satu atap. Tidak ada gap komunikasi. Tidak ada finger-pointing antar pihak. Hasilnya: jadwal lebih ketat, anggaran lebih terkontrol.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">02</div>
-          <h3 class="diff-card__title" data-i18n="diff.card2_title">Biaya Kepemilikan 20 Tahun</h3>
-          <p class="diff-card__text" data-i18n="diff.card2_text">Kami tidak hanya menghitung harga bangun. Kami menghitung biaya listrik, perawatan, dan renovasi selama dua dekade. Material yang sedikit lebih mahal di depan sering kali menghemat jauh lebih banyak di belakang.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">03</div>
-          <h3 class="diff-card__title" data-i18n="diff.card3_title">Transparansi Total</h3>
-          <p class="diff-card__text" data-i18n="diff.card3_text">Setiap keputusan material, setiap perubahan anggaran, setiap laporan progres — klien kami tahu sebelum kami bertindak. Kepercayaan dibangun dari data, bukan janji.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+      <div class="choice__grid">
 
-  <!-- CAPABILITIES -->
-  <section class="section capabilities" id="capabilities">
-    <div class="container">
-      <div class="section__header">
-        <p class="section__eyebrow" data-i18n="cap.eyebrow">Apa yang Kami Kerjakan</p>
-        <h2 class="section__title" data-i18n="cap.title">Kemampuan Kami</h2>
-      </div>
-      <div class="cap-grid">
-        <div class="cap-item"><span class="cap-item__num" aria-hidden="true">01</span><h4 class="cap-item__title" data-i18n="cap.item1">Desain Arsitektur</h4></div>
-        <div class="cap-item"><span class="cap-item__num" aria-hidden="true">02</span><h4 class="cap-item__title" data-i18n="cap.item2">Struktur &amp; Sipil</h4></div>
-        <div class="cap-item"><span class="cap-item__num" aria-hidden="true">03</span><h4 class="cap-item__title" data-i18n="cap.item3">MEP — Mekanikal, Elektrikal, Plumbing</h4></div>
-        <div class="cap-item"><span class="cap-item__num" aria-hidden="true">04</span><h4 class="cap-item__title" data-i18n="cap.item4">Interior &amp; Finishing</h4></div>
-        <div class="cap-item"><span class="cap-item__num" aria-hidden="true">05</span><h4 class="cap-item__title" data-i18n="cap.item5">Manajemen Proyek</h4></div>
-        <div class="cap-item"><span class="cap-item__num" aria-hidden="true">06</span><h4 class="cap-item__title" data-i18n="cap.item6">Konsultasi &amp; Estimasi Anggaran</h4></div>
-        <div class="cap-item"><span class="cap-item__num" aria-hidden="true">07</span><h4 class="cap-item__title" data-i18n="cap.item7">Pengawasan Konstruksi</h4></div>
-        <div class="cap-item"><span class="cap-item__num" aria-hidden="true">08</span><h4 class="cap-item__title" data-i18n="cap.item8">Perizinan &amp; Kepatuhan Regulasi</h4></div>
-        <div class="cap-item"><span class="cap-item__num" aria-hidden="true">09</span><h4 class="cap-item__title" data-i18n="cap.item9">Pemeliharaan Pasca-Bangun</h4></div>
-      </div>
-    </div>
-  </section>
+        <a href="residential.html" class="choice-card choice-card--residential">
+          <div class="choice-card__bg" aria-hidden="true"></div>
+          <div class="choice-card__content">
+            <p class="choice-card__eyebrow" data-i18n="choice.res_eyebrow">Residensial Mewah</p>
+            <h2 class="choice-card__title" data-i18n="choice.res_title">Hunian Premium</h2>
+            <p class="choice-card__text" data-i18n="choice.res_text">Sistem Design-Build IDR 16jt/m² — struktur, arsitektur &amp; interior, MEP lengkap, dan pengadaan material. Bermitra eksklusif dengan Beta Design Studio.</p>
+            <ul class="choice-card__tags" aria-label="Highlights">
+              <li data-i18n="choice.res_tag1">Rumah Lotus · PIK2</li>
+              <li data-i18n="choice.res_tag2">Zero Paint · Zero Wood</li>
+              <li data-i18n="choice.res_tag3">Smart Home &amp; Solar</li>
+            </ul>
+            <span class="choice-card__cta" data-i18n="choice.res_cta">Lihat Residensial →</span>
+          </div>
+        </a>
 
-  <!-- PROJECTS -->
-  <section class="section projects" id="projects">
-    <div class="container">
-      <div class="section__header">
-        <p class="section__eyebrow" data-i18n="proj.eyebrow">Portofolio</p>
-        <h2 class="section__title" data-i18n="proj.title">Proyek Pilihan</h2>
-      </div>
-      <div class="projects-grid">
-
-        <article class="project-card project-card--featured">
-          <div class="project-card__img-wrap">
-            <img src="images/projects/lotus-featured.jpg" alt="Rumah Lotus, PIK2" class="project-card__img" loading="lazy">
-            <span class="project-card__badge" data-i18n="proj.badge_progress">Dalam Proses</span>
+        <a href="commercial.html" class="choice-card choice-card--commercial">
+          <div class="choice-card__bg" aria-hidden="true"></div>
+          <div class="choice-card__content">
+            <p class="choice-card__eyebrow" data-i18n="choice.com_eyebrow">Komersial · Industri · Perhotelan</p>
+            <h2 class="choice-card__title" data-i18n="choice.com_title">Fasilitas Kritis</h2>
+            <p class="choice-card__text" data-i18n="choice.com_text">Industri, pusat data, rumah sakit, perhotelan, dan perkantoran. Spesialis MEP dengan kapabilitas pengerjaan penuh — terbukti di Hilton, BSI, Subang, dan Hyperscale DC.</p>
+            <ul class="choice-card__tags" aria-label="Highlights">
+              <li data-i18n="choice.com_tag1">Hilton Bandung · IDR 43,3M</li>
+              <li data-i18n="choice.com_tag2">Subang Factory · IDR 100M</li>
+              <li data-i18n="choice.com_tag3">Hyperscale Data Center</li>
+            </ul>
+            <span class="choice-card__cta" data-i18n="choice.com_cta">Lihat Komersial →</span>
           </div>
-          <div class="project-card__body">
-            <p class="project-card__type" data-i18n="proj.lotus_type">Hunian Privat · PIK2, Tangerang</p>
-            <h3 class="project-card__title">Rumah Lotus</h3>
-            <p class="project-card__text" data-i18n="proj.lotus_text">Hunian tiga lantai dengan sistem rumah pintar terintegrasi, atap hijau, dan struktur beton bertulang premium. Proyek andalan IBK yang sedang berjalan.</p>
-            <a href="projects/rumah-lotus.html" class="btn btn--outline" data-i18n="proj.cta_follow">Ikuti Progresnya</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__img-wrap">
-            <img src="images/projects/villa-semarang.jpg" alt="Villa Semarang" class="project-card__img" loading="lazy">
-            <span class="project-card__badge project-card__badge--done" data-i18n="proj.badge_done">Selesai</span>
-          </div>
-          <div class="project-card__body">
-            <p class="project-card__type" data-i18n="proj.villa_type">Hunian Privat · Semarang</p>
-            <h3 class="project-card__title">Villa Semarang</h3>
-            <p class="project-card__text" data-i18n="proj.villa_text">Villa tropis kontemporer dengan detail kayu jati dan sistem penghawaan alami. Selesai dalam 14 bulan.</p>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__img-wrap">
-            <img src="images/projects/ruko-bintaro.jpg" alt="Ruko Bintaro" class="project-card__img" loading="lazy">
-            <span class="project-card__badge project-card__badge--done" data-i18n="proj.badge_done">Selesai</span>
-          </div>
-          <div class="project-card__body">
-            <p class="project-card__type" data-i18n="proj.ruko_type">Komersial · Bintaro, Tangerang Selatan</p>
-            <h3 class="project-card__title">Ruko Bintaro</h3>
-            <p class="project-card__text" data-i18n="proj.ruko_text">Deretan ruko tiga lantai dengan fasad modern dan sistem keamanan terintegrasi. Dibangun dalam 10 bulan.</p>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__img-wrap">
-            <img src="images/projects/kantor-tangerang.jpg" alt="Kantor Tangerang" class="project-card__img" loading="lazy">
-            <span class="project-card__badge project-card__badge--done" data-i18n="proj.badge_done">Selesai</span>
-          </div>
-          <div class="project-card__body">
-            <p class="project-card__type" data-i18n="proj.office_type">Perkantoran · Tangerang</p>
-            <h3 class="project-card__title">Kantor Tangerang</h3>
-            <p class="project-card__text" data-i18n="proj.office_text">Fit-out kantor dua lantai dengan layout open-space, ruang rapat akustik, dan sistem pencahayaan cerdas.</p>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-card__img-wrap">
-            <img src="images/projects/rumah-bekasi.jpg" alt="Rumah Bekasi" class="project-card__img" loading="lazy">
-            <span class="project-card__badge project-card__badge--done" data-i18n="proj.badge_done">Selesai</span>
-          </div>
-          <div class="project-card__body">
-            <p class="project-card__type" data-i18n="proj.bekasi_type">Hunian Privat · Bekasi</p>
-            <h3 class="project-card__title">Rumah Bekasi</h3>
-            <p class="project-card__text" data-i18n="proj.bekasi_text">Rumah keluarga dua lantai dengan taman dalam dan kolam renang. Diselesaikan tepat waktu dalam 12 bulan.</p>
-          </div>
-        </article>
+        </a>
 
       </div>
-    </div>
-  </section>
 
-  <!-- ENGINEERING PHILOSOPHY -->
-  <section class="section philosophy" id="philosophy">
-    <div class="container">
-      <div class="section__header">
-        <p class="section__eyebrow" data-i18n="phil.eyebrow">Standar Material</p>
-        <h2 class="section__title" data-i18n="phil.title">Filosofi Rekayasa Kami</h2>
-        <p class="section__lead" data-i18n="phil.lead">Kami tidak berkompromi pada material struktural. Setiap spesifikasi di bawah ini adalah standar minimum IBK — bukan upgrade berbayar.</p>
-      </div>
-      <div class="phil-table-wrap">
-        <table class="phil-table">
-          <thead>
-            <tr>
-              <th scope="col" data-i18n="phil.th_component">Komponen</th>
-              <th scope="col" data-i18n="phil.th_ibk">Standar IBK</th>
-              <th scope="col" data-i18n="phil.th_market">Pasar Umum</th>
-              <th scope="col" data-i18n="phil.th_impact">Dampak Jangka Panjang</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-i18n="phil.row1_comp">Beton Struktural</td>
-              <td class="ibk-spec" data-i18n="phil.row1_ibk">K-350 minimum</td>
-              <td data-i18n="phil.row1_market">K-225 – K-250</td>
-              <td data-i18n="phil.row1_impact">Ketahanan 2× lebih lama terhadap beban siklis</td>
-            </tr>
-            <tr>
-              <td data-i18n="phil.row2_comp">Baja Tulangan</td>
-              <td class="ibk-spec" data-i18n="phil.row2_ibk">BJTD-40 SNI</td>
-              <td data-i18n="phil.row2_market">BJTP-24 atau non-SNI</td>
-              <td data-i18n="phil.row2_impact">Lebih tahan gempa, risiko keropos lebih rendah</td>
-            </tr>
-            <tr>
-              <td data-i18n="phil.row3_comp">Waterproofing</td>
-              <td class="ibk-spec" data-i18n="phil.row3_ibk">Membran + crystalline</td>
-              <td data-i18n="phil.row3_market">Cat waterproof biasa</td>
-              <td data-i18n="phil.row3_impact">Garansi rembes 10 tahun vs. 1–2 tahun</td>
-            </tr>
-            <tr>
-              <td data-i18n="phil.row4_comp">Instalasi Listrik</td>
-              <td class="ibk-spec" data-i18n="phil.row4_ibk">NYM 2.5mm², ELCB</td>
-              <td data-i18n="phil.row4_market">NYA 1.5mm², MCB standar</td>
-              <td data-i18n="phil.row4_impact">Keamanan kebakaran lebih tinggi, siap upgrade daya</td>
-            </tr>
-            <tr>
-              <td data-i18n="phil.row5_comp">Cat Eksterior</td>
-              <td class="ibk-spec" data-i18n="phil.row5_ibk">Weathershield 10 tahun</td>
-              <td data-i18n="phil.row5_market">Cat eksterior biasa</td>
-              <td data-i18n="phil.row5_impact">Siklus cat ulang lebih jarang, biaya perawatan lebih hemat</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section contact" id="contact">
-    <div class="container">
-      <div class="contact__grid">
-        <div class="contact__info">
-          <p class="section__eyebrow" data-i18n="contact.eyebrow">Mulai Diskusi</p>
-          <h2 class="section__title" data-i18n="contact.title">Ceritakan Proyek Anda</h2>
-          <p class="contact__sub" data-i18n="contact.sub">Tidak ada konsultasi yang terlalu awal. Kami senang berdiskusi — bahkan saat masih di tahap ide.</p>
-          <div class="contact__details">
-            <div class="contact__detail">
-              <span class="contact__detail-label" data-i18n="contact.phone_label">Telepon / WhatsApp</span>
-              <a href="https://wa.me/6281234567890" class="contact__detail-value">+62 812-3456-7890</a>
-            </div>
-            <div class="contact__detail">
-              <span class="contact__detail-label" data-i18n="contact.email_label">Email</span>
-              <a href="mailto:hello@ibk-konstruksi.com" class="contact__detail-value">hello@ibk-konstruksi.com</a>
-            </div>
-            <div class="contact__detail">
-              <span class="contact__detail-label" data-i18n="contact.address_label">Kantor</span>
-              <span class="contact__detail-value" data-i18n="contact.address">Jakarta Selatan, DKI Jakarta</span>
-            </div>
+      <footer class="choice__footer">
+        <div class="choice__footer-stats">
+          <div class="choice__stat">
+            <span class="choice__stat-value">IDR 300M+</span>
+            <span class="choice__stat-label" data-i18n="choice.stat1">Nilai Proyek Terserah</span>
+          </div>
+          <div class="choice__stat">
+            <span class="choice__stat-value">20+</span>
+            <span class="choice__stat-label" data-i18n="choice.stat2">Proyek Terselesaikan</span>
+          </div>
+          <div class="choice__stat">
+            <span class="choice__stat-value">10</span>
+            <span class="choice__stat-label" data-i18n="choice.stat3">Tahun Pengalaman</span>
+          </div>
+          <div class="choice__stat">
+            <span class="choice__stat-value">255</span>
+            <span class="choice__stat-label" data-i18n="choice.stat4">Anggota Tim</span>
           </div>
         </div>
-
-        <div class="contact__form-wrap">
-          <form class="contact-form" id="contact-form" novalidate>
-            <div class="form-group">
-              <label class="form-label" for="contact-name" data-i18n="contact.f_name">Nama Lengkap</label>
-              <input type="text" id="contact-name" name="name" class="form-input" autocomplete="name" required
-                placeholder="Budi Santoso" data-i18n-placeholder="contact.f_name_ph">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-phone" data-i18n="contact.f_phone">Nomor WhatsApp</label>
-              <input type="tel" id="contact-phone" name="phone" class="form-input" autocomplete="tel"
-                placeholder="+62 812-xxxx-xxxx">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-project" data-i18n="contact.f_project_type">Jenis Proyek</label>
-              <select id="contact-project" name="project" class="form-input form-select">
-                <option value="" data-i18n="contact.f_project_ph">Pilih jenis proyek...</option>
-                <option value="Hunian Privat"  data-i18n="contact.f_opt_residential">Hunian Privat</option>
-                <option value="Komersial"      data-i18n="contact.f_opt_commercial">Komersial</option>
-                <option value="Renovasi"       data-i18n="contact.f_opt_renovation">Renovasi</option>
-                <option value="Interior"       data-i18n="contact.f_opt_interior">Interior &amp; Fit-out</option>
-                <option value="Lainnya"        data-i18n="contact.f_opt_other">Lainnya</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-message" data-i18n="contact.f_message">Ceritakan Proyeknya</label>
-              <textarea id="contact-message" name="message" class="form-input form-textarea" rows="4"
-                placeholder="Lokasi, ukuran, anggaran estimasi, timeline..."
-                data-i18n-placeholder="contact.f_message_ph"></textarea>
-            </div>
-            <button type="submit" class="btn btn--primary btn--full" data-i18n="contact.f_submit">Kirim via WhatsApp</button>
-            <p class="form-note" data-i18n="contact.f_note">Pesan Anda akan dibuka di WhatsApp. Kami biasanya membalas dalam 1 hari kerja.</p>
-          </form>
-        </div>
-      </div>
+        <p class="choice__footer-tag" data-i18n="choice.tag">Jakarta · Jawa · Nasional &nbsp;·&nbsp; Structure · Architecture · Full MEP · Smart Buildings</p>
+      </footer>
     </div>
   </section>
-
-  <!-- FOOTER -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a href="index.html" class="footer__logo" aria-label="IBK Home">IBK</a>
-          <p class="footer__tagline" data-i18n="footer.tagline">Kontraktor design-build terintegrasi penuh di Jakarta.</p>
-        </div>
-        <nav class="footer__links" aria-label="Footer navigation">
-          <h5 class="footer__links-title" data-i18n="footer.nav_title">Navigasi</h5>
-          <a href="#about"        data-i18n="nav.about">Tentang Kami</a>
-          <a href="#capabilities" data-i18n="nav.capabilities">Kemampuan</a>
-          <a href="#projects"     data-i18n="nav.projects">Proyek</a>
-          <a href="#contact"      data-i18n="nav.contact">Kontak</a>
-        </nav>
-        <div class="footer__contact">
-          <h5 class="footer__links-title" data-i18n="footer.contact_title">Kontak</h5>
-          <a href="https://wa.me/6281234567890">+62 812-3456-7890</a>
-          <a href="mailto:hello@ibk-konstruksi.com">hello@ibk-konstruksi.com</a>
-          <span data-i18n="contact.address">Jakarta Selatan, DKI Jakarta</span>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p data-i18n="footer.copyright">© 2025 PT. Indobangun Berjaya Konstruksi. Seluruh hak cipta dilindungi.</p>
-      </div>
-    </div>
-  </footer>
 
   <script src="js/i18n.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
