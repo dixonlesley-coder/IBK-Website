@@ -64,6 +64,8 @@ var translations = {
     'cap.item4':         'Plumbing',
     'cap.item5':         'Sistem Pemadam Kebakaran',
     'cap.item6':         'HVAC &amp; Smart Home',
+    'cap.item7':         'Interior Build',
+    'cap.item8':         'Furnitur',
 
     'proj.eyebrow':        'Portofolio',
     'proj.title':          'Proyek Pilihan',
@@ -202,6 +204,10 @@ var translations = {
     'com.cap.c5_text':   'Instalasi sprinkler dan pemadam lengkap. Terbukti di residensial, perhotelan, rumah sakit, pusat data, dan industri.',
     'com.cap.c6_title':  'HVAC',
     'com.cap.c6_text':   'Sistem VRV dan sentral untuk residensial, hotel, industri, dan pusat data. Dirancang sesuai iklim Indonesia.',
+    'com.cap.c7_title':  'Interior Build',
+    'com.cap.c7_text':   'Fit-out interior penuh — partisi, plafon, lantai, dan finishing. Terintegrasi dalam kontrak utama, tanpa subkontraktor pihak ketiga.',
+    'com.cap.c8_title':  'Furnitur',
+    'com.cap.c8_text':   'Furnitur built-in dan custom — kitchen set, lemari, vanity. Diproduksi di workshop IBK sesuai detail arsitek.',
 
     'com.sect.eyebrow':  'Pasar Kami',
     'com.sect.title':    'Sektor yang Kami Layani',
@@ -340,6 +346,8 @@ var translations = {
     'cap.item4':         'Plumbing',
     'cap.item5':         'Fire Suppression',
     'cap.item6':         'HVAC &amp; Smart Home',
+    'cap.item7':         'Interior Build',
+    'cap.item8':         'Furniture',
 
     'proj.eyebrow':        'Portfolio',
     'proj.title':          'Selected Projects',
@@ -478,6 +486,10 @@ var translations = {
     'com.cap.c5_text':   'Complete sprinkler and fire-fighting installation. Proven across residential, hospitality, hospital, data center, and industrial facilities.',
     'com.cap.c6_title':  'HVAC',
     'com.cap.c6_text':   "VRV and central systems for residential, hotel, industrial, and data center environments. Sized and specified for Indonesia's climate.",
+    'com.cap.c7_title':  'Interior Build',
+    'com.cap.c7_text':   'Full interior fit-out — partitions, ceilings, flooring, and finishes. Delivered inside the main contract, no third-party subcontractors.',
+    'com.cap.c8_title':  'Furniture',
+    'com.cap.c8_text':   'Custom built-in and loose furniture — kitchen sets, wardrobes, vanities. Produced in IBK\u2019s workshop to architect detail.',
 
     'com.sect.eyebrow':  'Our Markets',
     'com.sect.title':    'Sectors We Serve',
