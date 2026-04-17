@@ -156,16 +156,17 @@
         "en": "IDR 40B"
       },
       "scope": {
-        "id": "Mekanikal — HVAC Kepadatan Tinggi, Pipa Pendingin, Fire Suppression",
-        "en": "Mechanical — High-Density HVAC, Chilled Water, Fire Suppression"
+        "id": "Mekanikal — HVAC Kepadatan Tinggi, Pipa Pendingin, Fire Suppression · 20.057 m²",
+        "en": "Mechanical — High-Density HVAC, Chilled Water, Fire Suppression · 20,057 m²"
       },
+      "owner": "PT. PP (Persero) / APG",
       "card_eyebrow": {
-        "id": "Pusat Data Hyperscale · Cikarang",
-        "en": "Hyperscale Data Center · Cikarang"
+        "id": "Pusat Data Hyperscale · Cikarang · PT. PP / APG",
+        "en": "Hyperscale Data Center · Cikarang · PT. PP / APG"
       },
       "card_text": {
-        "id": "Mekanikal MEP untuk pusat data hyperscale — HVAC kepadatan tinggi, redundansi, dan komisioning sesuai milestone operasional.",
-        "en": "Mechanical MEP for a hyperscale data center — high-density HVAC, redundancy, and commissioning aligned to operational milestones."
+        "id": "Mekanikal MEP untuk pusat data hyperscale 20.057 m² — pendinginan presisi, redundansi penuh, komisioning sesuai milestone operasional.",
+        "en": "Mechanical MEP for a 20,057 m² hyperscale data center — precision cooling, full redundancy, and commissioning aligned to operational milestones."
       },
       "hero_image": "images/projects/hdc-hyperscale/hero.jpg",
       "gallery": [],
@@ -192,16 +193,17 @@
         "en": "IDR 35.5B"
       },
       "scope": {
-        "id": "Mekanikal — HVAC, Pipa Pendingin, Fire Suppression",
-        "en": "Mechanical — HVAC, Chilled Water, Fire Suppression"
+        "id": "Mekanikal — HVAC, Pipa Pendingin, Fire Suppression · Control Building",
+        "en": "Mechanical — HVAC, Chilled Water, Fire Suppression · Control Building"
       },
+      "owner": "PT. Pulauintan",
       "card_eyebrow": {
-        "id": "Pusat Data · SCBD Jakarta",
-        "en": "Data Center · SCBD Jakarta"
+        "id": "Pusat Data · SCBD · PT. Pulauintan",
+        "en": "Data Center · SCBD · PT. Pulauintan"
       },
       "card_text": {
-        "id": "Pekerjaan mekanikal pusat data di distrik keuangan Jakarta — HVAC dan fire suppression terintegrasi.",
-        "en": "Mechanical data center works in Jakarta's financial district — HVAC and fire suppression delivered together."
+        "id": "Pekerjaan mekanikal pusat data + control building di distrik keuangan Jakarta — dikerjakan sebagai subkontraktor PT. Pulauintan.",
+        "en": "Mechanical data center + control building works in Jakarta's financial district — delivered as subcontractor to PT. Pulauintan."
       },
       "hero_image": "images/projects/scbd-data-center/hero.jpg",
       "gallery": [],
@@ -228,20 +230,247 @@
         "en": "IDR 36B"
       },
       "scope": {
-        "id": "Plumbing, Sprinkler, HVAC",
-        "en": "Plumbing, Sprinkler, HVAC"
+        "id": "Plumbing, Sprinkler, HVAC · 50.000 m²",
+        "en": "Plumbing, Sprinkler, HVAC · 50,000 m²"
       },
+      "owner": "PT. PP (Persero)",
       "card_eyebrow": {
-        "id": "Apartemen · Cibitung",
-        "en": "Apartment · Cibitung"
+        "id": "Apartemen · Cibitung · PT. PP (Persero)",
+        "en": "Apartment · Cibitung · PT. PP (Persero)"
       },
       "card_text": {
-        "id": "Plumbing, sistem sprinkler, dan HVAC untuk kompleks apartemen multi-menara.",
-        "en": "Plumbing, sprinkler systems, and HVAC for a multi-tower apartment complex."
+        "id": "Plumbing, sistem sprinkler, dan HVAC untuk kompleks apartemen 50.000 m² — dikerjakan sebagai subkontraktor spesialis PT. PP (Persero).",
+        "en": "Plumbing, sprinkler systems, and HVAC for a 50,000 m² multi-tower apartment complex — delivered as specialist subcontractor to PT. PP (Persero)."
+      },
+      "intro": {
+        "id": "Paket MEP apartemen berskala besar — plumbing bertekanan multi-zona, sistem sprinkler residensial, dan HVAC untuk operasional 24 jam. Diserahkan sesuai jadwal kepada PT. PP (Persero) di Cibitung.",
+        "en": "Large-scale apartment MEP package — multi-zone pressurised plumbing, residential sprinkler systems, and 24/7 HVAC. Delivered on schedule for PT. PP (Persero) in Cibitung."
       },
       "hero_image": "images/projects/vasanta-innopark/hero.jpg",
       "gallery": [],
       "detail_page": "projects/vasanta-innopark.html"
+    },
+
+    {
+      "slug": "apt-sudimara-foreswalk",
+      "name": "Apt. Sudimara Foreswalk",
+      "tracks": ["commercial"],
+      "sector": "commercial",
+      "status": "completed",
+      "year": "2021–2022",
+      "location": {
+        "id": "Sudimara, Tangerang",
+        "en": "Sudimara, Tangerang"
+      },
+      "value_display": {
+        "id": "IDR 24 Miliar",
+        "en": "IDR 24 Billion"
+      },
+      "value_short": {
+        "id": "IDR 24M",
+        "en": "IDR 24B"
+      },
+      "scope": {
+        "id": "MEP Lengkap",
+        "en": "Full MEP"
+      },
+      "owner": "PT. PP (Persero)",
+      "card_eyebrow": {
+        "id": "Apartemen · Sudimara · PT. PP (Persero)",
+        "en": "Apartment · Sudimara · PT. PP (Persero)"
+      },
+      "card_text": {
+        "id": "Paket MEP lengkap untuk menara apartemen — plumbing, pemadam, elektrikal, dan HVAC terkoordinasi di banyak lantai.",
+        "en": "Full MEP package for an apartment tower — plumbing, fire, electrical, and HVAC coordinated across multiple floors."
+      },
+      "hero_image": "images/projects/apt-sudimara/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/apt-sudimara-foreswalk.html"
+    },
+
+    {
+      "slug": "meruya-bpi-residence",
+      "name": "Meruya BPI Residence",
+      "tracks": ["commercial"],
+      "sector": "commercial",
+      "status": "completed",
+      "year": "2021–2022",
+      "location": {
+        "id": "Meruya, Jakarta Barat",
+        "en": "Meruya, West Jakarta"
+      },
+      "value_display": {
+        "id": "IDR 11,5 Miliar",
+        "en": "IDR 11.5 Billion"
+      },
+      "value_short": {
+        "id": "IDR 11,5M",
+        "en": "IDR 11.5B"
+      },
+      "scope": {
+        "id": "Plumbing",
+        "en": "Plumbing"
+      },
+      "owner": "PT. Pulauintan",
+      "card_eyebrow": {
+        "id": "Menara Residensial · Meruya · PT. Pulauintan",
+        "en": "Residence Tower · Meruya · PT. Pulauintan"
+      },
+      "card_text": {
+        "id": "Paket plumbing spesialis untuk menara residensial — subkontraktor PT. Pulauintan.",
+        "en": "Specialist plumbing package for a residence tower — subcontractor to PT. Pulauintan."
+      },
+      "hero_image": "images/projects/meruya-bpi/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/meruya-bpi-residence.html"
+    },
+
+    {
+      "slug": "tcd-tmii",
+      "name": "TCD TMII",
+      "tracks": ["commercial"],
+      "sector": "commercial",
+      "status": "completed",
+      "year": "2024–2025",
+      "location": {
+        "id": "TMII, Jakarta Timur",
+        "en": "TMII, East Jakarta"
+      },
+      "value_display": {
+        "id": "IDR 11,4 Miliar",
+        "en": "IDR 11.4 Billion"
+      },
+      "value_short": {
+        "id": "IDR 11,4M",
+        "en": "IDR 11.4B"
+      },
+      "scope": {
+        "id": "Plumbing, Sistem Pemadam Kebakaran",
+        "en": "Plumbing, Fire Suppression"
+      },
+      "owner": "PT. PP (Persero)",
+      "card_eyebrow": {
+        "id": "Fasilitas Publik · TMII · PT. PP (Persero)",
+        "en": "Public Facility · TMII · PT. PP (Persero)"
+      },
+      "card_text": {
+        "id": "Plumbing dan sistem pemadam untuk fasilitas publik di kompleks TMII — diserahkan kepada PT. PP dengan dokumentasi kepatuhan penuh.",
+        "en": "Plumbing and fire suppression for a public facility in the TMII complex — delivered to PT. PP with full compliance documentation."
+      },
+      "hero_image": "images/projects/tcd-tmii/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/tcd-tmii.html"
+    },
+
+    {
+      "slug": "kcbn-jambi",
+      "name": "KCBN Jambi",
+      "tracks": ["commercial"],
+      "sector": "commercial",
+      "status": "completed",
+      "year": "2024",
+      "location": {
+        "id": "Jambi",
+        "en": "Jambi"
+      },
+      "value_display": {
+        "id": "IDR 10,95 Miliar",
+        "en": "IDR 10.95 Billion"
+      },
+      "value_short": {
+        "id": "IDR 10,95M",
+        "en": "IDR 10.95B"
+      },
+      "scope": {
+        "id": "Elektrikal",
+        "en": "Electrical"
+      },
+      "owner": "PT. PP (Persero)",
+      "card_eyebrow": {
+        "id": "Institusional · Jambi · PT. PP (Persero)",
+        "en": "Institutional · Jambi · PT. PP (Persero)"
+      },
+      "card_text": {
+        "id": "Paket elektrikal institusional — distribusi, panel, dan daya darurat sesuai standar sektor publik.",
+        "en": "Institutional electrical package — distribution, panels, and emergency power to public-sector standards."
+      },
+      "hero_image": "images/projects/kcbn-jambi/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/kcbn-jambi.html"
+    },
+
+    {
+      "slug": "bni-pik-2",
+      "name": "BNI PIK 2",
+      "tracks": ["commercial"],
+      "sector": "commercial",
+      "status": "completed",
+      "year": "2024–2025",
+      "location": {
+        "id": "PIK 2, Jakarta",
+        "en": "PIK 2, Jakarta"
+      },
+      "value_display": {
+        "id": "IDR 7,5 Miliar",
+        "en": "IDR 7.5 Billion"
+      },
+      "value_short": {
+        "id": "IDR 7,5M",
+        "en": "IDR 7.5B"
+      },
+      "scope": {
+        "id": "Plumbing",
+        "en": "Plumbing"
+      },
+      "owner": "PT. PP (Persero)",
+      "card_eyebrow": {
+        "id": "Cabang Bank · PIK 2 · PT. PP (Persero)",
+        "en": "Bank Branch · PIK 2 · PT. PP (Persero)"
+      },
+      "card_text": {
+        "id": "Paket plumbing untuk menara cabang bank — dokumentasi lengkap, dikerjakan sebagai subkontraktor PT. PP.",
+        "en": "Plumbing package for a bank branch tower — full documentation, delivered as subcontractor to PT. PP."
+      },
+      "hero_image": "images/projects/bni-pik-2/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/bni-pik-2.html"
+    },
+
+    {
+      "slug": "kejaksaan-agung",
+      "name": "Kejaksaan Agung",
+      "tracks": ["commercial"],
+      "sector": "commercial",
+      "status": "completed",
+      "year": "Completed",
+      "location": {
+        "id": "Jakarta",
+        "en": "Jakarta"
+      },
+      "value_display": {
+        "id": "Kantor Pemerintah",
+        "en": "Government Office"
+      },
+      "value_short": {
+        "id": "Pemerintah",
+        "en": "Government"
+      },
+      "scope": {
+        "id": "MEP Gedung Kantor",
+        "en": "Office Building MEP"
+      },
+      "owner": "PT. PP (Persero)",
+      "card_eyebrow": {
+        "id": "Kantor Pemerintah · Jakarta · PT. PP (Persero)",
+        "en": "Government Office · Jakarta · PT. PP (Persero)"
+      },
+      "card_text": {
+        "id": "Kantor Pusat Kejaksaan Agung RI — MEP diserahkan sebagai subkontraktor spesialis PT. PP (Persero), sesuai dokumentasi sektor publik.",
+        "en": "Attorney General's HQ — MEP delivered as specialist subcontractor to PT. PP (Persero), to public-sector documentation standards."
+      },
+      "hero_image": "images/projects/kejaksaan-agung/hero.jpg",
+      "gallery": [],
+      "detail_page": "projects/kejaksaan-agung.html"
     },
 
     {
@@ -267,13 +496,14 @@
         "id": "Plumbing, Sistem Pemadam Kebakaran",
         "en": "Plumbing, Fire Suppression"
       },
+      "owner": "PT. PP (Persero)",
       "card_eyebrow": {
-        "id": "Menara Kantor · Jakarta",
-        "en": "Office Tower · Jakarta"
+        "id": "Menara Kantor · Jakarta · PT. PP (Persero)",
+        "en": "Office Tower · Jakarta · PT. PP (Persero)"
       },
       "card_text": {
-        "id": "Plumbing dan sistem pemadam kebakaran untuk menara kantor institusi keuangan besar.",
-        "en": "Plumbing and fire suppression for a major financial institution's office tower."
+        "id": "Plumbing dan sistem pemadam kebakaran untuk menara kantor institusi keuangan besar — dikerjakan sebagai subkontraktor spesialis PT. PP.",
+        "en": "Plumbing and fire suppression for a major financial institution's office tower — delivered as specialist subcontractor to PT. PP."
       },
       "hero_image": "images/projects/bsi-tower/hero.jpg",
       "gallery": [],
@@ -303,9 +533,10 @@
         "id": "Plumbing, Pemadam Kebakaran, Elektrikal",
         "en": "Plumbing, Fire, Electrical"
       },
+      "owner": "PT. PP (Persero)",
       "card_eyebrow": {
-        "id": "Rumah Sakit · Karawang",
-        "en": "Hospital · Karawang"
+        "id": "Rumah Sakit · Karawang · PT. PP (Persero)",
+        "en": "Hospital · Karawang · PT. PP (Persero)"
       },
       "card_text": {
         "id": "MEP rumah sakit berstandar layanan kesehatan — plumbing, sistem pemadam kebakaran, dan elektrikal.",
@@ -339,9 +570,10 @@
         "id": "Plumbing, Sistem Pemadam Kebakaran",
         "en": "Plumbing, Fire Suppression"
       },
+      "owner": "PT. PP (Persero)",
       "card_eyebrow": {
-        "id": "Rumah Sakit · Banten",
-        "en": "Hospital · Banten"
+        "id": "Rumah Sakit · Banten · PT. PP (Persero)",
+        "en": "Hospital · Banten · PT. PP (Persero)"
       },
       "card_text": {
         "id": "Plumbing dan sistem pemadam kebakaran untuk fasilitas rumah sakit di Banten.",
