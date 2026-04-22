@@ -32,8 +32,8 @@
   gap: var(--space-md);
 }
 .nav__logo img {
-    height: 1.55rem; 
-    width: auto;
+    height: 40px; /* Sesuaikan tinggi ini dengan kebutuhan desainmu */
+    width: auto;  /* Menjaga proporsi gambar agar tidak terdistorsi (peyang) */
     display: block;
 }
 .nav__links {
