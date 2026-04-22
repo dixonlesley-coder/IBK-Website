@@ -31,10 +31,13 @@
   justify-content: space-between;
   gap: var(--space-md);
 }
-.nav__logo img {
-    height: 40px; /* Sesuaikan tinggi ini dengan kebutuhan desainmu */
-    width: auto;  /* Menjaga proporsi gambar agar tidak terdistorsi (peyang) */
-    display: block;
+.nav__logo {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--c-gold);
+  flex-shrink: 0;
 }
 .nav__links {
   display: flex;
