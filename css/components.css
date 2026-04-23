@@ -395,7 +395,7 @@ a.contact__detail-value:hover { color: var(--c-gold-light); }
   border-color: var(--c-gold);
 }
 .form-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23a08548' stroke-width='1.5' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='https://www.image2url.com/r2/default/images/1776926378975-b43725a9-2eeb-4af3-ae05-b82958e26efe.svg' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23a08548' stroke-width='1.5' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   padding-right: 2.5rem;
