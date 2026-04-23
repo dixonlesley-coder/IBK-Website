@@ -400,7 +400,7 @@ a.contact__detail-value:hover { color: var(--c-gold-light); }
   background-position: right 1rem center;
   padding-right: 2.5rem;
   cursor: pointer;
-  background-size: 10px;
+  background-size: 12px;
 }
 .form-select option { background: var(--c-dark-2); color: var(--c-text-1); }
 .form-textarea { resize: vertical; min-height: 120px; font-family: inherit; }
