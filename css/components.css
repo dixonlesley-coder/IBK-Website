@@ -440,6 +440,7 @@ a.contact__detail-value:hover { color: var(--c-gold-light); }
   color: var(--c-text-3);
   line-height: 1.7;
   max-width: 280px;
+  margin: 0; 
 }
 .footer__links-title {
   font-size: 0.7rem;
@@ -475,6 +476,14 @@ a.contact__detail-value:hover { color: var(--c-gold-light); }
   color: var(--c-text-3);
 }
 
+.footer__brand { 
+  grid-column: 1 / -1; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Memastikan logo dan teks rata kiri */
+  gap: 1rem; /* Memberikan jarak antara logo dan teks */
+}
+
 /* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .diff-grid { grid-template-columns: repeat(2, 1fr); }
@@ -483,25 +492,7 @@ a.contact__detail-value:hover { color: var(--c-gold-light); }
   .project-card--featured { grid-column: 1 / -1; }
   .contact__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
   .footer__grid { grid-template-columns: 1fr 1fr; }
-  .footer__brand {
-  display: flex;
-  flex-direction: column; /* Menyusun logo dan teks secara vertikal */
-  gap: 1rem;              /* Memberi jarak antara logo dan teks */
-}
-
-/* Memastikan logo tetap pada ukuran yang diinginkan */
-.footer__brand .nav__logo img {
-  height: 1.55rem; 
-  width: auto;
-  display: block;
-}
-
-.footer__tagline {
-  font-size: 0.9rem;      /* Sedikit lebih kecil dari teks utama */
-  line-height: 1.5;
-  color: var(--c-text-muted); /* Atau gunakan warna yang kontras dengan background footer */
-  max-width: 300px;       /* Membatasi lebar agar teks rapi saat membungkus ke bawah */
-}
+  .footer__brand { grid-column: 1 / -1; }
 }
 @media (max-width: 768px) {
   .diff-grid { grid-template-columns: 1fr; }
