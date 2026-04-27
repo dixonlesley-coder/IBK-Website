@@ -483,7 +483,25 @@ a.contact__detail-value:hover { color: var(--c-gold-light); }
   .project-card--featured { grid-column: 1 / -1; }
   .contact__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
   .footer__grid { grid-template-columns: 1fr 1fr; }
-  .footer__brand { grid-column: 1 / -1; }
+  .footer__brand {
+  display: flex;
+  flex-direction: column; /* Menyusun logo dan teks secara vertikal */
+  gap: 1rem;              /* Memberi jarak antara logo dan teks */
+}
+
+/* Memastikan logo tetap pada ukuran yang diinginkan */
+.footer__brand .nav__logo img {
+  height: 1.55rem; 
+  width: auto;
+  display: block;
+}
+
+.footer__tagline {
+  font-size: 0.9rem;      /* Sedikit lebih kecil dari teks utama */
+  line-height: 1.5;
+  color: var(--c-text-muted); /* Atau gunakan warna yang kontras dengan background footer */
+  max-width: 300px;       /* Membatasi lebar agar teks rapi saat membungkus ke bawah */
+}
 }
 @media (max-width: 768px) {
   .diff-grid { grid-template-columns: 1fr; }
