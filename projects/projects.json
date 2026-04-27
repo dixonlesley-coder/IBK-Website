@@ -28,16 +28,16 @@
       "owner": null,
       "brand": null,
       "standard": {
-        "id": "IBK 16jt/m² Design-Build System",
-        "en": "IBK 16M/m² Design-Build System"
+        "id": "Design-Build System",
+        "en": "Design-Build System"
       },
       "card_eyebrow": {
         "id": "Residensial Mewah · PIK2, Jakarta",
         "en": "Luxury Residential · PIK2, Jakarta"
       },
       "card_text": {
-        "id": "Design-build penuh — struktur, arsitektur, dan MEP lengkap dalam satu kontrak. Sistem IDR 16jt/m² bersama Beta Design Studio.",
-        "en": "Full design-build — structure, architecture, and full MEP under one contract. IDR 16M/m² system delivered with Beta Design Studio."
+        "id": "Design-build penuh — struktur, arsitektur, dan MEP lengkap dalam satu kontrak bersama Beta Design Studio.",
+        "en": "Full design-build — structure, architecture, and full MEP under one contract with system delivered with Beta Design Studio."
       },
       "intro": {
         "id": "Proyek residensial mewah IBK di PIK2, Jakarta — rumah tiga lantai yang dirancang bersama Beta Design Studio. Setiap spesifikasi dipilih untuk bertahan puluhan tahun: beton K-400, waterproofing tiga lapis, WPC dinding dan plafon, lantai sintered stone, dan finishing bebas cat sepenuhnya.",

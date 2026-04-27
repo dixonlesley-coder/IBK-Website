@@ -22,7 +22,7 @@ var translations = {
     'choice.sub':        'Kontraktor design-build terintegrasi penuh — IDR 300M+ proyek telah diserahkan. Pilih fokus Anda untuk melihat program yang sesuai.',
     'choice.res_eyebrow':'Residensial Mewah',
     'choice.res_title':  'Residensial',
-    'choice.res_text':   'Sistem Design-Build IDR 16jt/m² — struktur, arsitektur &amp; interior, MEP lengkap, dan pengadaan material. Bermitra eksklusif dengan Beta Design Studio.',
+    'choice.res_text':   'Sistem Design-Build — struktur, arsitektur &amp; interior, MEP lengkap, dan pengadaan material. Bermitra eksklusif dengan Beta Design Studio.',
     'choice.res_tag1':   'Rumah Lotus · PIK2',
     'choice.res_tag2':   'Zero Paint · Zero Wood',
     'choice.res_tag3':   'Smart Home &amp; Solar',
@@ -42,7 +42,7 @@ var translations = {
 
     'hero.eyebrow':      'Residensial Mewah · PIK2 &amp; Jakarta',
     'hero.headline':     'Sistem Hunian Mewah.<br>Bebas Cat. Bebas Rayap.',
-    'hero.sub':          'Design-Build IDR 16jt/m² — struktur, arsitektur &amp; interior, MEP lengkap, dan semua material dalam satu kontrak. Dirancang bersama Beta Design Studio. Minimal 1.000 m².',
+    'hero.sub':          'Design-Build — struktur, arsitektur &amp; interior, MEP lengkap, dan semua material dalam satu kontrak. Dirancang bersama Beta Design Studio. Minimal 1.000 m².',
     'hero.cta_primary':  'Lihat Rumah Lotus',
     'hero.cta_secondary':'Diskusi Proyek',
 
@@ -304,7 +304,7 @@ var translations = {
     'choice.sub':        "Fully integrated design-build contractor — IDR 300B+ of projects delivered. Choose your focus to see the programme that fits.",
     'choice.res_eyebrow':'Luxury Residential',
     'choice.res_title':  'Residential',
-    'choice.res_text':   'IDR 16M/m² Design-Build system — structure, architecture &amp; interior, full MEP, and material supply. Delivered in exclusive partnership with Beta Design Studio.',
+    'choice.res_text':   'Design-Build system — structure, architecture &amp; interior, full MEP, and material supply. Delivered in exclusive partnership with Beta Design Studio.',
     'choice.res_tag1':   'Rumah Lotus · PIK2',
     'choice.res_tag2':   'Zero Paint · Zero Wood',
     'choice.res_tag3':   'Smart Home &amp; Solar',
@@ -324,7 +324,7 @@ var translations = {
 
     'hero.eyebrow':      'Luxury Residential · PIK2 &amp; Jakarta',
     'hero.headline':     'Luxury Residential System.<br>Zero Paint. Zero Termite.',
-    'hero.sub':          'IDR 16M/m² Design-Build — structure, architecture &amp; interior, full MEP, and all material supply under one contract. Delivered with Beta Design Studio. Minimum 1,000 m².',
+    'hero.sub':          'Design-Build — structure, architecture &amp; interior, full MEP, and all material supply under one contract. Delivered with Beta Design Studio. Minimum 1,000 m².',
     'hero.cta_primary':  'View Rumah Lotus',
     'hero.cta_secondary':'Discuss a Project',
 
