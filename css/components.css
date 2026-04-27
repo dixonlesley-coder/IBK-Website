@@ -32,12 +32,15 @@
   gap: var(--space-md);
 }
 .nav__logo {
-  font-family: var(--font-serif);
-  font-size: 1.55rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  color: var(--c-gold);
   flex-shrink: 0;
+  display: flex; /* Membantu memastikan posisi gambar sejajar/center */
+  align-items: center;
+}
+
+.nav__logo img {
+  height: 1.55rem; /* Menyamakan tinggi gambar dengan font-size teks sebelumnya */
+  width: auto;     /* Menjaga proporsi asli gambar (tidak gepeng) */
+  display: block;
 }
 .nav__links {
   display: flex;
