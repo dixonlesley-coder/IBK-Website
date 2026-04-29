@@ -483,6 +483,11 @@ a.contact__detail-value:hover { color: var(--c-gold-light); }
   align-items: flex-start; /* Memastikan logo dan teks rata kiri */
   gap: 1rem; /* Memberikan jarak antara logo dan teks */
 }
+.footer__brand img {
+  width: 150px; /* Silakan ubah angka 150px menjadi lebih besar/kecil sesuai kebutuhan */
+  height: auto; /* Menjaga agar proporsi/rasio gambar tidak gepeng */
+  max-width: 100%; /* Memastikan logo tetap responsif di layar kecil */
+}
 
 /* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 1024px) {
