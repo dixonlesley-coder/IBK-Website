@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rumah Lotus — IBK</title>
 <meta name="description" content="Rumah Lotus — proyek hunian unggulan IBK di PIK2. Tiga lantai, smart home terintegrasi, dan standar material premium." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
     --bg:#0a1832; --bg-2:#0d1e3b; --bg-3:#122448;
@@ -119,25 +116,105 @@
   footer{ padding:40px 0; border-top:1px solid var(--line); font-size:12.5px; color:var(--fg-faint); background:#050c1f; }
   .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
 </style>
+
+<style id="presisi-skin">
+  :root{
+    --bg:#EAE8E2; --bg-2:#F7F6F2; --bg-3:#F7F6F2;
+    --fg:#0D1B2E; --fg-muted:rgba(13,27,46,0.68); --fg-faint:rgba(13,27,46,0.45);
+    --gold:#A8842C; --gold-2:#8F6F22;
+    --line:rgba(13,27,46,0.14); --line-strong:rgba(13,27,46,0.26);
+    --card-border:rgba(13,27,46,0.16); --card-border-strong:rgba(168,132,44,0.55);
+    --serif:"Archivo Var","Archivo",system-ui,sans-serif;
+    --sans:"Archivo Var","Archivo",system-ui,sans-serif;
+    --mono:"Plex Mono",ui-monospace,monospace;
+    --ink:#0D1B2E; --steel:#9DB0C7; --red:#D5372D; --brass-bright:#DCB25C;
+    --font-d:"Archivo Var","Archivo",system-ui,sans-serif;
+    --font-m:"Plex Mono",ui-monospace,monospace;
+    --wide:125%; --mid:112%; --max:1240px; --gut:clamp(20px,4vw,56px);
+    --line-inv:rgba(255,255,255,0.16);
+  }
+  body{ font-stretch:100%; }
+  :focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:2px; }
+
+  .lotus-hero{ background:var(--ink); }
+  .lotus-hero-overlay{
+    background:
+      linear-gradient(180deg, rgba(13,27,46,0.5) 0%, rgba(13,27,46,0.3) 35%, rgba(13,27,46,0.95) 100%),
+      linear-gradient(90deg, rgba(13,27,46,0.6) 0%, rgba(13,27,46,0.1) 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 84px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 84px) !important;
+  }
+  .lotus-eyebrow{ font-family:var(--mono) !important; font-weight:400 !important; letter-spacing:.2em !important; color:#D7DEE9 !important; }
+  .lotus-eyebrow::before{ background:var(--red) !important; height:1.5px !important; width:26px !important; }
+  .lotus-title{
+    font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--wide);
+    font-weight:820 !important; letter-spacing:-0.017em !important; color:#fff !important; text-shadow:none !important;
+  }
+  .lotus-lead{ color:#C9D3E2 !important; }
+  .lotus-hero-dots .dot.is-active{ background:var(--brass-bright) !important; }
+
+  .lotus-stat .value{ font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--wide); font-weight:800 !important; color:var(--ink) !important; }
+  .lotus-stat .label{ color:var(--fg-muted) !important; }
+
+  .systems-head h2, .lotus-cta h2{
+    font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--mid);
+    font-weight:760 !important; letter-spacing:-0.015em !important;
+  }
+  .systems-head h2{ color:var(--ink) !important; }
+  .systems-head .eyebrow{ font-family:var(--mono) !important; font-weight:400 !important; letter-spacing:.18em !important; color:var(--ink) !important; opacity:.78; }
+  .system-card{ background:var(--bg-2) !important; border:1px solid var(--card-border) !important; border-radius:4px !important; border-top:3px solid var(--ink) !important; }
+  .system-card h3{ color:var(--ink) !important; font-stretch:var(--mid); }
+  .system-num{ color:var(--red) !important; }
+
+  .lotus-cta{ background:var(--ink) !important; }
+  .lotus-cta h2{ color:#fff !important; }
+  .lotus-cta .eyebrow{ font-family:var(--mono) !important; color:var(--steel) !important; letter-spacing:.18em !important; }
+  .btn{ border-radius:3px !important; font-family:var(--mono) !important; font-weight:500 !important; letter-spacing:.14em !important; }
+  .btn--solid{ background:var(--brass-bright) !important; border-color:var(--brass-bright) !important; color:var(--ink) !important; }
+  .btn--solid:hover{ background:#C9A045 !important; }
+  .btn--ghost{ border-color:var(--line-inv) !important; color:#EDF1F7 !important; }
+
+  footer{ background:var(--ink) !important; border-top:1px solid var(--line-inv) !important; color:var(--steel) !important; }
+  .footer-inner{ font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; }
+  .back-link{ border-radius:3px !important; font-family:var(--font-m) !important; font-weight:500 !important; }
+  @media (max-width:900px){ body{ padding-bottom:76px; } }
+</style>
+<meta name="description" content="Rumah Lotus — proyek design-build unggulan IBK di PIK2, Jakarta. IDR 60 miliar, 12 sistem hunian terintegrasi bersama Beta Design Studio." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Rumah Lotus — Proyek Unggulan IBK di PIK2" />
+<meta property="og:description" content="Design-build penuh: struktur, arsitektur, dan MEP dalam satu kontrak — 12 sistem hunian terintegrasi." />
+<meta property="og:image" content="https://rad-centaur-4bf880.netlify.app/images/og-cover.jpg" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-var.woff2" crossorigin />
+<link rel="stylesheet" href="/assets/presisi.css" />
 </head>
 <body>
 
-<nav class="nav">
-  <div class="container nav-inner">
-    <a class="brand" href="../index.html" aria-label="IndoBangun">
-      <img class="brand-logo" src="../images/brand-logo.webp" alt="IndoBangun" />
+<header class="p-nav">
+  <div class="p-nav-in">
+    <a href="../index.html" aria-label="IBK — Beranda"><img src="../images/brand-logo.webp" alt="IndoBangun Berjaya Konstruksi" style="height:30px;width:auto" /></a>
+    <nav class="p-links" aria-label="Utama">
+      <a href="../residential.html" data-i18n="pNavRes">Residensial</a>
+      <a href="../commercial.html" data-i18n="pNavCom">Komersial</a>
+      <a href="../proyek-selesai.html" data-i18n="pNavProyek">Proyek Selesai</a>
+      <a href="../index.html#kontak" data-i18n="pNavKontak">Kontak</a>
+    </nav>
+    <a class="back-link" href="../residential.html#projects" style="margin-left:auto">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span data-i18n="navBack">Kembali</span>
     </a>
-    <div class="nav-cta">
-      <div class="lang-toggle" role="tablist" aria-label="Language switch">
-        <button type="button" data-lang="id" class="is-active">ID</button>
-        <button type="button" data-lang="en">EN</button>
-      </div>
-      <a class="back-link" href="../residential.html#projects">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        <span data-i18n="navBack">Kembali ke Beranda</span>
-      </a>
+    <div class="p-lang" role="group" aria-label="Bahasa / Language">
+      <button type="button" data-lang="id" class="on">ID</button>
+      <button type="button" data-lang="en">EN</button>
     </div>
+    <button class="p-burger" aria-expanded="false" aria-controls="pmenu">MENU</button>
   </div>
+</header>
+<nav class="p-menu" id="pmenu" aria-label="Menu seluler">
+  <a href="../residential.html" data-i18n="pNavRes">Residensial</a>
+  <a href="../commercial.html" data-i18n="pNavCom">Komersial</a>
+  <a href="../proyek-selesai.html" data-i18n="pNavProyek">Proyek Selesai</a>
+  <a href="../index.html#kontak" data-i18n="pNavKontak">Kontak</a>
 </nav>
 
 <section class="lotus-hero">
@@ -261,7 +338,7 @@ const I18N = {
 function renderSystems(lang){
   const arr = SYS[lang] || SYS.id;
   document.getElementById("sysGrid").innerHTML = arr.map((s,i) =>
-    '<div class="system-card"><p class="system-num">'+String(i+1).padStart(2,"0")+'</p><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'
+    '<div class="system-card"><p class="system-num">SYS-'+String(i+1).padStart(2,"0")+'</p><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'
   ).join("");
 }
 function setLang(lang){
@@ -295,5 +372,12 @@ setLang(saved || "id");
 })();
 </script>
 
+<div class="p-wa-bar"><a class="p-btn" href="https://wa.me/6282110952505" data-i18n="pWaBar">Diskusi Proyek via WhatsApp</a></div>
+<script>
+Object.assign(I18N.id, {pNavRes:"Residensial", pNavCom:"Komersial", pNavProyek:"Proyek Selesai", pNavKontak:"Kontak", pWaBar:"Diskusi Proyek via WhatsApp"});
+Object.assign(I18N.en, {pNavRes:"Residential", pNavCom:"Commercial", pNavProyek:"Completed Projects", pNavKontak:"Contact", pWaBar:"Discuss a Project on WhatsApp"});
+try { setLang(localStorage.getItem('ibk-lang') || 'id'); } catch(e) {}
+</script>
+<script src="/assets/presisi.js" defer></script>
 </body>
 </html>

@@ -4,9 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Furnitur — IBK Residensial</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
     --bg:#0a1832; --bg-2:#0d1e3b; --bg-3:#122448;
@@ -341,32 +338,143 @@
   .compare-side.good .viz.cmp-photo img{ box-shadow:inset 0 0 0 1px rgba(212,175,108,0.35); }
   .compare-side.bad .viz.cmp-photo img{ box-shadow:inset 0 0 0 1px rgba(224,125,106,0.35); }
 </style>
+
+<style id="presisi-skin">
+  /* PRESISI re-theme: light beton chapters, ink hero/cta/footer, red annotation, brass action */
+  :root{
+    --bg:#EAE8E2; --bg-2:#13253E; --bg-3:#F7F6F2;
+    --fg:#0D1B2E; --fg-muted:rgba(13,27,46,0.68); --fg-faint:rgba(13,27,46,0.45);
+    --gold:#A8842C; --gold-2:#8F6F22;
+    --line:rgba(13,27,46,0.14); --line-strong:rgba(13,27,46,0.26);
+    --card-border:rgba(13,27,46,0.16); --card-border-strong:rgba(168,132,44,0.55);
+    --serif:"Archivo Var","Archivo",system-ui,sans-serif;
+    --sans:"Archivo Var","Archivo",system-ui,sans-serif;
+    --mono:"Plex Mono",ui-monospace,monospace;
+    --ink:#0D1B2E; --steel:#9DB0C7; --red:#D5372D; --brass-bright:#DCB25C;
+    --font-d:"Archivo Var","Archivo",system-ui,sans-serif;
+    --font-m:"Plex Mono",ui-monospace,monospace;
+    --wide:125%; --mid:112%; --max:1240px; --gut:clamp(20px,4vw,56px);
+    --line-inv:rgba(255,255,255,0.16);
+  }
+  body{ font-stretch:100%; }
+  :focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:2px; }
+
+  /* hero: ink with plot grid */
+  .page-hero-overlay{
+    background:
+      linear-gradient(180deg, rgba(13,27,46,0.5) 0%, rgba(13,27,46,0.28) 30%, rgba(13,27,46,0.95) 100%),
+      linear-gradient(90deg, rgba(13,27,46,0.68) 0%, rgba(13,27,46,0.08) 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 84px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 84px) !important;
+  }
+  .page-num{ font-family:var(--mono) !important; color:#D7DEE9 !important; letter-spacing:.2em !important; font-weight:400 !important; }
+  .page-num::before{ background:var(--red) !important; width:26px !important; height:1.5px !important; }
+  .page-title{
+    font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--wide);
+    font-weight:820 !important; letter-spacing:-0.017em !important; color:#fff !important;
+  }
+  .page-lead{ color:#C9D3E2 !important; }
+
+  /* headings on light chapters */
+  .compare-head h2, .album-head h2, .other-scopes h2{
+    font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--mid);
+    font-weight:760 !important; letter-spacing:-0.015em !important; color:var(--ink) !important;
+  }
+  .compare-item h3{ color:var(--ink) !important; font-stretch:var(--mid); }
+  .album-head .eyebrow, .compare-head .eyebrow{
+    font-family:var(--mono) !important; font-weight:400 !important; letter-spacing:.18em !important;
+    color:var(--ink) !important; opacity:.78; display:inline-flex; align-items:center; gap:12px;
+  }
+  .album-head .eyebrow::before, .compare-head .eyebrow::before{
+    content:""; width:26px; height:1.5px; background:var(--red);
+  }
+
+  /* drawing-set corners instead of soft radii */
+  .compare-item{ border-radius:4px !important; background:var(--bg-3) !important; }
+  .compare-side{ border-radius:3px !important; }
+  .compare-side.bad{
+    background:linear-gradient(180deg, rgba(213,55,45,0.07), rgba(213,55,45,0.02)) !important;
+    border:1px solid rgba(213,55,45,0.35) !important;
+  }
+  .compare-side.good{
+    background:linear-gradient(180deg, rgba(168,132,44,0.09), rgba(168,132,44,0.02)) !important;
+    border:1px solid rgba(168,132,44,0.5) !important;
+  }
+  .compare-side.bad .side-label .pill{ background:rgba(213,55,45,0.14) !important; color:#B02A20 !important; }
+  .compare-side.good .side-label .pill{ background:rgba(168,132,44,0.16) !important; color:#8F6F22 !important; }
+  .compare-side .side-label .pill{ border-radius:2px !important; }
+  .compare-side.bad .note strong{ color:#B02A20 !important; }
+  .compare-side.good .note strong{ color:#8F6F22 !important; }
+  .cmp-photo{ border-radius:3px; }
+
+  .album-tile{ border-radius:3px; overflow:hidden; }
+
+  /* CTA: ink chapter */
+  .cta-strip{ background:var(--ink) !important; border-color:var(--line-inv) !important; }
+  .cta-inner h2{
+    font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--mid);
+    font-weight:760 !important; color:#fff !important;
+  }
+  .cta-inner h2 .accent{ color:var(--brass-bright) !important; }
+  .btn{ border-radius:3px !important; font-family:var(--mono) !important; font-weight:500 !important;
+    letter-spacing:.14em !important; background:var(--brass-bright) !important; border-color:var(--brass-bright) !important; color:var(--ink) !important; }
+  .btn:hover{ background:#C9A045 !important; border-color:#C9A045 !important; }
+
+  /* other scopes as sheet cards */
+  .other-list a{ border-radius:3px !important; background:var(--bg-3) !important; }
+  .other-list a .o-num{ color:var(--red) !important; }
+  .other-list a.is-current{ background:var(--ink) !important; border-color:var(--ink) !important; }
+  .other-list a.is-current .o-num{ color:var(--brass-bright) !important; }
+  .other-list a.is-current .o-name{ color:#fff !important; }
+
+  footer{ background:var(--ink) !important; border-top:1px solid var(--line-inv) !important; color:var(--steel) !important; }
+  .footer-inner{ font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; }
+
+  .back-link{ border-radius:3px !important; font-family:var(--font-m) !important; font-weight:500 !important; }
+  @media (max-width:900px){ body{ padding-bottom:76px; } }
+</style>
+<meta name="description" content="Lingkup furnitur IBK — furnitur custom presisi yang menyatu dengan karakter interior." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="IBK — Lingkup F-08" />
+<meta property="og:image" content="https://rad-centaur-4bf880.netlify.app/images/og-cover.jpg" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-var.woff2" crossorigin />
+<link rel="stylesheet" href="/assets/presisi.css" />
 </head>
 <body>
 
-<nav class="nav">
-  <div class="container nav-inner">
-    <a class="brand" href="../index.html" aria-label="IndoBangun">
-      <img class="brand-logo" src="../images/brand-logo.webp" alt="IndoBangun" />
+<header class="p-nav">
+  <div class="p-nav-in">
+    <a href="../index.html" aria-label="IBK — Beranda"><img src="../images/brand-logo.webp" alt="IndoBangun Berjaya Konstruksi" style="height:30px;width:auto" /></a>
+    <nav class="p-links" aria-label="Utama">
+      <a href="../residential.html" data-i18n="pNavRes">Residensial</a>
+      <a href="../commercial.html" data-i18n="pNavCom">Komersial</a>
+      <a href="../proyek-selesai.html" data-i18n="pNavProyek">Proyek Selesai</a>
+      <a href="../index.html#kontak" data-i18n="pNavKontak">Kontak</a>
+    </nav>
+    <a class="back-link" href="../residential.html" style="margin-left:auto">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span data-i18n="navBack">Beranda</span>
     </a>
-    <div class="nav-cta">
-      <a class="back-link" href="../residential.html">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        <span data-i18n="navBack">Beranda</span>
-      </a>
-      <div class="lang-toggle" role="tablist" aria-label="Language switch">
-        <button type="button" data-lang="id" class="is-active">ID</button>
-        <button type="button" data-lang="en">EN</button>
-      </div>
+    <div class="p-lang" role="group" aria-label="Bahasa / Language">
+      <button type="button" data-lang="id" class="on">ID</button>
+      <button type="button" data-lang="en">EN</button>
     </div>
+    <button class="p-burger" aria-expanded="false" aria-controls="pmenu">MENU</button>
   </div>
+</header>
+<nav class="p-menu" id="pmenu" aria-label="Menu seluler">
+  <a href="../residential.html" data-i18n="pNavRes">Residensial</a>
+  <a href="../commercial.html" data-i18n="pNavCom">Komersial</a>
+  <a href="../proyek-selesai.html" data-i18n="pNavProyek">Proyek Selesai</a>
+  <a href="../index.html#kontak" data-i18n="pNavKontak">Kontak</a>
 </nav>
 
 <section class="page-hero">
   <div class="page-hero-bg" style="background-image: url('../images/header-furnitur.webp')"></div>
   <div class="page-hero-overlay"></div>
   <div class="container">
-    <p class="page-num">08 — <span data-i18n="scopeNumSuffix">Lingkup Pekerjaan</span></p>
+    <p class="page-num">F-08 — <span data-i18n="scopeNumSuffix">Lingkup Pekerjaan</span></p>
     <h1 class="page-title" data-i18n="title">Furnitur</h1>
     <p class="page-lead" data-i18n="lead">Menghadirkan custom furniture dengan detail presisi, material pilihan, dan desain yang menyatu sempurna dengan karakter interior — bukan furnitur katalog generik.</p>
   </div>
@@ -434,35 +542,35 @@
     <h2 data-i18n="otherTitle">Lingkup lainnya</h2>
     <div class="other-list">
       <a href="struktur.html" class="">
-        <span class="o-num">01</span>
+        <span class="o-num">S-01</span>
         <span class="o-name" data-i18n="other0">Struktur</span>
       </a>
       <a href="arsitektur.html" class="">
-        <span class="o-num">02</span>
+        <span class="o-num">A-02</span>
         <span class="o-name" data-i18n="other1">Arsitektur</span>
       </a>
       <a href="elektrikal.html" class="">
-        <span class="o-num">03</span>
+        <span class="o-num">E-03</span>
         <span class="o-name" data-i18n="other2">Elektrikal</span>
       </a>
       <a href="plumbing.html" class="">
-        <span class="o-num">04</span>
+        <span class="o-num">P-04</span>
         <span class="o-name" data-i18n="other3">Plumbing</span>
       </a>
       <a href="lighting-smart-home.html" class="">
-        <span class="o-num">05</span>
+        <span class="o-num">L-05</span>
         <span class="o-name" data-i18n="other4">Lighting & Smart Home</span>
       </a>
       <a href="hvac.html" class="">
-        <span class="o-num">06</span>
+        <span class="o-num">M-06</span>
         <span class="o-name" data-i18n="other5">HVAC</span>
       </a>
       <a href="interior-build.html" class="">
-        <span class="o-num">07</span>
+        <span class="o-num">I-07</span>
         <span class="o-name" data-i18n="other6">Interior Build</span>
       </a>
       <a href="furnitur.html" class="is-current">
-        <span class="o-num">08</span>
+        <span class="o-num">F-08</span>
         <span class="o-name" data-i18n="other7">Furnitur</span>
       </a>
     </div>
@@ -513,5 +621,12 @@ setLang(savedLang || "id");
 
 </script>
 
+<div class="p-wa-bar"><a class="p-btn" href="https://wa.me/6282110952505" data-i18n="pWaBar">Diskusi Proyek via WhatsApp</a></div>
+<script>
+Object.assign(I18N.id, {pNavRes:"Residensial", pNavCom:"Komersial", pNavProyek:"Proyek Selesai", pNavKontak:"Kontak", pWaBar:"Diskusi Proyek via WhatsApp"});
+Object.assign(I18N.en, {pNavRes:"Residential", pNavCom:"Commercial", pNavProyek:"Completed Projects", pNavKontak:"Contact", pWaBar:"Discuss a Project on WhatsApp"});
+try { setLang(localStorage.getItem('ibk-lang') || 'id'); } catch(e) {}
+</script>
+<script src="/assets/presisi.js" defer></script>
 </body>
 </html>

@@ -1,879 +1,431 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IBK — Design. Build. Deliver.</title>
-<meta name="description" content="PT. Indobangun Berjaya Konstruksi — Kontraktor design-build terintegrasi penuh. Pilih Residensial Mewah atau Komersial, Industri &amp; Perhotelan.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IBK — Kontraktor Design-Build Jakarta | Presisi di Setiap Milimeter</title>
+<meta name="description" content="PT. Indobangun Berjaya Konstruksi — kontraktor design-build terintegrasi di Jakarta. Hunian mewah PIK2 dan proyek komersial nasional. 20+ proyek, satu kontrak, satu tanggung jawab." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="IBK — Kontraktor Design-Build Jakarta" />
+<meta property="og:description" content="Hunian mewah PIK2 &amp; proyek komersial nasional. 20+ proyek, satu kontrak, satu tanggung jawab." />
+<!-- swap host for the custom domain when it goes live -->
+<meta property="og:image" content="https://rad-centaur-4bf880.netlify.app/images/og-cover.jpg" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-var.woff2" crossorigin />
+<link rel="preload" as="image" href="images/home-hero-1.webp" fetchpriority="high" />
+<link rel="stylesheet" href="/assets/presisi.css" />
 <style>
-  :root {
-    --white: #FFFFFF;
-    --gold: #C9A961;
-    --card-bg: rgba(15, 30, 60, 0.55);
-    --card-border: rgba(255, 255, 255, 0.12);
-    --overlay: rgba(10, 25, 50, 0.30);
-    --muted: rgba(255, 255, 255, 0.78);
-    --ink: #0a1932;
-  }
+/* ---------- homepage hero ---------- */
+.hero{min-height:100svh}
+.hero .p-hero-bg img{position:absolute;inset:0;opacity:0;animation:heroFade 28s infinite}
+.hero .p-hero-bg img:nth-child(1){animation-delay:0s}
+.hero .p-hero-bg img:nth-child(2){animation-delay:7s}
+.hero .p-hero-bg img:nth-child(3){animation-delay:14s}
+.hero .p-hero-bg img:nth-child(4){animation-delay:21s}
+@keyframes heroFade{
+  0%{opacity:0} 4%{opacity:1} 25%{opacity:1} 33%{opacity:0} 100%{opacity:0}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero .p-hero-bg img:first-child{opacity:1}
+}
+.hero .p-h1{max-width:12ch;font-size:clamp(52px,8.6vw,124px)}
+.routes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;max-width:820px}
+.route{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  border:1px solid var(--line-inv);border-radius:4px;padding:18px 20px;
+  background:color-mix(in srgb, var(--ink) 55%, transparent);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  transition:border-color .2s, transform .2s;
+}
+.route:hover{border-color:var(--brass-bright);transform:translateY(-2px)}
+.route .k{font-family:var(--font-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-bright);display:block;margin-bottom:6px}
+.route .t{font-weight:700;font-stretch:var(--mid);font-size:clamp(18px,2vw,23px);color:#fff;line-height:1.15;display:block}
+.route svg{flex:none;transition:transform .2s}
+.route:hover svg{transform:translateX(4px)}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: #0a1424; color: var(--white); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-  a { color: inherit; text-decoration: none; }
+.stats{border-top:1px solid var(--line-inv);background:#0B1728;color:#F2F4F8}
+.stats-in{max-width:var(--max);margin:0 auto;padding:26px var(--gut);display:grid;grid-template-columns:repeat(3,1fr) auto;gap:28px;align-items:center}
+.stat .n{font-stretch:var(--wide);font-weight:800;font-size:clamp(26px,3vw,40px);color:#fff;line-height:1}
+.stat .n em{font-style:normal;color:var(--brass-bright)}
+.stat .l{font-family:var(--font-m);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-top:8px}
+.stats .since{font-family:var(--font-m);font-size:10.5px;letter-spacing:.18em;color:var(--steel);text-align:right}
 
-  /* ============ NAV ============ */
-  .nav {
-    position: absolute; top: 0; left: 0; right: 0; z-index: 20;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 22px 56px;
-    gap: 16px;
-  }
-  .nav-brand {
-    display: flex; align-items: center;
-    flex-shrink: 0;
-  }
-  .nav-brand img {
-    display: block;
-    height: clamp(34px, 4.5vw, 52px);
-    width: auto;
-    max-width: 220px;
-  }
-  @media (max-width: 380px) {
-    .nav-brand img { height: 30px; }
-  }
-  .nav-links { display: flex; gap: 38px; align-items: center; }
-  .nav-links > a { font-size: 12.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; transition: opacity .2s; }
-  .nav-links > a:hover { opacity: 1; }
+.more{margin-top:26px}
+.cta-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.cta-grid .p-h2{font-size:clamp(36px,4.8vw,62px)}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.cta-side{border:1px solid var(--line-inv);border-radius:4px;padding:26px}
+.cta-side .k{font-family:var(--font-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-bright);display:block;margin-bottom:14px}
+.cta-side .row{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line-inv);font-family:var(--font-m);font-size:12px;color:#DDE4EE}
+.cta-side .row span{color:#647899}
+.cta-side .row:last-child{border-bottom:0}
 
-  /* Combined services pill */
-  .nav-services {
-    position: relative;
-  }
-  .nav-services-trigger {
-    background: transparent;
-    border: 1px solid var(--gold);
-    border-radius: 999px;
-    color: var(--white);
-    padding: 9px 18px;
-    font: inherit;
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    cursor: pointer;
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: background .25s, color .25s;
-  }
-  .nav-services-trigger:hover,
-  .nav-services-trigger[aria-expanded="true"] {
-    background: var(--gold);
-    color: var(--ink);
-  }
-  .nav-services-trigger .chev {
-    width: 10px; height: 10px;
-    border-right: 1.5px solid currentColor;
-    border-bottom: 1.5px solid currentColor;
-    transform: rotate(45deg) translate(-2px, -2px);
-    transition: transform .25s;
-  }
-  .nav-services-trigger[aria-expanded="true"] .chev {
-    transform: rotate(-135deg) translate(-2px, -2px);
-  }
-  .nav-services-menu {
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%) translateY(-6px);
-    min-width: 220px;
-    background: rgba(10, 25, 50, 0.92);
-    backdrop-filter: blur(18px) saturate(1.2);
-    -webkit-backdrop-filter: blur(18px) saturate(1.2);
-    border: 1px solid rgba(201,169,97,0.4);
-    border-radius: 10px;
-    padding: 8px;
-    box-shadow: 0 24px 50px rgba(0,0,0,0.45);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .2s, transform .2s;
-    z-index: 25;
-  }
-  .nav-services[data-open="true"] .nav-services-menu {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
-  }
-  .nav-services-menu a {
-    display: block;
-    padding: 12px 14px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--white);
-    border-radius: 6px;
-    transition: background .2s, color .2s;
-  }
-  .nav-services-menu a:hover {
-    background: rgba(201,169,97,0.18);
-    color: var(--gold);
-  }
-  .nav-services-menu a small {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    text-transform: none;
-    font-weight: 400;
-    opacity: 0.65;
-    margin-top: 3px;
-  }
-  .nav-right { display: flex; align-items: center; gap: 14px; }
-  .nav-lang { cursor: default; user-select: none; flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; border: 1px solid rgba(255,255,255,0.25); padding: 7px 12px; border-radius: 2px; }
-  .nav-lang button {
-    background: transparent; border: 0; padding: 0; margin: 0;
-    font: inherit; letter-spacing: inherit;
-    color: inherit;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: opacity .2s, color .2s;
-  }
-  .nav-lang button:hover { opacity: 0.85; }
-  .nav-lang button.active { color: var(--gold); opacity: 1; }
-
-  /* Hamburger */
-  .nav-toggle {
-    display: none;
-    width: 44px; height: 44px;
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 2px;
-    color: var(--white);
-    cursor: pointer;
-    padding: 0;
-    align-items: center; justify-content: center;
-    flex-direction: column; gap: 5px;
-  }
-  .nav-toggle span {
-    display: block; width: 18px; height: 1.5px;
-    background: var(--white);
-    transition: transform .3s, opacity .3s;
-  }
-  .nav-open .nav-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
-  .nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-  /* Mobile menu drawer */
-  .nav-drawer {
-    position: fixed; inset: 0;
-    background: rgba(10, 20, 40, 0.97);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    z-index: 30;
-    display: none;
-    flex-direction: column;
-    padding: 96px 32px 48px;
-    opacity: 0;
-    transition: opacity .3s;
-  }
-  .nav-drawer.open { display: flex; opacity: 1; }
-  .nav-drawer a {
-    display: block;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 18px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    color: var(--white);
-  }
-  .nav-drawer a .arrow { float: right; color: var(--gold); }
-  .nav-drawer-close {
-    position: absolute; top: 22px; right: 24px;
-    width: 44px; height: 44px;
-    background: transparent; border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 2px; color: var(--white); cursor: pointer;
-    display: grid; place-items: center; font-size: 22px;
-  }
-  .nav-drawer-foot {
-    margin-top: auto;
-    padding-top: 24px;
-    color: rgba(255,255,255,0.6);
-    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  }
-
-  /* ============ HERO ============ */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    height: auto;
-    overflow: hidden;
-    isolation: isolate;
-  }
-
-  /* ============ SLIDER ============ */
-  .hero-slider {
-    position: absolute; inset: 0;
-    overflow: hidden;
-    cursor: grab;
-    touch-action: pan-y;
-    user-select: none;
-  }
-  .hero-slider.dragging { cursor: grabbing; }
-
-  .hero-track {
-    position: absolute; inset: 0;
-    display: flex;
-    width: 100%; height: 100%;
-    will-change: transform;
-  }
-  .hero-track.animating { transition: transform .7s cubic-bezier(.6,.05,.2,1); }
-
-  .hero-slide {
-    flex: 0 0 100%;
-    width: 100%; height: 100%;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-  }
-
-  /* Soft vignette per slide */
-  .hero-slide::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(10,20,40,0.30) 0%, rgba(10,20,40,0) 30%, rgba(10,20,40,0.55) 100%);
-    pointer-events: none;
-  }
-
-  /* dark overlay tint */
-  .hero-tint {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(180deg, rgba(10,20,40,0.55) 0%, rgba(10,20,40,0.15) 30%, rgba(10,20,40,0.65) 100%),
-      var(--overlay);
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  /* Slider arrows */
-  .slider-arrow {
-    position: absolute; top: 50%;
-    transform: translateY(-50%);
-    z-index: 7;
-    width: 52px; height: 52px;
-    border-radius: 50%;
-    background: rgba(10,25,50,0.35);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.18);
-    color: var(--white);
-    display: grid; place-items: center;
-    cursor: pointer;
-    transition: background .25s, border-color .25s, opacity .25s;
-    opacity: 0.55;
-  }
-  .slider-arrow:hover { opacity: 1; background: rgba(201,169,97,0.25); border-color: rgba(201,169,97,0.55); }
-  .slider-arrow.prev { left: 20px; }
-  .slider-arrow.next { right: 20px; }
-  .slider-arrow svg { width: 18px; height: 18px; }
-  @media (max-width: 768px) { .slider-arrow { display: none; } }
-
-  /* ============ HERO CONTENT ============ */
-  .hero-content {
-    position: relative; z-index: 5;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: clamp(96px, 14vh, 130px) clamp(20px, 5vw, 80px) clamp(80px, 10vh, 90px);
-    gap: clamp(32px, 5vh, 64px);
-  }
-
-  /* TOP TEXT BLOCK */
-  .hero-top {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: clamp(28px, 5vw, 80px);
-    align-items: end;
-    padding-top: clamp(8px, 4vh, 60px);
-  }
-
-  .eyebrow {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 22px;
-    display: flex; align-items: center; gap: 12px;
-    opacity: 0; animation: fadeUp .7s .05s ease-out forwards;
-  }
-  .eyebrow::before {
-    content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
-  }
-
-  .headline {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: clamp(32px, 6.2vw, 96px);
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    line-height: 1.05;
-    color: var(--white);
-    text-transform: uppercase;
-    text-wrap: balance;
-    opacity: 0; animation: fadeUp .7s .1s ease-out forwards;
-  }
-  .headline .accent { color: var(--gold); font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; text-transform: lowercase; letter-spacing: -0.01em; }
-
-  .sub-block { padding-bottom: 8px; opacity: 0; animation: fadeUp .7s .18s ease-out forwards; max-width: 520px; }
-  .subheadline {
-    font-size: clamp(14px, 1.4vw, 20px);
-    line-height: 1.65;
-    color: var(--muted);
-    margin-bottom: clamp(20px, 3vh, 32px);
-    letter-spacing: 0.01em;
-    font-weight: 400;
-  }
-  .tags {
-    font-size: clamp(10.5px, 1vw, 12px);
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.92);
-    line-height: 1.4;
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding-bottom: 2px;
-  }
-  .tags::-webkit-scrollbar { display: none; }
-  .tags .dot { color: var(--gold); margin: 0 6px; }
-
-  /* BOTTOM ROW: cards + stats */
-  .hero-bottom {
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    gap: clamp(24px, 4vw, 56px);
-    align-items: end;
-  }
-
-  /* CARDS */
-  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; opacity: 0; animation: fadeUp .7s .26s ease-out forwards; }
-  .card {
-    background: var(--card-bg);
-    backdrop-filter: blur(14px) saturate(1.2);
-    -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    border: 1px solid var(--card-border);
-    border-radius: 4px;
-    padding: clamp(20px, 2.5vw, 30px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
-    transition: transform .4s ease, border-color .3s, background .3s;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .card * { cursor: pointer; }
-  .card::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 0;
-    background: var(--gold); transition: height .5s ease;
-  }
-  .card:hover { transform: translateY(-4px); border-color: rgba(201,169,97,0.45); background: rgba(15,30,60,0.65); }
-  .card:hover::before { height: 100%; }
-
-  .card-eyebrow {
-    color: var(--gold);
-    font-size: 10.5px;
-    letter-spacing: 0.2em;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-  .card-title {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(28px, 3vw, 38px);
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 14px;
-  }
-  .card-body {
-    color: var(--muted);
-    font-size: clamp(12.5px, 1vw, 13.5px);
-    line-height: 1.6;
-    margin-bottom: 22px;
-  }
-  .card-cta {
-    display: inline-flex; align-items: center; gap: 10px;
-    color: var(--gold);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    transition: gap .25s;
-    min-height: 44px;
-  }
-  .card-cta::after { content: '→'; transition: transform .25s; }
-  .card-cta:hover { gap: 14px; }
-  .card-cta:hover::after { transform: translateX(3px); }
-
-  /* STATS */
-  .stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(20px, 3vh, 28px) clamp(24px, 4vw, 56px);
-    padding-bottom: 8px;
-    opacity: 0; animation: fadeUp .7s .34s ease-out forwards;
-  }
-  .stat {
-    padding-left: 18px;
-    border-left: 1.5px solid var(--gold);
-    min-height: 70px;
-  }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(36px, 4.5vw, 65px);
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
-  }
-  .stat-label {
-    font-size: clamp(11px, 1vw, 15px);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
-    font-weight: 600;
-    line-height: 1.4;
-  }
-
-  /* DOTS */
-  .dots {
-    position: absolute;
-    bottom: 28px; left: 50%;
-    transform: translateX(-50%);
-    display: flex; gap: 10px; z-index: 6;
-    align-items: center;
-  }
-  .dots-progress {
-    position: absolute;
-    bottom: -10px; left: 0;
-    height: 1px;
-    background: var(--gold);
-    width: 0%;
-    transition: width .15s linear;
-  }
-  .dot-pill {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(255,255,255,0.4);
-    transition: all .3s;
-    cursor: pointer; border: 0; padding: 0;
-  }
-  .dot-pill.active { background: var(--gold); width: 28px; border-radius: 4px; }
-
-  /* Animations */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 1100px) {
-    .nav { padding: 18px 32px; }
-    .hero-bottom { grid-template-columns: 1fr; gap: clamp(28px, 4vh, 40px); }
-    .stats { grid-template-columns: repeat(4, 1fr); }
-  }
-  @media (max-width: 860px) {
-    .stats { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 640px) {
-    .nav { padding: 14px 18px; }
-    .hero-content {
-      padding: 88px 18px 64px;
-      gap: 28px;
-      grid-template-rows: auto auto auto;
-    }
-    .hero-top {
-      grid-template-columns: 1fr;
-      gap: 22px;
-      align-items: start;
-      padding-top: 0;
-    }
-    .eyebrow {
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      margin-bottom: 14px;
-    }
-    .eyebrow::before { width: 24px; }
-    .headline {
-      font-size: clamp(28px, 9vw, 40px);
-      line-height: 1.08;
-    }
-    .sub-block { max-width: 100%; }
-    .subheadline {
-      font-size: 14px;
-      line-height: 1.55;
-      max-width: 100%;
-      margin-bottom: 18px;
-    }
-    .tags {
-      white-space: normal;
-      overflow: visible;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      line-height: 1.7;
-      padding-bottom: 0;
-    }
-    .tags .dot { margin: 0 5px; }
-
-    .hero-bottom { gap: 24px; }
-    .cards { grid-template-columns: 1fr; gap: 12px; }
-    .card { padding: 20px 20px 18px; }
-    .card-eyebrow { font-size: 10px; margin-bottom: 10px; }
-    .card-title { font-size: 26px; margin-bottom: 10px; }
-    .card-body { font-size: 13px; margin-bottom: 16px; }
-
-    .stats {
-      grid-template-columns: 1fr 1fr;
-      gap: 18px 20px;
-    }
-    .stat {
-      padding-left: 12px;
-      min-height: 0;
-      border-left-width: 1px;
-    }
-    .stat-num { font-size: 32px; margin-bottom: 4px; }
-    .stat-label { font-size: 10px; letter-spacing: 0.14em; }
-
-    .dots { bottom: 14px; gap: 7px; }
-    .dot-pill { width: 6px; height: 6px; }
-    .dot-pill.active { width: 22px; }
-  }
-  @media (max-width: 380px) {
-    .hero-content { padding: 80px 16px 56px; }
-    .headline { font-size: 26px; }
-    .stats { grid-template-columns: 1fr; }
-    .nav-services-trigger { padding: 8px 14px; font-size: 11px; }
-  }
+@media (max-width:900px){
+  .routes{grid-template-columns:1fr;max-width:none}
+  .stats-in{grid-template-columns:repeat(3,1fr);gap:18px}
+  .stats .since{grid-column:1/-1;text-align:left;opacity:.75}
+  .cta-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
-<body>
+<body class="presisi">
 
-<section class="hero" data-screen-label="01 Hero">
-
-  <!-- Background slider -->
-  <div class="hero-slider" id="heroSlider" aria-roledescription="carousel">
-    <div class="hero-track" id="heroTrack">
-      <div class="hero-slide" style="background-image: url('images/home-hero-1.webp');"></div>
-      <div class="hero-slide" style="background-image: url('images/home-hero-2.webp');"></div>
-      <div class="hero-slide" style="background-image: url('images/home-hero-3.webp');"></div>
-      <div class="hero-slide" style="background-image: url('images/home-hero-4.webp');"></div>
+<header class="p-nav">
+  <div class="p-nav-in">
+    <a href="index.html" aria-label="IBK — Beranda"><img src="images/brand-logo.webp" alt="IndoBangun Berjaya Konstruksi" /></a>
+    <nav class="p-links" aria-label="Utama">
+      <a href="residential.html" data-i18n="navRes">Residensial</a>
+      <a href="commercial.html" data-i18n="navCom">Komersial</a>
+      <a href="proyek-selesai.html" data-i18n="navProyek">Proyek</a>
+      <a href="#lingkup" data-i18n="navLingkup">Lingkup</a>
+      <a href="#kontak" data-i18n="navKontak">Kontak</a>
+    </nav>
+    <div class="p-lang" role="group" aria-label="Bahasa / Language">
+      <button type="button" data-lang="id" class="on">ID</button>
+      <button type="button" data-lang="en">EN</button>
     </div>
+    <a class="p-btn brass" href="https://wa.me/6282110952505" style="margin-left:14px">WhatsApp</a>
+    <button class="p-burger" aria-expanded="false" aria-controls="pmenu">MENU</button>
   </div>
-  <div class="hero-tint" aria-hidden="true"></div>
+</header>
+<nav class="p-menu" id="pmenu" aria-label="Menu seluler">
+  <a href="residential.html" data-i18n="navRes">Residensial</a>
+  <a href="commercial.html" data-i18n="navCom">Komersial</a>
+  <a href="proyek-selesai.html" data-i18n="navProyek">Proyek</a>
+  <a href="#lingkup" data-i18n="navLingkup">Lingkup</a>
+  <a href="#kontak" data-i18n="navKontak">Kontak</a>
+</nav>
 
-  <!-- Nav -->
-  <nav class="nav">
-    <a href="index.html" class="nav-brand" aria-label="IBK — Beranda">
-      <img src="images/brand-logo.webp" alt="IBK">
-    </a>
-    <div class="nav-right">
-      <div class="nav-lang" role="group" aria-label="Language">
-        <button type="button" data-lang="id" class="active" aria-label="Bahasa Indonesia">ID</button> / <button type="button" data-lang="en" aria-label="English">EN</button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Content -->
-  <div class="hero-content">
-
-    <!-- Top: headline + sub -->
-    <div class="hero-top">
-      <div>
-        <div class="eyebrow" data-i18n="hero.eyebrow">PT. Indobangun Berjaya Konstruksi</div>
-        <h1 class="headline">
-          <span data-i18n-html="hero.line">Design. Build. <span class="accent">Deliver.</span></span>
-        </h1>
-      </div>
-      <div class="sub-block">
-        <p class="subheadline" data-i18n="hero.sub">
-          Kontraktor design-build terintegrasi penuh — 20+ proyek terselesaikan. Pilih fokus Anda untuk melihat program yang sesuai.
-        </p>
-        <div class="tags" data-i18n-html="hero.tags">Jakarta<span class="dot">·</span>Jawa<span class="dot">·</span>Nasional<span class="dot">·</span>Struktur<span class="dot">·</span>Arsitektur<span class="dot">·</span>MEP Lengkap<span class="dot">·</span>Bangunan Cerdas</div>
-      </div>
-    </div>
-
-    <!-- Bottom: cards + stats -->
-    <div class="hero-bottom">
-
-      <div class="cards">
-        <article class="card" onclick="location.href='residential.html'">
-          <div class="card-eyebrow" data-i18n="res.eyebrow">Residensial Mewah</div>
-          <h3 class="card-title" data-i18n="res.title">Residensial</h3>
-          <p class="card-body" data-i18n="res.body">Sistem Design-Build — struktur, arsitektur &amp; interior, MEP lengkap, dan pengadaan material. Bermitra eksklusif dengan Beta Design Studio.</p>
-          <a class="card-cta" href="residential.html" title="" data-i18n="res.cta">Lihat Residensial</a>
-        </article>
-
-        <article class="card" onclick="location.href='commercial.html'">
-          <div class="card-eyebrow" data-i18n="com.eyebrow">Komersial · Industri · Perhotelan</div>
-          <h3 class="card-title" data-i18n="com.title">Komersial</h3>
-          <p class="card-body" data-i18n="com.body">Industri, pusat data, rumah sakit, perhotelan, dan perkantoran. Spesialis MEP dengan kapabilitas pengerjaan penuh — terbukti di Hilton, BSI, Subang, dan Hyperscale DC.</p>
-          <a class="card-cta" href="commercial.html" title="" data-i18n="com.cta">Lihat Komersial</a>
-        </article>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-num">20+</div>
-          <div class="stat-label" data-i18n="stat.projects">PROYEK TERSELESAIKAN</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">10</div>
-          <div class="stat-label" data-i18n="stat.years">TAHUN PENGALAMAN</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">255</div>
-          <div class="stat-label" data-i18n="stat.team">ANGGOTA TIM</div>
-        </div>
-      </div>
-
-    </div>
+<!-- HERO -->
+<section class="p-hero hero on-ink">
+  <div class="p-hero-bg" aria-hidden="true">
+    <img src="images/home-hero-1.webp" alt="" fetchpriority="high" />
+    <img src="images/home-hero-2.webp" alt="" loading="lazy" />
+    <img src="images/home-hero-3.webp" alt="" loading="lazy" />
+    <img src="images/home-hero-4.webp" alt="" loading="lazy" />
   </div>
-
-  <!-- Dots -->
-  <div class="dots" role="tablist" aria-label="Hero slides">
-    <button class="dot-pill active" aria-label="Slide 1" data-idx="0"></button>
-    <button class="dot-pill" aria-label="Slide 2" data-idx="1"></button>
-    <button class="dot-pill" aria-label="Slide 3" data-idx="2"></button>
-    <button class="dot-pill" aria-label="Slide 4" data-idx="3"></button>
+  <div class="p-hero-in">
+    <p class="p-eyebrow" data-i18n="heroEyebrow">PT. Indobangun Berjaya Konstruksi — Jakarta</p>
+    <h1 class="p-h1" data-i18n-html="heroTitle">Presisi di setiap milimeter<span class="dot">.</span></h1>
+    <p class="p-hero-sub" data-i18n="heroSub">Kontraktor design-build terintegrasi untuk hunian mewah dan fasilitas komersial nasional. Struktur, arsitektur, dan MEP lengkap — satu kontrak, satu tanggung jawab.</p>
+    <div class="p-dim" aria-hidden="true">
+      <span class="rule"></span><span class="lbl" data-i18n="heroDim">Skala 1 : 1 — gambar menjadi bangunan</span><span class="rule"></span>
+    </div>
+    <div class="routes">
+      <a class="route" href="residential.html">
+        <span><span class="k" data-i18n="routeResK">Residensial — PIK2 &amp; Jakarta</span><span class="t" data-i18n="routeResT">Hunian Mewah Bebas Cat, Bebas Rayap</span></span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DCB25C" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="route" href="commercial.html">
+        <span><span class="k" data-i18n="routeComK">Komersial — Industri &amp; Institusi</span><span class="t" data-i18n="routeComT">Rancang. Bangun. Serahkan.</span></span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DCB25C" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-in">
+    <div class="stat"><div class="n">20<em>+</em></div><div class="l" data-i18n="statProyek">Proyek Terselesaikan</div></div>
+    <div class="stat"><div class="n">10</div><div class="l" data-i18n="statTahun">Tahun Pengalaman</div></div>
+    <div class="stat"><div class="n">255</div><div class="l" data-i18n="statTim">Tenaga Ahli</div></div>
+    <div class="since">EST. 2016 — PLUIT, JAKARTA UTARA</div>
+  </div>
+</div>
+
+<!-- A-01 VALUE -->
+<section class="chapter" id="tentang">
+  <div class="wrap">
+    <div class="chapter-head rev">
+      <div class="stack">
+        <p class="p-eyebrow" data-i18n="valEyebrow">Mengapa IBK</p>
+        <h2 class="p-h2" data-i18n="valTitle">Dari gambar kerja sampai serah terima — satu tanggung jawab.</h2>
+        <p class="p-lede" data-i18n="valLede">Kebanyakan kontraktor membangun sesuai standar minimum. Kami memilih setiap material dari dampaknya terhadap biaya kepemilikan 20 tahun ke depan — lalu menuliskannya dalam satu kontrak.</p>
+      </div>
+      <span class="p-sheet">LBR A-01</span>
+    </div>
+    <div class="p-vals">
+      <article class="p-val rev">
+        <span class="no">A-01.1</span>
+        <h3 data-i18n="val1H">Satu kontrak, satu tanggung jawab</h3>
+        <p data-i18n="val1P">Struktur, arsitektur, interior, dan MEP lengkap ditangani satu tim — tidak ada celah koordinasi, tidak ada saling tunjuk antar subkontraktor.</p>
+      </article>
+      <article class="p-val rev">
+        <span class="no">A-01.2</span>
+        <h3 data-i18n="val2H">Spesifikasi karena performa</h3>
+        <p data-i18n="val2P">Beton K-400, baja TS-420, panel WPC — dipilih dari data ketahanan iklim tropis, bukan dari katalog termurah. Setiap pilihan material bisa dipertanggungjawabkan.</p>
+      </article>
+      <article class="p-val rev">
+        <span class="no">A-01.3</span>
+        <h3 data-i18n="val3H">Biaya 20 tahun, bukan biaya hari ini</h3>
+        <p data-i18n="val3P">Pengecatan ulang tiap 3–5 tahun, kerusakan rayap, dan retak dinding — kami hilangkan dari persamaan sejak fase desain.</p>
+      </article>
+    </div>
+    <div class="p-trust rev" style="margin-top:clamp(56px,7vw,88px)">
+      <div class="p-trust-in">
+        <span class="who lead" data-i18n="trustLead">Dipercaya bersama</span>
+        <span class="who">PT PP (Persero)</span>
+        <span class="who">Pulauintan</span>
+        <span class="who">Hilton</span>
+        <span class="who">BNI</span>
+        <span class="who">BSI</span>
+        <span class="who">Kejaksaan Agung RI</span>
+        <span class="who">TMII</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- P-01 PROJECTS -->
+<section class="chapter on-ink" id="proyek">
+  <div class="wrap">
+    <div class="chapter-head rev">
+      <div class="stack">
+        <p class="p-eyebrow" data-i18n="projEyebrow">Portofolio</p>
+        <h2 class="p-h2" data-i18n="projTitle">Ide jadi nyata. Kualitas jadi bukti.</h2>
+        <p class="p-lede" data-i18n="projLede">Dari hunian premium PIK2 sampai hyperscale data center — setiap lembar gambar berakhir sebagai bangunan yang diserahterimakan.</p>
+      </div>
+      <span class="p-sheet">LBR P-01</span>
+    </div>
+    <div class="p-projs">
+      <a class="p-proj" href="projects/rumah-lotus.html">
+        <div class="ph"><span class="st" data-i18n="stProses">Dalam Proses</span><img src="images/port-lotus.webp" alt="Rumah Lotus — hunian mewah design-build di PIK2" loading="lazy" /></div>
+        <div class="body"><h3>Rumah Lotus</h3><p class="sub" data-i18n="projLotusSub">Design-build penuh — struktur, arsitektur &amp; MEP bersama Beta Design Studio.</p></div>
+        <div class="p-tblock">
+          <div><span class="k" data-i18n="tbNo">No. Proyek</span><span class="v">R-019</span></div>
+          <div><span class="k" data-i18n="tbLok">Lokasi</span><span class="v">PIK2, JKT</span></div>
+          <div><span class="k" data-i18n="tbNilai">Nilai</span><span class="v">IDR 60 M</span></div>
+        </div>
+      </a>
+      <a class="p-proj" href="proyek-selesai.html">
+        <div class="ph"><span class="st" data-i18n="stProses">Dalam Proses</span><img src="images/port-hilton.webp" alt="Menara Hilton Bandung" loading="lazy" /></div>
+        <div class="body"><h3>Hilton Bandung</h3><p class="sub" data-i18n="projHiltonSub">Hotel merek internasional — fire suppression, elektrikal &amp; HVAC.</p></div>
+        <div class="p-tblock">
+          <div><span class="k" data-i18n="tbNo">No. Proyek</span><span class="v">K-017</span></div>
+          <div><span class="k" data-i18n="tbLok">Lokasi</span><span class="v">Bandung</span></div>
+          <div><span class="k" data-i18n="tbNilai">Nilai</span><span class="v">IDR 43,3 M</span></div>
+        </div>
+      </a>
+      <a class="p-proj" href="proyek-selesai.html">
+        <div class="ph"><span class="st done" data-i18n="stSelesai">Selesai</span><img src="images/port-kejagung.webp" alt="Gedung Kejaksaan Agung RI, Jakarta" loading="lazy" /></div>
+        <div class="body"><h3>Kejaksaan Agung RI</h3><p class="sub" data-i18n="projKejagungSub">Kantor pemerintah — bersama PT PP (Persero).</p></div>
+        <div class="p-tblock">
+          <div><span class="k" data-i18n="tbNo">No. Proyek</span><span class="v">K-011</span></div>
+          <div><span class="k" data-i18n="tbLok">Lokasi</span><span class="v">Jakarta</span></div>
+          <div><span class="k" data-i18n="tbKlien">Klien</span><span class="v">PT PP</span></div>
+        </div>
+      </a>
+      <a class="p-proj" href="proyek-selesai.html">
+        <div class="ph"><span class="st done" data-i18n="stSelesai">Selesai</span><img src="images/port-hdc.webp" alt="HDC Hyperscale Data Center, Cikarang" loading="lazy" /></div>
+        <div class="body"><h3>HDC Hyperscale DC</h3><p class="sub" data-i18n="projHdcSub">Pusat data — lingkungan teknis paling menuntut.</p></div>
+        <div class="p-tblock">
+          <div><span class="k" data-i18n="tbNo">No. Proyek</span><span class="v">K-014</span></div>
+          <div><span class="k" data-i18n="tbLok">Lokasi</span><span class="v">Cikarang</span></div>
+          <div><span class="k" data-i18n="tbSektor">Sektor</span><span class="v">Data</span></div>
+        </div>
+      </a>
+    </div>
+    <div class="more rev"><a class="p-btn ghost" href="proyek-selesai.html" data-i18n="projMore">Lihat 19 proyek selesai →</a></div>
+  </div>
+</section>
+
+<!-- S-01 SCOPE -->
+<section class="chapter" id="lingkup">
+  <div class="wrap">
+    <div class="chapter-head rev">
+      <div class="stack">
+        <p class="p-eyebrow" data-i18n="scopeEyebrow">Lingkup Pekerjaan</p>
+        <h2 class="p-h2" data-i18n="scopeTitle">Delapan disiplin. Satu set gambar.</h2>
+        <p class="p-lede" data-i18n="scopeLede">Seperti set gambar kerja: setiap disiplin punya lembarnya sendiri, dan semuanya kami kerjakan sendiri.</p>
+      </div>
+      <span class="p-sheet">LBR S-01 — F-08</span>
+    </div>
+    <div class="p-scopes rev">
+      <a class="p-scope" href="scope/struktur.html"><span class="code">S-01</span><span class="name" data-i18n="sc1N">Struktur</span><span class="desc" data-i18n="sc1D">Beton K-400, baja TS-420, sistem balok ganda untuk tanah lempung Jakarta.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/arsitektur.html"><span class="code">A-02</span><span class="name" data-i18n="sc2N">Arsitektur</span><span class="desc" data-i18n="sc2D">Desain terintegrasi bersama Beta Design Studio — sistem ramah iklim tropis.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/elektrikal.html"><span class="code">E-03</span><span class="name" data-i18n="sc3N">Elektrikal</span><span class="desc" data-i18n="sc3D">Kabel Kabelmetal &amp; Supreme, panel Schneider dan Chint.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/plumbing.html"><span class="code">P-04</span><span class="name" data-i18n="sc4N">Plumbing</span><span class="desc" data-i18n="sc4D">Pipa PPR Toro Italy untuk air bersih, Rucika PVC untuk drainase.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/lighting-smart-home.html"><span class="code">L-05</span><span class="name" data-i18n="sc5N">Lighting &amp; Smart Home</span><span class="desc" data-i18n="sc5D">Pencahayaan arsitektural dan otomasi rumah terintegrasi.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/hvac.html"><span class="code">M-06</span><span class="name" data-i18n="sc6N">HVAC</span><span class="desc" data-i18n="sc6D">Sistem VRV dan ventilasi untuk residensial, hotel, dan pusat data.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/interior-build.html"><span class="code">I-07</span><span class="name" data-i18n="sc7N">Interior Build</span><span class="desc" data-i18n="sc7D">Dari detail plafon sampai finishing premium — dieksekusi tim sendiri.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/furnitur.html"><span class="code">F-08</span><span class="name" data-i18n="sc8N">Furnitur</span><span class="desc" data-i18n="sc8D">Furnitur custom menyatu dengan desain — material tahan iklim tropis.</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- K-01 CTA -->
+<section class="chapter on-ink" id="kontak">
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="rev">
+        <p class="p-eyebrow" data-i18n="ctaEyebrow">Mulai — LBR K-01</p>
+        <h2 class="p-h2" data-i18n="ctaTitle">Ceritakan proyek Anda. Kami yang urus sisanya.</h2>
+        <p class="p-lede" style="margin-top:16px" data-i18n="ctaLede">Respons di hari yang sama pada jam kerja. Konsultasi awal tidak dikenakan biaya.</p>
+        <div class="cta-actions">
+          <a class="p-btn brass" href="https://wa.me/6282110952505" data-i18n="ctaWa">Diskusi via WhatsApp</a>
+          <a class="p-btn ghost" href="IBK_Company_Profile_2026.pdf" download data-i18n="ctaPdf">Unduh Company Profile (PDF)</a>
+        </div>
+      </div>
+      <aside class="cta-side rev">
+        <span class="k" data-i18n="ctaSideK">Kontak Langsung</span>
+        <div class="row"><span>WhatsApp</span>+62 821 1095 2505</div>
+        <div class="row"><span>Email</span>dixon@ibkkonstruksi.com</div>
+        <div class="row"><span data-i18n="ctaKantor">Kantor</span>Pluit, Jakarta Utara</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="p-foot">
+  <div class="p-foot-in">
+    <div class="brand">
+      <img src="images/brand-logo.webp" alt="IndoBangun Berjaya Konstruksi" />
+      <p data-i18n="footBrand">Kontraktor design-build terintegrasi penuh di Jakarta — residensial mewah &amp; komersial nasional.</p>
+    </div>
+    <div>
+      <h4 data-i18n="footNav">Navigasi</h4>
+      <a href="index.html" data-i18n="navHome">Beranda</a>
+      <a href="residential.html" data-i18n="navRes">Residensial</a>
+      <a href="commercial.html" data-i18n="navCom">Komersial</a>
+      <a href="proyek-selesai.html" data-i18n="footProyek">Proyek Selesai</a>
+    </div>
+    <div>
+      <h4 data-i18n="footScope">Lingkup</h4>
+      <a href="scope/struktur.html" data-i18n="sc1N">Struktur</a>
+      <a href="scope/arsitektur.html" data-i18n="sc2N">Arsitektur</a>
+      <a href="scope/elektrikal.html">MEP</a>
+      <a href="scope/interior-build.html" data-i18n="footInterior">Interior &amp; Furnitur</a>
+    </div>
+    <div>
+      <h4 data-i18n="footKontak">Kontak</h4>
+      <p>+62 821 1095 2505<br/>dixon@ibkkonstruksi.com<br/><span data-i18n="footAlamat">Pluit, Jakarta Utara — Kantor 6 Lantai</span></p>
+    </div>
+  </div>
+  <div class="p-legal"><span data-i18n="footLegal">© 2026 PT. Indobangun Berjaya Konstruksi</span><span>Skala 1 : 1</span></div>
+</footer>
+
+<div class="p-wa-bar"><a class="p-btn" href="https://wa.me/6282110952505" data-i18n="waBar">Diskusi Proyek via WhatsApp</a></div>
+
 <script>
-  // i18n
-  (function() {
-    const I18N = {
-      id: {
-        'nav.residential': 'Residensial',
-        'nav.residentialSub': 'Hunian mewah · Design-Build',
-        'nav.commercial':  'Komersial',
-        'nav.commercialSub': 'Industri · Hospitality · MEP',
-        'nav.services':    'Layanan',
-        'nav.projects':    'Proyek',
-        'nav.about':       'Tentang',
-        'nav.contact':     'Kontak',
-        'nav.openMenu':    'Buka menu',
-        'nav.closeMenu':   'Tutup menu',
-        'hero.eyebrow':    'PT. Indobangun Berjaya Konstruksi',
-        'hero.line':       'Design. Build. <span class="accent">Deliver.</span>',
-        'hero.sub':        'Kontraktor design-build terintegrasi penuh — 20+ proyek terselesaikan. Pilih fokus Anda untuk melihat program yang sesuai.',
-        'hero.tags':       'Jakarta<span class="dot">·</span>Jawa<span class="dot">·</span>Nasional<span class="dot">·</span>Struktur<span class="dot">·</span>Arsitektur<span class="dot">·</span>MEP Lengkap<span class="dot">·</span>Bangunan Cerdas',
-        'res.eyebrow':     'Residensial Mewah',
-        'res.title':       'Residensial',
-        'res.body':        'Sistem Design-Build — struktur, arsitektur & interior, MEP lengkap, dan pengadaan material. Bermitra eksklusif dengan Beta Design Studio.',
-        'res.cta':         'Lihat Residensial',
-        'com.eyebrow':     'Komersial · Industri · Perhotelan',
-        'com.title':       'Komersial',
-        'com.body':        'Industri, pusat data, rumah sakit, perhotelan, dan perkantoran. Spesialis MEP dengan kapabilitas pengerjaan penuh — terbukti di Hilton, BSI, Subang, dan Hyperscale DC.',
-        'com.cta':         'Lihat Komersial',
-        'stat.value':      'NILAI PROYEK DISERAHKAN',
-        'stat.projects':   'PROYEK TERSELESAIKAN',
-        'stat.years':      'TAHUN PENGALAMAN',
-        'stat.team':       'ANGGOTA TIM',
-        'doc.title':       'IBK — Design. Build. Deliver.'
-      },
-      en: {
-        'nav.residential': 'Residential',
-        'nav.residentialSub': 'Luxury homes · Design-Build',
-        'nav.commercial':  'Commercial',
-        'nav.commercialSub': 'Industrial · Hospitality · MEP',
-        'nav.services':    'Services',
-        'nav.projects':    'Projects',
-        'nav.about':       'About',
-        'nav.contact':     'Contact',
-        'nav.openMenu':    'Open menu',
-        'nav.closeMenu':   'Close menu',
-        'hero.eyebrow':    'PT. Indobangun Berjaya Konstruksi',
-        'hero.line':       'Design. Build. <span class="accent">Deliver.</span>',
-        'hero.sub':        'A fully integrated design-build contractor — 20+ projects completed. Pick your focus to see the right program.',
-        'hero.tags':       'Jakarta<span class="dot">·</span>Java<span class="dot">·</span>Nationwide<span class="dot">·</span>Structural<span class="dot">·</span>Architecture<span class="dot">·</span>Full MEP<span class="dot">·</span>Smart Buildings',
-        'res.eyebrow':     'Luxury Residential',
-        'res.title':       'Residential',
-        'res.body':        'Design-Build delivery — structure, architecture & interiors, complete MEP, and material procurement. Exclusive partnership with Beta Design Studio.',
-        'res.cta':         'View Residential',
-        'com.eyebrow':     'Commercial · Industrial · Hospitality',
-        'com.title':       'Commercial',
-        'com.body':        'Industrial, data centers, hospitals, hospitality, and offices. MEP specialists with full execution capability — proven at Hilton, BSI, Subang, and Hyperscale DC.',
-        'com.cta':         'View Commercial',
-        'stat.value':      'PROJECT VALUE DELIVERED',
-        'stat.projects':   'PROJECTS COMPLETED',
-        'stat.years':      'YEARS OF EXPERIENCE',
-        'stat.team':       'TEAM MEMBERS',
-        'doc.title':       'IBK — Design. Build. Deliver.'
-      }
-    };
-
-    const STORAGE_KEY = 'ibk-lang';
-    function getInitialLang() {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved && I18N[saved]) return saved;
-      } catch (_) {}
-      const browser = (navigator.language || 'id').toLowerCase();
-      return browser.startsWith('en') ? 'en' : 'id';
-    }
-
-    function applyLang(lang) {
-      const dict = I18N[lang] || I18N.id;
-      document.documentElement.lang = lang;
-      document.title = dict['doc.title'];
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.getAttribute('data-i18n');
-        if (dict[k] != null) {
-          const arrow = el.querySelector('.arrow');
-          if (arrow) {
-            el.textContent = dict[k] + ' ';
-            el.appendChild(arrow);
-          } else {
-            el.textContent = dict[k];
-          }
-        }
-      });
-      document.querySelectorAll('[data-i18n-html]').forEach(el => {
-        const k = el.getAttribute('data-i18n-html');
-        if (dict[k] != null) el.innerHTML = dict[k];
-      });
-      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
-        const k = el.getAttribute('data-i18n-aria');
-        if (dict[k] != null) el.setAttribute('aria-label', dict[k]);
-      });
-
-      document.querySelectorAll('.nav-lang button[data-lang]').forEach(b => {
-        const on = b.getAttribute('data-lang') === lang;
-        b.classList.toggle('active', on);
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-
-      try { localStorage.setItem(STORAGE_KEY, lang); } catch (_) {}
-    }
-
-    document.querySelectorAll('.nav-lang button[data-lang]').forEach(btn => {
-      btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
-    });
-
-    applyLang(getInitialLang());
-  })();
+const I18N = {
+  id: {
+    navHome:"Beranda", navRes:"Residensial", navCom:"Komersial", navProyek:"Proyek", navLingkup:"Lingkup", navKontak:"Kontak",
+    heroEyebrow:"PT. Indobangun Berjaya Konstruksi — Jakarta",
+    heroTitle:'Presisi di setiap milimeter<span class="dot">.</span>',
+    heroSub:"Kontraktor design-build terintegrasi untuk hunian mewah dan fasilitas komersial nasional. Struktur, arsitektur, dan MEP lengkap — satu kontrak, satu tanggung jawab.",
+    heroDim:"Skala 1 : 1 — gambar menjadi bangunan",
+    routeResK:"Residensial — PIK2 & Jakarta", routeResT:"Hunian Mewah Bebas Cat, Bebas Rayap",
+    routeComK:"Komersial — Industri & Institusi", routeComT:"Rancang. Bangun. Serahkan.",
+    statProyek:"Proyek Terselesaikan", statTahun:"Tahun Pengalaman", statTim:"Tenaga Ahli",
+    valEyebrow:"Mengapa IBK",
+    valTitle:"Dari gambar kerja sampai serah terima — satu tanggung jawab.",
+    valLede:"Kebanyakan kontraktor membangun sesuai standar minimum. Kami memilih setiap material dari dampaknya terhadap biaya kepemilikan 20 tahun ke depan — lalu menuliskannya dalam satu kontrak.",
+    val1H:"Satu kontrak, satu tanggung jawab",
+    val1P:"Struktur, arsitektur, interior, dan MEP lengkap ditangani satu tim — tidak ada celah koordinasi, tidak ada saling tunjuk antar subkontraktor.",
+    val2H:"Spesifikasi karena performa",
+    val2P:"Beton K-400, baja TS-420, panel WPC — dipilih dari data ketahanan iklim tropis, bukan dari katalog termurah. Setiap pilihan material bisa dipertanggungjawabkan.",
+    val3H:"Biaya 20 tahun, bukan biaya hari ini",
+    val3P:"Pengecatan ulang tiap 3–5 tahun, kerusakan rayap, dan retak dinding — kami hilangkan dari persamaan sejak fase desain.",
+    trustLead:"Dipercaya bersama",
+    projEyebrow:"Portofolio", projTitle:"Ide jadi nyata. Kualitas jadi bukti.",
+    projLede:"Dari hunian premium PIK2 sampai hyperscale data center — setiap lembar gambar berakhir sebagai bangunan yang diserahterimakan.",
+    stProses:"Dalam Proses", stSelesai:"Selesai",
+    projLotusSub:"Design-build penuh — struktur, arsitektur & MEP bersama Beta Design Studio.",
+    projHiltonSub:"Hotel merek internasional — fire suppression, elektrikal & HVAC.",
+    projKejagungSub:"Kantor pemerintah — bersama PT PP (Persero).",
+    projHdcSub:"Pusat data — lingkungan teknis paling menuntut.",
+    tbNo:"No. Proyek", tbLok:"Lokasi", tbNilai:"Nilai", tbKlien:"Klien", tbSektor:"Sektor",
+    projMore:"Lihat 19 proyek selesai →",
+    scopeEyebrow:"Lingkup Pekerjaan", scopeTitle:"Delapan disiplin. Satu set gambar.",
+    scopeLede:"Seperti set gambar kerja: setiap disiplin punya lembarnya sendiri, dan semuanya kami kerjakan sendiri.",
+    sc1N:"Struktur", sc1D:"Beton K-400, baja TS-420, sistem balok ganda untuk tanah lempung Jakarta.",
+    sc2N:"Arsitektur", sc2D:"Desain terintegrasi bersama Beta Design Studio — sistem ramah iklim tropis.",
+    sc3N:"Elektrikal", sc3D:"Kabel Kabelmetal & Supreme, panel Schneider dan Chint.",
+    sc4N:"Plumbing", sc4D:"Pipa PPR Toro Italy untuk air bersih, Rucika PVC untuk drainase.",
+    sc5N:"Lighting & Smart Home", sc5D:"Pencahayaan arsitektural dan otomasi rumah terintegrasi.",
+    sc6N:"HVAC", sc6D:"Sistem VRV dan ventilasi untuk residensial, hotel, dan pusat data.",
+    sc7N:"Interior Build", sc7D:"Dari detail plafon sampai finishing premium — dieksekusi tim sendiri.",
+    sc8N:"Furnitur", sc8D:"Furnitur custom menyatu dengan desain — material tahan iklim tropis.",
+    ctaEyebrow:"Mulai — LBR K-01", ctaTitle:"Ceritakan proyek Anda. Kami yang urus sisanya.",
+    ctaLede:"Respons di hari yang sama pada jam kerja. Konsultasi awal tidak dikenakan biaya.",
+    ctaWa:"Diskusi via WhatsApp", ctaPdf:"Unduh Company Profile (PDF)",
+    ctaSideK:"Kontak Langsung", ctaKantor:"Kantor",
+    footBrand:"Kontraktor design-build terintegrasi penuh di Jakarta — residensial mewah & komersial nasional.",
+    footNav:"Navigasi", footProyek:"Proyek Selesai", footScope:"Lingkup", footInterior:"Interior & Furnitur",
+    footKontak:"Kontak", footAlamat:"Pluit, Jakarta Utara — Kantor 6 Lantai",
+    footLegal:"© 2026 PT. Indobangun Berjaya Konstruksi",
+    waBar:"Diskusi Proyek via WhatsApp"
+  },
+  en: {
+    navHome:"Home", navRes:"Residential", navCom:"Commercial", navProyek:"Projects", navLingkup:"Scope", navKontak:"Contact",
+    heroEyebrow:"PT. Indobangun Berjaya Konstruksi — Jakarta",
+    heroTitle:'Precision in every millimeter<span class="dot">.</span>',
+    heroSub:"An integrated design-build contractor for luxury residences and national-scale commercial facilities. Structure, architecture, and complete MEP — one contract, one responsibility.",
+    heroDim:"Scale 1 : 1 — drawings become buildings",
+    routeResK:"Residential — PIK2 & Jakarta", routeResT:"Paint-Free, Termite-Free Luxury Homes",
+    routeComK:"Commercial — Industry & Institutions", routeComT:"Design. Build. Deliver.",
+    statProyek:"Projects Completed", statTahun:"Years of Experience", statTim:"Team Members",
+    valEyebrow:"Why IBK",
+    valTitle:"From working drawings to handover — one responsibility.",
+    valLede:"Most contractors build to minimum standards. We select every material for its impact on 20-year ownership cost — then write it into a single contract.",
+    val1H:"One contract, one responsibility",
+    val1P:"Structure, architecture, interior, and complete MEP handled by one team — no coordination gaps, no finger-pointing between subcontractors.",
+    val2H:"Specified for performance",
+    val2P:"K-400 concrete, TS-420 steel, WPC panels — chosen from tropical-climate durability data, not the cheapest catalog. Every material choice is accountable.",
+    val3H:"20-year cost, not today's cost",
+    val3P:"Repainting every 3–5 years, termite damage, cracking walls — we remove them from the equation at the design phase.",
+    trustLead:"Trusted alongside",
+    projEyebrow:"Portfolio", projTitle:"Ideas made real. Quality made proof.",
+    projLede:"From premium PIK2 residences to a hyperscale data center — every sheet of drawings ends as a handed-over building.",
+    stProses:"In Progress", stSelesai:"Completed",
+    projLotusSub:"Full design-build — structure, architecture & MEP with Beta Design Studio.",
+    projHiltonSub:"International hotel brand — fire suppression, electrical & HVAC.",
+    projKejagungSub:"Government office — alongside PT PP (Persero).",
+    projHdcSub:"Data center — the most demanding technical environment.",
+    tbNo:"Project No.", tbLok:"Location", tbNilai:"Value", tbKlien:"Client", tbSektor:"Sector",
+    projMore:"See 19 completed projects →",
+    scopeEyebrow:"Scope of Work", scopeTitle:"Eight disciplines. One drawing set.",
+    scopeLede:"Like a working drawing set: every discipline has its own sheet, and we execute all of them ourselves.",
+    sc1N:"Structure", sc1D:"K-400 concrete, TS-420 steel, dual-beam system for Jakarta's clay soil.",
+    sc2N:"Architecture", sc2D:"Integrated design with Beta Design Studio — tropical-climate-friendly systems.",
+    sc3N:"Electrical", sc3D:"Kabelmetal & Supreme cabling, Schneider and Chint panels.",
+    sc4N:"Plumbing", sc4D:"Toro Italy PPR pipes for clean water, Rucika PVC for drainage.",
+    sc5N:"Lighting & Smart Home", sc5D:"Architectural lighting and integrated home automation.",
+    sc6N:"HVAC", sc6D:"VRV and ventilation systems for residences, hotels, and data centers.",
+    sc7N:"Interior Build", sc7D:"From ceiling details to premium finishing — executed by our own team.",
+    sc8N:"Furniture", sc8D:"Custom furniture unified with the design — tropical-climate-resistant materials.",
+    ctaEyebrow:"Start — SHT K-01", ctaTitle:"Tell us about your project. We handle the rest.",
+    ctaLede:"Same-day response during business hours. Initial consultation is free.",
+    ctaWa:"Chat on WhatsApp", ctaPdf:"Download Company Profile (PDF)",
+    ctaSideK:"Direct Contact", ctaKantor:"Office",
+    footBrand:"A fully integrated design-build contractor in Jakarta — luxury residential & national commercial.",
+    footNav:"Navigation", footProyek:"Completed Projects", footScope:"Scope", footInterior:"Interior & Furniture",
+    footKontak:"Contact", footAlamat:"Pluit, North Jakarta — 6-Storey Office",
+    footLegal:"© 2026 PT. Indobangun Berjaya Konstruksi",
+    waBar:"Discuss a Project on WhatsApp"
+  }
+};
+function setLang(lang){
+  const dict = I18N[lang] || I18N.id;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (dict[k] !== undefined) el.textContent = dict[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    if (dict[k] !== undefined) el.innerHTML = dict[k];
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('ibk-lang', lang); } catch(e){}
+}
+window.setLang = setLang;
+(function(){
+  let saved = 'id';
+  try { saved = localStorage.getItem('ibk-lang') || 'id'; } catch(e){}
+  if (saved !== 'id') setLang(saved);
+})();
 </script>
-
-<script>
-  (function() {
-    const slider = document.getElementById('heroSlider');
-    const track = document.getElementById('heroTrack');
-    const slides = track.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.dot-pill');
-    const total = slides.length;
-
-    let index = 0;
-    let dragStartX = 0;
-    let dragDelta = 0;
-    let isDragging = false;
-    let pointerId = null;
-    let autoTimer = null;
-    const AUTO_MS = 5500;
-
-    function setIndex(i, animate) {
-      index = (i + total) % total;
-      track.classList.toggle('animating', animate !== false);
-      track.style.transform = `translate3d(${-index * 100}%, 0, 0)`;
-      dots.forEach((d, di) => d.classList.toggle('active', di === index));
-    }
-
-    function next() { setIndex(index + 1, true); }
-    function prev() { setIndex(index - 1, true); }
-
-    function startAuto() {
-      stopAuto();
-      autoTimer = setInterval(next, AUTO_MS);
-    }
-    function stopAuto() {
-      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-    }
-    function bumpAuto() {
-      // Restart auto-advance after user interaction so we don't double-fire
-      startAuto();
-    }
-
-    // Pointer drag
-    slider.addEventListener('pointerdown', (e) => {
-      if (e.button !== undefined && e.button !== 0) return;
-      isDragging = true;
-      pointerId = e.pointerId;
-      dragStartX = e.clientX;
-      dragDelta = 0;
-      slider.classList.add('dragging');
-      track.classList.remove('animating');
-      stopAuto();
-      try { slider.setPointerCapture(e.pointerId); } catch (_) {}
-    });
-
-    slider.addEventListener('pointermove', (e) => {
-      if (!isDragging || e.pointerId !== pointerId) return;
-      dragDelta = e.clientX - dragStartX;
-      const pct = (dragDelta / slider.clientWidth) * 100;
-      track.style.transform = `translate3d(calc(${-index * 100}% + ${pct}%), 0, 0)`;
-    });
-
-    function endDrag(e) {
-      if (!isDragging) return;
-      if (e && e.pointerId !== pointerId) return;
-      isDragging = false;
-      slider.classList.remove('dragging');
-      try { slider.releasePointerCapture(pointerId); } catch (_) {}
-      pointerId = null;
-      const threshold = Math.min(120, slider.clientWidth * 0.18);
-      if (dragDelta > threshold) setIndex(index - 1, true);
-      else if (dragDelta < -threshold) setIndex(index + 1, true);
-      else setIndex(index, true);
-      dragDelta = 0;
-      bumpAuto();
-    }
-    slider.addEventListener('pointerup', endDrag);
-    slider.addEventListener('pointercancel', endDrag);
-    slider.addEventListener('pointerleave', (e) => { if (isDragging) endDrag(e); });
-
-    // Drag images shouldn't ghost-drag
-    slider.addEventListener('dragstart', (e) => e.preventDefault());
-
-    // Dots
-    dots.forEach((d, di) => {
-      d.addEventListener('click', () => { setIndex(di, true); bumpAuto(); });
-    });
-
-    // Keyboard
-    slider.tabIndex = 0;
-    slider.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') { prev(); bumpAuto(); }
-      else if (e.key === 'ArrowRight') { next(); bumpAuto(); }
-    });
-
-    // Pause auto when tab hidden
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) stopAuto(); else startAuto();
-    });
-
-    // Pause on hover (desktop only)
-    slider.addEventListener('mouseenter', stopAuto);
-    slider.addEventListener('mouseleave', startAuto);
-
-    setIndex(0, false);
-    startAuto();
-  })();
-</script>
-
+<script src="/assets/presisi.js" defer></script>
 </body>
 </html>
