@@ -1,108 +1,884 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PT. Indobangun Berjaya Konstruksi — Kontraktor design-build terintegrasi penuh. Pilih Residensial Mewah atau Komersial, Industri &amp; Perhotelan.">
-  <title>IBK — Design. Build. Deliver.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/pages.css">
-</head>
-<body class="choice-page">
 
-  <!-- NAV (minimal for landing) -->
-  <nav class="nav nav--landing" id="main-nav" role="navigation" aria-label="Main navigation">
-    <div class="nav__container">
-      <a href="index.html" class="nav__logo" aria-label="IBK Home">
-    <img src="images/brand/icon-home.png" alt="IBK Logo">
-  </a>
-      <div class="nav__actions">
-        <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language / Ganti bahasa">
-          <span class="lang-toggle__option active" id="lang-id">ID</span>
-          <span class="lang-toggle__divider">/</span>
-          <span class="lang-toggle__option" id="lang-en">EN</span>
-        </button>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PT. Indobangun Berjaya Konstruksi — Kontraktor design-build terintegrasi penuh. Pilih Residensial Mewah atau Komersial, Industri &amp; Perhotelan.">
+<title>IBK — Design. Build. Deliver.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@1,500;1,600&amp;display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #FFFFFF;
+    --gold: #C9A961;
+    --card-bg: rgba(15, 30, 60, 0.55);
+    --card-border: rgba(255, 255, 255, 0.12);
+    --overlay: rgba(10, 25, 50, 0.30);
+    --muted: rgba(255, 255, 255, 0.78);
+    --ink: #0a1932;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #0a1424; color: var(--white); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ============ NAV ============ */
+  .nav {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 20;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 56px;
+    gap: 16px;
+  }
+  .nav-brand {
+    display: flex; align-items: center;
+    flex-shrink: 0;
+  }
+  .nav-brand img {
+    display: block;
+    height: clamp(34px, 4.5vw, 52px);
+    width: auto;
+    max-width: 220px;
+  }
+  @media (max-width: 380px) {
+    .nav-brand img { height: 30px; }
+  }
+  .nav-links { display: flex; gap: 38px; align-items: center; }
+  .nav-links > a { font-size: 12.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; transition: opacity .2s; }
+  .nav-links > a:hover { opacity: 1; }
+
+  /* Combined services pill */
+  .nav-services {
+    position: relative;
+  }
+  .nav-services-trigger {
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    color: var(--white);
+    padding: 9px 18px;
+    font: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background .25s, color .25s;
+  }
+  .nav-services-trigger:hover,
+  .nav-services-trigger[aria-expanded="true"] {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .nav-services-trigger .chev {
+    width: 10px; height: 10px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg) translate(-2px, -2px);
+    transition: transform .25s;
+  }
+  .nav-services-trigger[aria-expanded="true"] .chev {
+    transform: rotate(-135deg) translate(-2px, -2px);
+  }
+  .nav-services-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    min-width: 220px;
+    background: rgba(10, 25, 50, 0.92);
+    backdrop-filter: blur(18px) saturate(1.2);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    border: 1px solid rgba(201,169,97,0.4);
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 0 24px 50px rgba(0,0,0,0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+    z-index: 25;
+  }
+  .nav-services[data-open="true"] .nav-services-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  .nav-services-menu a {
+    display: block;
+    padding: 12px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    border-radius: 6px;
+    transition: background .2s, color .2s;
+  }
+  .nav-services-menu a:hover {
+    background: rgba(201,169,97,0.18);
+    color: var(--gold);
+  }
+  .nav-services-menu a small {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    font-weight: 400;
+    opacity: 0.65;
+    margin-top: 3px;
+  }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+  .nav-lang { cursor: default; user-select: none; flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; border: 1px solid rgba(255,255,255,0.25); padding: 7px 12px; border-radius: 2px; }
+  .nav-lang button {
+    background: transparent; border: 0; padding: 0; margin: 0;
+    font: inherit; letter-spacing: inherit;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity .2s, color .2s;
+  }
+  .nav-lang button:hover { opacity: 0.85; }
+  .nav-lang button.active { color: var(--gold); opacity: 1; }
+
+  /* Hamburger */
+  .nav-toggle {
+    display: none;
+    width: 44px; height: 44px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 2px;
+    color: var(--white);
+    cursor: pointer;
+    padding: 0;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 5px;
+  }
+  .nav-toggle span {
+    display: block; width: 18px; height: 1.5px;
+    background: var(--white);
+    transition: transform .3s, opacity .3s;
+  }
+  .nav-open .nav-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  .nav-open .nav-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Mobile menu drawer */
+  .nav-drawer {
+    position: fixed; inset: 0;
+    background: rgba(10, 20, 40, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 30;
+    display: none;
+    flex-direction: column;
+    padding: 96px 32px 48px;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .nav-drawer.open { display: flex; opacity: 1; }
+  .nav-drawer a {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+  }
+  .nav-drawer a .arrow { float: right; color: var(--gold); }
+  .nav-drawer-close {
+    position: absolute; top: 22px; right: 24px;
+    width: 44px; height: 44px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 2px; color: var(--white); cursor: pointer;
+    display: grid; place-items: center; font-size: 22px;
+  }
+  .nav-drawer-foot {
+    margin-top: auto;
+    padding-top: 24px;
+    color: rgba(255,255,255,0.6);
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    height: auto;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* ============ SLIDER ============ */
+  .hero-slider {
+    position: absolute; inset: 0;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+  }
+  .hero-slider.dragging { cursor: grabbing; }
+
+  .hero-track {
+    position: absolute; inset: 0;
+    display: flex;
+    width: 100%; height: 100%;
+    will-change: transform;
+  }
+  .hero-track.animating { transition: transform .7s cubic-bezier(.6,.05,.2,1); }
+
+  .hero-slide {
+    flex: 0 0 100%;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  /* Soft vignette per slide */
+  .hero-slide::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,20,40,0.30) 0%, rgba(10,20,40,0) 30%, rgba(10,20,40,0.55) 100%);
+    pointer-events: none;
+  }
+
+  /* dark overlay tint */
+  .hero-tint {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10,20,40,0.55) 0%, rgba(10,20,40,0.15) 30%, rgba(10,20,40,0.65) 100%),
+      var(--overlay);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Slider arrows */
+  .slider-arrow {
+    position: absolute; top: 50%;
+    transform: translateY(-50%);
+    z-index: 7;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: rgba(10,25,50,0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--white);
+    display: grid; place-items: center;
+    cursor: pointer;
+    transition: background .25s, border-color .25s, opacity .25s;
+    opacity: 0.55;
+  }
+  .slider-arrow:hover { opacity: 1; background: rgba(201,169,97,0.25); border-color: rgba(201,169,97,0.55); }
+  .slider-arrow.prev { left: 20px; }
+  .slider-arrow.next { right: 20px; }
+  .slider-arrow svg { width: 18px; height: 18px; }
+  @media (max-width: 768px) { .slider-arrow { display: none; } }
+
+  /* ============ HERO CONTENT ============ */
+  .hero-content {
+    position: relative; z-index: 5;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+    padding: clamp(96px, 14vh, 130px) clamp(20px, 5vw, 80px) clamp(80px, 10vh, 90px);
+    gap: clamp(32px, 5vh, 64px);
+  }
+
+  /* TOP TEXT BLOCK */
+  .hero-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 80px);
+    align-items: end;
+    padding-top: clamp(8px, 4vh, 60px);
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+    display: flex; align-items: center; gap: 12px;
+    opacity: 0; animation: fadeUp .7s .05s ease-out forwards;
+  }
+  .eyebrow::before {
+    content: ''; display: block; width: 36px; height: 1px; background: var(--gold);
+  }
+
+  .headline {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: clamp(32px, 6vw, 100px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: var(--white);
+    text-transform: uppercase;
+    text-wrap: balance;
+    opacity: 0; animation: fadeUp .7s .1s ease-out forwards;
+  }
+  .headline .accent { color: var(--gold); font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; text-transform: lowercase; letter-spacing: -0.01em; }
+
+  .sub-block { min-width: 0; padding-bottom: 8px; opacity: 0; animation: fadeUp .7s .18s ease-out forwards; max-width: 520px; }
+  .subheadline {
+    font-size: clamp(14px, 1.4vw, 20px);
+    line-height: 1.65;
+    color: var(--muted);
+    margin-bottom: clamp(20px, 3vh, 32px);
+    letter-spacing: 0.01em;
+    font-weight: 400;
+  }
+  .tags {
+    font-size: clamp(10.5px, 1vw, 12px);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+  }
+  .tags::-webkit-scrollbar { display: none; }
+  .tags .dot { color: var(--gold); margin: 0 6px; }
+
+  /* BOTTOM ROW: cards + stats */
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 56px);
+    align-items: end;
+  }
+
+  /* CARDS */
+  .cards { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; opacity: 0; animation: fadeUp .7s .26s ease-out forwards; }
+  .card {
+    min-width: 0;
+    background: var(--card-bg);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: clamp(20px, 2.5vw, 30px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+    transition: transform .4s ease, border-color .3s, background .3s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .card * { cursor: pointer; }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 0;
+    background: var(--gold); transition: height .5s ease;
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(201,169,97,0.45); background: rgba(15,30,60,0.65); }
+  .card:hover::before { height: 100%; }
+
+  .card-eyebrow {
+    color: var(--gold);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(28px, 3vw, 38px);
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .card-body {
+    color: var(--muted);
+    font-size: clamp(12.5px, 1vw, 13.5px);
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+  .card-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: gap .25s;
+    min-height: 44px;
+  }
+  .card-cta::after { content: '→'; transition: transform .25s; }
+  .card-cta:hover { gap: 14px; }
+  .card-cta:hover::after { transform: translateX(3px); }
+
+  /* STATS */
+  .stats {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(20px, 3vh, 28px) clamp(24px, 4vw, 56px);
+    padding-bottom: 8px;
+    opacity: 0; animation: fadeUp .7s .34s ease-out forwards;
+  }
+  .stat {
+    min-width: 0;
+    padding-left: 18px;
+    border-left: 1.5px solid var(--gold);
+    min-height: 70px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(36px, 4.5vw, 65px);
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .stat-label {
+    font-size: clamp(11px, 1vw, 15px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* DOTS */
+  .dots {
+    position: absolute;
+    bottom: 28px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 10px; z-index: 6;
+    align-items: center;
+  }
+  .dots-progress {
+    position: absolute;
+    bottom: -10px; left: 0;
+    height: 1px;
+    background: var(--gold);
+    width: 0%;
+    transition: width .15s linear;
+  }
+  .dot-pill {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    transition: all .3s;
+    cursor: pointer; border: 0; padding: 0;
+  }
+  .dot-pill.active { background: var(--gold); width: 28px; border-radius: 4px; }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .nav { padding: 18px 32px; }
+    .hero-bottom { grid-template-columns: 1fr; gap: clamp(28px, 4vh, 40px); }
+    .stats { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 860px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .nav { padding: 14px 18px; }
+    .hero-content {
+      padding: 88px 18px 64px;
+      gap: 28px;
+      grid-template-rows: auto auto auto;
+    }
+    .hero-top {
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: start;
+      padding-top: 0;
+    }
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      margin-bottom: 14px;
+    }
+    .eyebrow::before { width: 24px; }
+    .headline {
+      font-size: clamp(28px, 9vw, 40px);
+      line-height: 1.08;
+    }
+    .sub-block { max-width: 100%; }
+    .subheadline {
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 100%;
+      margin-bottom: 18px;
+    }
+    .tags {
+      white-space: normal;
+      overflow: visible;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      line-height: 1.7;
+      padding-bottom: 0;
+    }
+    .tags .dot { margin: 0 5px; }
+
+    .hero-bottom { gap: 24px; }
+    .cards { grid-template-columns: 1fr; gap: 12px; }
+    .card { padding: 20px 20px 18px; }
+    .card-eyebrow { font-size: 10px; margin-bottom: 10px; }
+    .card-title { font-size: 26px; margin-bottom: 10px; }
+    .card-body { font-size: 13px; margin-bottom: 16px; }
+
+    .stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 20px;
+    }
+    .stat {
+      padding-left: 12px;
+      min-height: 0;
+      border-left-width: 1px;
+    }
+    .stat-num { font-size: 32px; margin-bottom: 4px; }
+    .stat-label { font-size: 10px; letter-spacing: 0.14em; }
+
+    .dots { bottom: 14px; gap: 7px; }
+    .dot-pill { width: 6px; height: 6px; }
+    .dot-pill.active { width: 22px; }
+  }
+  @media (max-width: 380px) {
+    .hero-content { padding: 80px 16px 56px; }
+    .headline { font-size: 26px; }
+    .stats { grid-template-columns: 1fr; }
+    .nav-services-trigger { padding: 8px 14px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+  <!-- Background slider -->
+  <div class="hero-slider" id="heroSlider" aria-roledescription="carousel">
+    <div class="hero-track" id="heroTrack">
+      <div class="hero-slide" style="background-image: url('images/hero/hero-bg.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/projects/lotus-featured.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/commercial/commercial-hero.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/commercial/hilton-bandung.jpg');"></div>
+    </div>
+  </div>
+  <div class="hero-tint" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="index.html" class="nav-brand" aria-label="IBK — Beranda">
+      <img src="images/brand/indobangun-logo.png" alt="IBK">
+    </a>
+    <div class="nav-right">
+      <div class="nav-lang" role="group" aria-label="Language">
+        <button type="button" data-lang="id" class="active" aria-label="Bahasa Indonesia">ID</button> / <button type="button" data-lang="en" aria-label="English">EN</button>
       </div>
     </div>
   </nav>
 
-  <!-- CHOICE HERO -->
-  <section class="choice" aria-label="Choose service">
-    <div class="choice__bg" aria-hidden="true"></div>
-    <div class="container">
-      <header class="choice__header">
-        <img src="images/brand/indobangun-logo.png" alt="Indobangun Berjaya Konstruksi" class="choice__brand">
-        <p class="choice__eyebrow" data-i18n="choice.eyebrow">PT. Indobangun Berjaya Konstruksi · Est. 2015</p>
-        <h1 class="choice__headline" data-i18n="choice.headline">Design. Build. Deliver.</h1>
-        <p class="choice__sub" data-i18n="choice.sub">Kontraktor design-build terintegrasi penuh — IDR 300M+ proyek diserahkan. Pilih fokus Anda untuk melihat program yang sesuai.</p>
-      </header>
+  <!-- Content -->
+  <div class="hero-content">
 
-      <div class="choice__grid">
+    <!-- Top: headline + sub -->
+    <div class="hero-top">
+      <div>
+        <div class="eyebrow" data-i18n="hero.eyebrow">PT. Indobangun Berjaya Konstruksi · Est. 2015</div>
+        <h1 class="headline">
+          <span data-i18n-html="hero.line">Design. Build. <span class="accent">Deliver.</span></span>
+        </h1>
+      </div>
+      <div class="sub-block">
+        <p class="subheadline" data-i18n="hero.sub">
+          Kontraktor design-build terintegrasi penuh — 20+ proyek terselesaikan. Pilih fokus Anda untuk melihat program yang sesuai.
+        </p>
+        <div class="tags" data-i18n-html="hero.tags">Jakarta<span class="dot">·</span>Jawa<span class="dot">·</span>Nasional<span class="dot">·</span>Struktur<span class="dot">·</span>Arsitektur<span class="dot">·</span>MEP Lengkap<span class="dot">·</span>Bangunan Cerdas</div>
+      </div>
+    </div>
 
-        <a href="residential.html" class="choice-card choice-card--residential">
-          <div class="choice-card__bg" aria-hidden="true">
-            <img src="images/projects/lotus-featured.jpg" alt="" loading="eager">
-          </div>
-          <div class="choice-card__content">
-            <p class="choice-card__eyebrow" data-i18n="choice.res_eyebrow">Residensial Mewah</p>
-            <h2 class="choice-card__title" data-i18n="choice.res_title">Residensial</h2>
-            <p class="choice-card__text" data-i18n="choice.res_text">Sistem Design-Build — struktur, arsitektur &amp; interior, MEP lengkap, dan pengadaan material. Bermitra eksklusif dengan Beta Design Studio.</p>
-            <ul class="choice-card__tags" aria-label="Highlights">
-              <li data-i18n="choice.res_tag1">Rumah Lotus · PIK2</li>
-              <li data-i18n="choice.res_tag2">Zero Paint · Zero Wood</li>
-              <li data-i18n="choice.res_tag3">Smart Home &amp; Solar</li>
-            </ul>
-            <span class="choice-card__cta" data-i18n="choice.res_cta">Lihat Residensial →</span>
-          </div>
-        </a>
+    <!-- Bottom: cards + stats -->
+    <div class="hero-bottom">
 
-        <a href="commercial.html" class="choice-card choice-card--commercial">
-          <div class="choice-card__bg" aria-hidden="true">
-            <img src="images/commercial/hilton-bandung.jpg" alt="" loading="eager">
-          </div>
-          <div class="choice-card__content">
-            <p class="choice-card__eyebrow" data-i18n="choice.com_eyebrow">Komersial · Industri · Perhotelan</p>
-            <h2 class="choice-card__title" data-i18n="choice.com_title">Komersial</h2>
-            <p class="choice-card__text" data-i18n="choice.com_text">Industri, pusat data, rumah sakit, perhotelan, dan perkantoran. Spesialis MEP dengan kapabilitas pengerjaan penuh — terbukti di Hilton, BSI, Subang, dan Hyperscale DC.</p>
-            <ul class="choice-card__tags" aria-label="Highlights">
-              <li data-i18n="choice.com_tag1">Hilton Bandung · IDR 43,3M</li>
-              <li data-i18n="choice.com_tag2">Subang Factory · IDR 100M</li>
-              <li data-i18n="choice.com_tag3">Hyperscale Data Center</li>
-            </ul>
-            <span class="choice-card__cta" data-i18n="choice.com_cta">Lihat Komersial →</span>
-          </div>
-        </a>
+      <div class="cards">
+        <article class="card" onclick="location.href='residential.html'">
+          <div class="card-eyebrow" data-i18n="res.eyebrow">Residensial Mewah</div>
+          <h3 class="card-title" data-i18n="res.title">Residensial</h3>
+          <p class="card-body" data-i18n="res.body">Sistem Design-Build — struktur, arsitektur &amp; interior, MEP lengkap, dan pengadaan material. Bermitra eksklusif dengan Beta Design Studio.</p>
+          <a class="card-cta" href="residential.html" data-i18n="res.cta">Lihat Residensial</a>
+        </article>
 
+        <article class="card" onclick="location.href='commercial.html'">
+          <div class="card-eyebrow" data-i18n="com.eyebrow">Komersial · Industri · Perhotelan</div>
+          <h3 class="card-title" data-i18n="com.title">Komersial</h3>
+          <p class="card-body" data-i18n="com.body">Industri, pusat data, rumah sakit, perhotelan, dan perkantoran. Spesialis MEP dengan kapabilitas pengerjaan penuh — terbukti di Hilton, BSI, Subang, dan Hyperscale DC.</p>
+          <a class="card-cta" href="commercial.html" data-i18n="com.cta">Lihat Komersial</a>
+        </article>
       </div>
 
-      <footer class="choice__footer">
-        <div class="choice__footer-stats">
-          <div class="choice__stat">
-            <span class="choice__stat-value">IDR 300M+</span>
-            <span class="choice__stat-label" data-i18n="choice.stat1">Nilai Proyek Terserah</span>
-          </div>
-          <div class="choice__stat">
-            <span class="choice__stat-value">20+</span>
-            <span class="choice__stat-label" data-i18n="choice.stat2">Proyek Terselesaikan</span>
-          </div>
-          <div class="choice__stat">
-            <span class="choice__stat-value">10</span>
-            <span class="choice__stat-label" data-i18n="choice.stat3">Tahun Pengalaman</span>
-          </div>
-          <div class="choice__stat">
-            <span class="choice__stat-value">255</span>
-            <span class="choice__stat-label" data-i18n="choice.stat4">Anggota Tim</span>
-          </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num">20+</div>
+          <div class="stat-label" data-i18n="stat.projects">PROYEK TERSELESAIKAN</div>
         </div>
-        <p class="choice__footer-tag" data-i18n="choice.tag">Jakarta · Jawa · Nasional &nbsp;·&nbsp; Structure · Architecture · Full MEP · Smart Buildings</p>
-      </footer>
-    </div>
-  </section>
+        <div class="stat">
+          <div class="stat-num">10</div>
+          <div class="stat-label" data-i18n="stat.years">TAHUN PENGALAMAN</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">255</div>
+          <div class="stat-label" data-i18n="stat.team">ANGGOTA TIM</div>
+        </div>
+      </div>
 
-  <script src="js/i18n.js"></script>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="dots" role="tablist" aria-label="Hero slides">
+    <button class="dot-pill active" aria-label="Slide 1" data-idx="0"></button>
+    <button class="dot-pill" aria-label="Slide 2" data-idx="1"></button>
+    <button class="dot-pill" aria-label="Slide 3" data-idx="2"></button>
+    <button class="dot-pill" aria-label="Slide 4" data-idx="3"></button>
+  </div>
+</section>
+
+<script>
+  // i18n
+  (function() {
+    const I18N = {
+      id: {
+        'nav.residential': 'Residensial',
+        'nav.residentialSub': 'Hunian mewah · Design-Build',
+        'nav.commercial':  'Komersial',
+        'nav.commercialSub': 'Industri · Hospitality · MEP',
+        'nav.services':    'Layanan',
+        'nav.projects':    'Proyek',
+        'nav.about':       'Tentang',
+        'nav.contact':     'Kontak',
+        'nav.openMenu':    'Buka menu',
+        'nav.closeMenu':   'Tutup menu',
+        'hero.eyebrow':    'PT. Indobangun Berjaya Konstruksi · Est. 2015',
+        'hero.line':       'Design. Build. <span class="accent">Deliver.</span>',
+        'hero.sub':        'Kontraktor design-build terintegrasi penuh — 20+ proyek terselesaikan. Pilih fokus Anda untuk melihat program yang sesuai.',
+        'hero.tags':       'Jakarta<span class="dot">·</span>Jawa<span class="dot">·</span>Nasional<span class="dot">·</span>Struktur<span class="dot">·</span>Arsitektur<span class="dot">·</span>MEP Lengkap<span class="dot">·</span>Bangunan Cerdas',
+        'res.eyebrow':     'Residensial Mewah',
+        'res.title':       'Residensial',
+        'res.body':        'Sistem Design-Build — struktur, arsitektur & interior, MEP lengkap, dan pengadaan material. Bermitra eksklusif dengan Beta Design Studio.',
+        'res.cta':         'Lihat Residensial',
+        'com.eyebrow':     'Komersial · Industri · Perhotelan',
+        'com.title':       'Komersial',
+        'com.body':        'Industri, pusat data, rumah sakit, perhotelan, dan perkantoran. Spesialis MEP dengan kapabilitas pengerjaan penuh — terbukti di Hilton, BSI, Subang, dan Hyperscale DC.',
+        'com.cta':         'Lihat Komersial',
+        'stat.value':      'NILAI PROYEK DISERAHKAN',
+        'stat.projects':   'PROYEK TERSELESAIKAN',
+        'stat.years':      'TAHUN PENGALAMAN',
+        'stat.team':       'ANGGOTA TIM',
+        'doc.title':       'IBK — Design. Build. Deliver.'
+      },
+      en: {
+        'nav.residential': 'Residential',
+        'nav.residentialSub': 'Luxury homes · Design-Build',
+        'nav.commercial':  'Commercial',
+        'nav.commercialSub': 'Industrial · Hospitality · MEP',
+        'nav.services':    'Services',
+        'nav.projects':    'Projects',
+        'nav.about':       'About',
+        'nav.contact':     'Contact',
+        'nav.openMenu':    'Open menu',
+        'nav.closeMenu':   'Close menu',
+        'hero.eyebrow':    'PT. Indobangun Berjaya Konstruksi · Est. 2015',
+        'hero.line':       'Design. Build. <span class="accent">Deliver.</span>',
+        'hero.sub':        'A fully integrated design-build contractor — 20+ projects completed. Pick your focus to see the right program.',
+        'hero.tags':       'Jakarta<span class="dot">·</span>Java<span class="dot">·</span>Nationwide<span class="dot">·</span>Structural<span class="dot">·</span>Architecture<span class="dot">·</span>Full MEP<span class="dot">·</span>Smart Buildings',
+        'res.eyebrow':     'Luxury Residential',
+        'res.title':       'Residential',
+        'res.body':        'Design-Build delivery — structure, architecture & interiors, complete MEP, and material procurement. Exclusive partnership with Beta Design Studio.',
+        'res.cta':         'View Residential',
+        'com.eyebrow':     'Commercial · Industrial · Hospitality',
+        'com.title':       'Commercial',
+        'com.body':        'Industrial, data centers, hospitals, hospitality, and offices. MEP specialists with full execution capability — proven at Hilton, BSI, Subang, and Hyperscale DC.',
+        'com.cta':         'View Commercial',
+        'stat.value':      'PROJECT VALUE DELIVERED',
+        'stat.projects':   'PROJECTS COMPLETED',
+        'stat.years':      'YEARS OF EXPERIENCE',
+        'stat.team':       'TEAM MEMBERS',
+        'doc.title':       'IBK — Design. Build. Deliver.'
+      }
+    };
+
+    const STORAGE_KEY = 'ibk-lang';
+    function getInitialLang() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved && I18N[saved]) return saved;
+      } catch (_) {}
+      const browser = (navigator.language || 'id').toLowerCase();
+      return browser.startsWith('en') ? 'en' : 'id';
+    }
+
+    function applyLang(lang) {
+      const dict = I18N[lang] || I18N.id;
+      document.documentElement.lang = lang;
+      document.title = dict['doc.title'];
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (dict[k] != null) {
+          const arrow = el.querySelector('.arrow');
+          if (arrow) {
+            el.textContent = dict[k] + ' ';
+            el.appendChild(arrow);
+          } else {
+            el.textContent = dict[k];
+          }
+        }
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const k = el.getAttribute('data-i18n-html');
+        if (dict[k] != null) el.innerHTML = dict[k];
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const k = el.getAttribute('data-i18n-aria');
+        if (dict[k] != null) el.setAttribute('aria-label', dict[k]);
+      });
+
+      document.querySelectorAll('.nav-lang button[data-lang]').forEach(b => {
+        const on = b.getAttribute('data-lang') === lang;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch (_) {}
+    }
+
+    document.querySelectorAll('.nav-lang button[data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
+    });
+
+    applyLang(getInitialLang());
+  })();
+</script>
+
+<script>
+  (function() {
+    const slider = document.getElementById('heroSlider');
+    const track = document.getElementById('heroTrack');
+    const slides = track.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.dot-pill');
+    const total = slides.length;
+
+    let index = 0;
+    let dragStartX = 0;
+    let dragDelta = 0;
+    let isDragging = false;
+    let pointerId = null;
+    let autoTimer = null;
+    const AUTO_MS = 5500;
+
+    function setIndex(i, animate) {
+      index = (i + total) % total;
+      track.classList.toggle('animating', animate !== false);
+      track.style.transform = `translate3d(${-index * 100}%, 0, 0)`;
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    }
+
+    function next() { setIndex(index + 1, true); }
+    function prev() { setIndex(index - 1, true); }
+
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(next, AUTO_MS);
+    }
+    function stopAuto() {
+      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    }
+    function bumpAuto() {
+      // Restart auto-advance after user interaction so we don't double-fire
+      startAuto();
+    }
+
+    // Pointer drag
+    slider.addEventListener('pointerdown', (e) => {
+      if (e.button !== undefined && e.button !== 0) return;
+      isDragging = true;
+      pointerId = e.pointerId;
+      dragStartX = e.clientX;
+      dragDelta = 0;
+      slider.classList.add('dragging');
+      track.classList.remove('animating');
+      stopAuto();
+      try { slider.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+
+    slider.addEventListener('pointermove', (e) => {
+      if (!isDragging || e.pointerId !== pointerId) return;
+      dragDelta = e.clientX - dragStartX;
+      const pct = (dragDelta / slider.clientWidth) * 100;
+      track.style.transform = `translate3d(calc(${-index * 100}% + ${pct}%), 0, 0)`;
+    });
+
+    function endDrag(e) {
+      if (!isDragging) return;
+      if (e && e.pointerId !== pointerId) return;
+      isDragging = false;
+      slider.classList.remove('dragging');
+      try { slider.releasePointerCapture(pointerId); } catch (_) {}
+      pointerId = null;
+      const threshold = Math.min(120, slider.clientWidth * 0.18);
+      if (dragDelta > threshold) setIndex(index - 1, true);
+      else if (dragDelta < -threshold) setIndex(index + 1, true);
+      else setIndex(index, true);
+      dragDelta = 0;
+      bumpAuto();
+    }
+    slider.addEventListener('pointerup', endDrag);
+    slider.addEventListener('pointercancel', endDrag);
+    slider.addEventListener('pointerleave', (e) => { if (isDragging) endDrag(e); });
+
+    // Drag images shouldn't ghost-drag
+    slider.addEventListener('dragstart', (e) => e.preventDefault());
+
+    // Dots
+    dots.forEach((d, di) => {
+      d.addEventListener('click', () => { setIndex(di, true); bumpAuto(); });
+    });
+
+    // Keyboard
+    slider.tabIndex = 0;
+    slider.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { prev(); bumpAuto(); }
+      else if (e.key === 'ArrowRight') { next(); bumpAuto(); }
+    });
+
+    // Pause auto when tab hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAuto(); else startAuto();
+    });
+
+    // Pause on hover (desktop only)
+    slider.addEventListener('mouseenter', stopAuto);
+    slider.addEventListener('mouseleave', startAuto);
+
+    setIndex(0, false);
+    startAuto();
+  })();
+</script>
+
 </body>
 </html>
