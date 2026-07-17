@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Elektrikal — IBK Residensial</title>
+<style>
+  :root{
+    --bg:#0a1832; --bg-2:#0d1e3b; --bg-3:#122448;
+    --fg:#ecead8; --fg-muted:rgba(236,234,216,0.65); --fg-faint:rgba(236,234,216,0.45);
+    --gold:#d4af6c; --gold-2:#c89b50;
+    --bad:#e07d6a;
+    --line:rgba(236,234,216,0.08); --line-strong:rgba(236,234,216,0.16);
+    --card-border:rgba(212,175,108,0.18); --card-border-strong:rgba(212,175,108,0.35);
+    --serif:"Cormorant Garamond","Times New Roman",serif;
+    --sans:"Manrope",system-ui,-apple-system,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ background:var(--bg); color:var(--fg); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  .container{ width:100%; max-width:1240px; margin:0 auto; padding:0 32px; }
+
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:60;
+    padding:18px 0; background:rgba(10,24,50,0.92);
+    box-shadow:0 1px 0 var(--line);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .brand{ display:flex; align-items:center; }
+  .brand-logo{ height:38px; width:auto; }
+  .back-link{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:11.5px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--fg-muted);
+    border:1px solid var(--line-strong);
+    padding:10px 18px; border-radius:999px;
+    transition:all .25s ease;
+  }
+  .back-link:hover{ color:var(--bg); background:var(--gold); border-color:var(--gold); }
+
+  /* Page hero with rendering image */
+  .page-hero{
+    position:relative;
+    min-height:540px;
+    display:flex; align-items:flex-end;
+    padding:140px 0 60px;
+    overflow:hidden;
+  }
+  .page-hero-bg{
+    position:absolute; inset:0;
+    background-size:cover; background-position:center;
+    z-index:0;
+  }
+  .page-hero-overlay{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(10,24,50,0.45) 0%, rgba(10,24,50,0.25) 30%, rgba(10,24,50,0.95) 100%),
+      linear-gradient(90deg, rgba(10,24,50,0.6) 0%, rgba(10,24,50,0.05) 60%);
+    z-index:1;
+  }
+  .page-hero .container{ position:relative; z-index:2; width:100%; }
+  .page-num{
+    font-family:var(--mono);
+    font-size:12px; letter-spacing:0.28em; text-transform:uppercase;
+    color:var(--gold); margin:0 0 22px;
+    display:inline-flex; align-items:center; gap:14px;
+  }
+  .page-num::before{ content:""; width:36px; height:1px; background:var(--gold); }
+  .page-title{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(48px, 7vw, 92px); line-height:1.02;
+    letter-spacing:-0.01em; margin:0 0 24px; color:#f4f1e1; max-width:14ch;
+    text-shadow:0 2px 30px rgba(0,0,0,0.45);
+  }
+  .page-lead{
+    font-size:16px; line-height:1.7; color:rgba(236,234,216,0.85);
+    margin:0; max-width:680px;
+  }
+
+  /* Comparison section */
+  .compare{ padding:100px 0; }
+  .compare-head{ max-width:760px; margin:0 0 56px; }
+  .compare-head .eyebrow{
+    font-size:11.5px; font-weight:600; letter-spacing:0.32em; color:var(--gold);
+    text-transform:uppercase; margin:0 0 18px;
+  }
+  .compare-head h2{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(30px, 4vw, 52px); line-height:1.08;
+    letter-spacing:-0.01em; margin:0 0 18px; color:#f4f1e1;
+  }
+  .compare-head p{ font-size:15px; line-height:1.7; color:var(--fg-muted); margin:0; max-width:580px; }
+
+  .compare-item{
+    background:rgba(255,255,255,0.025);
+    border:1px solid var(--card-border);
+    border-radius:22px;
+    padding:36px;
+    margin-bottom:28px;
+  }
+  .compare-item h3{
+    font-family:var(--sans); font-weight:700; font-size:20px;
+    margin:0 0 8px; color:#f4f1e1; letter-spacing:-0.005em;
+  }
+  .compare-item .ci-desc{
+    font-size:14px; line-height:1.65; color:var(--fg-muted); margin:0 0 28px; max-width:760px;
+  }
+  .compare-pair{
+    display:grid; grid-template-columns:1fr 1fr; gap:18px;
+  }
+  .compare-side{
+    position:relative;
+    border-radius:14px;
+    padding:24px 24px 28px;
+    overflow:hidden;
+    min-height:280px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .compare-side.bad{
+    background:linear-gradient(180deg, rgba(224,125,106,0.08), rgba(224,125,106,0.02));
+    border:1px solid rgba(224,125,106,0.28);
+  }
+  .compare-side.good{
+    background:linear-gradient(180deg, rgba(212,175,108,0.10), rgba(212,175,108,0.02));
+    border:1px solid var(--card-border-strong);
+  }
+  .compare-side .side-label{
+    font-family:var(--mono);
+    font-size:10.5px; letter-spacing:0.22em; text-transform:uppercase;
+    font-weight:600;
+    display:inline-flex; align-items:center; gap:8px;
+    margin-bottom:18px;
+  }
+  .compare-side .side-label .pill{
+    display:inline-block; padding:4px 10px; border-radius:999px;
+  }
+  .compare-side.bad .side-label .pill{ background:rgba(224,125,106,0.18); color:#f3a995; }
+  .compare-side.good .side-label .pill{ background:rgba(212,175,108,0.22); color:var(--gold); }
+  .compare-side .viz{
+    flex:1; min-height:160px;
+    display:flex; align-items:center; justify-content:center;
+    margin:8px 0 18px;
+    position:relative;
+  }
+  .compare-side .note{
+    font-size:13px; line-height:1.55; color:var(--fg-muted); margin:0;
+  }
+  .compare-side.bad .note strong{ color:#f3a995; }
+  .compare-side.good .note strong{ color:var(--gold); }
+
+  /* Generic viz helpers */
+  .viz svg{ width:100%; height:auto; max-height:180px; }
+
+  /* ---- Animations ---- */
+  @keyframes shake{
+    0%,100%{ transform:translate(0,0) rotate(0); }
+    20%{ transform:translate(-2px,-1px) rotate(-0.6deg); }
+    40%{ transform:translate(2px,1px) rotate(0.6deg); }
+    60%{ transform:translate(-1.5px,1px) rotate(-0.4deg); }
+    80%{ transform:translate(1.5px,-1px) rotate(0.4deg); }
+  }
+  @keyframes drip{
+    0%{ transform:translateY(-6px); opacity:0; }
+    20%{ opacity:1; }
+    100%{ transform:translateY(40px); opacity:0; }
+  }
+  @keyframes crack-grow{
+    0%{ stroke-dashoffset:140; }
+    40%{ stroke-dashoffset:0; }
+    60%{ stroke-dashoffset:0; }
+    100%{ stroke-dashoffset:140; }
+  }
+  @keyframes tilt-slow{
+    0%,30%{ transform:rotate(0); }
+    70%,100%{ transform:rotate(-2.2deg); }
+  }
+  @keyframes deflect{
+    0%,30%{ transform:translateY(0); }
+    70%,100%{ transform:translateY(14px); }
+  }
+  @keyframes peel{
+    0%,30%{ transform:translateY(0) rotate(0); opacity:1; }
+    70%,100%{ transform:translateY(40px) rotate(10deg); opacity:0; }
+  }
+  @keyframes flicker{
+    0%,60%,80%,100%{ opacity:1; }
+    65%{ opacity:0.25; }
+    72%{ opacity:0.6; }
+    78%{ opacity:0.3; }
+  }
+  @keyframes pulse-glow{
+    0%,100%{ filter:drop-shadow(0 0 6px rgba(212,175,108,0.5)); }
+    50%{ filter:drop-shadow(0 0 14px rgba(212,175,108,0.9)); }
+  }
+  @keyframes flow-arrow{
+    0%{ transform:translateX(-30px); opacity:0; }
+    20%{ opacity:1; }
+    80%{ opacity:1; }
+    100%{ transform:translateX(40px); opacity:0; }
+  }
+  @keyframes temp-bounce{
+    0%,100%{ transform:translateY(0); }
+    25%{ transform:translateY(-22px); }
+    50%{ transform:translateY(0); }
+    75%{ transform:translateY(18px); }
+  }
+  @keyframes scene-shift{
+    0%,25%{ filter:brightness(0.5) hue-rotate(0deg); }
+    35%,55%{ filter:brightness(1.0) hue-rotate(20deg); }
+    65%,85%{ filter:brightness(0.75) hue-rotate(-15deg); }
+    100%{ filter:brightness(0.5) hue-rotate(0deg); }
+  }
+  @keyframes spark{
+    0%,40%,60%,100%{ opacity:0; }
+    50%{ opacity:1; }
+  }
+  @keyframes hot-wave{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-4px); }
+  }
+  @keyframes slow-close{
+    0%,30%{ transform:rotate(20deg); }
+    100%{ transform:rotate(0deg); }
+  }
+  @keyframes slam{
+    0%,40%{ transform:rotate(35deg); }
+    50%{ transform:rotate(0deg); }
+    55%{ transform:rotate(-3deg); }
+    60%{ transform:rotate(1deg); }
+    65%,100%{ transform:rotate(0deg); }
+  }
+
+  .shake-anim{ animation:shake 1.6s ease-in-out infinite; transform-origin:center bottom; }
+  .crack-anim{ stroke-dasharray:140; animation:crack-grow 3.2s ease-in-out infinite; }
+  .tilt-anim{ transform-origin:bottom center; animation:tilt-slow 3.4s ease-in-out infinite alternate; }
+  .deflect-anim{ animation:deflect 3s ease-in-out infinite alternate; transform-origin:center; }
+  .peel-anim{ animation:peel 4s ease-in-out infinite; transform-origin:top center; }
+  .drip-anim{ animation:drip 1.8s ease-in infinite; }
+  .flicker-anim{ animation:flicker 2.4s ease-in-out infinite; }
+  .glow-anim{ animation:pulse-glow 2.6s ease-in-out infinite; }
+  .flow-anim{ animation:flow-arrow 2.4s ease-in-out infinite; }
+  .temp-anim{ animation:temp-bounce 2.8s ease-in-out infinite; }
+  .scene-anim{ animation:scene-shift 5s ease-in-out infinite; }
+  .spark-anim{ animation:spark 1.8s ease-in-out infinite; }
+  .hot-anim{ animation:hot-wave 1.6s ease-in-out infinite; }
+
+  /* CTA + Footer + Other scopes (shared) */
+  .cta-strip{
+    background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:60px 0;
+  }
+  .cta-inner{ display:grid; grid-template-columns:1.6fr auto; gap:36px; align-items:center; }
+  .cta-inner h2{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(26px, 3vw, 38px); line-height:1.15; margin:0; color:#f4f1e1;
+  }
+  .cta-inner h2 .accent{ color:var(--gold); }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 26px; border-radius:999px;
+    font-size:12px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
+    border:1px solid var(--gold); background:var(--gold); color:var(--bg);
+    transition:all .25s ease; white-space:nowrap;
+  }
+  .btn:hover{ background:var(--gold-2); border-color:var(--gold-2); }
+
+  footer{ padding:36px 0; border-top:1px solid var(--line); font-size:12.5px; color:var(--fg-faint); background:#050c1f; }
+  .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+
+  .other-scopes{ padding:60px 0 100px; }
+  .other-scopes h2{ font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(28px, 3.2vw, 40px); margin:0 0 32px; color:#f4f1e1; }
+  .other-list{ display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:12px; }
+  .other-list a{
+    display:flex; flex-direction:column; gap:8px;
+    padding:18px; border-radius:12px;
+    border:1px solid var(--card-border);
+    background:rgba(255,255,255,0.025);
+    transition:all .25s ease;
+  }
+  .other-list a:hover{ border-color:var(--card-border-strong); transform:translateY(-2px); background:rgba(255,255,255,0.045); }
+  .other-list a .o-num{ font-family:var(--mono); font-size:10px; letter-spacing:0.18em; color:var(--gold); }
+  .other-list a .o-name{ font-family:var(--sans); font-weight:600; font-size:14.5px; color:var(--fg); }
+  .other-list a.is-current{ background:var(--gold); border-color:var(--gold); }
+  .other-list a.is-current .o-num, .other-list a.is-current .o-name{ color:var(--bg); }
+
+  @media (max-width: 820px){
+    .compare-pair{ grid-template-columns:1fr; }
+    .other-list{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    .cta-inner{ grid-template-columns:1fr; }
+    .container{ padding:0 20px; }
+    .compare-item{ padding:24px; }
+    .page-hero{ min-height:420px; padding:120px 0 40px; }
+    .page-title{ font-size:clamp(36px, 9vw, 56px); }
+  }
+
+
+  .lang-toggle{ display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line-strong); border-radius:999px; padding:6px 4px; font-size:12px; font-weight:600; letter-spacing:0.08em; }
+  .lang-toggle button{ border:0; background:transparent; color:var(--fg-muted); padding:4px 10px; border-radius:999px; font-weight:600; font-size:11.5px; letter-spacing:0.1em; cursor:pointer; transition:all .2s ease; }
+  .lang-toggle button.is-active{ background:var(--gold); color:var(--bg); }
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  @media (max-width: 520px){ .lang-toggle button{ padding:3px 8px; font-size:11px; } .back-link{ display:none; } }
+
+  /* PROJECT ALBUM (image gallery) */
+  .album{ padding:80px 0 20px; }
+  .album-head{ max-width:760px; margin:0 0 56px; text-align:left; }
+  .album-head .eyebrow{
+    font-size:11.5px; font-weight:600; letter-spacing:0.32em; color:var(--gold);
+    text-transform:uppercase; margin:0 0 18px;
+  }
+  .album-head h2{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(30px,4vw,52px); line-height:1.08; letter-spacing:-0.01em;
+    margin:0 0 18px; color:#f4f1e1;
+  }
+  .album-head p{
+    font-size:15px; line-height:1.7; color:var(--fg-muted); margin:0; max-width:580px;
+  }
+  .album-row{ display:flex; align-items:center; gap:10px; height:420px; width:100%;
+    margin:0 auto; padding:0; }
+  .album-tile{ position:relative; flex-grow:1; width:14rem; height:100%;
+    border-radius:14px; overflow:hidden; transition:all .5s cubic-bezier(.4,0,.2,1); cursor:pointer; }
+  .album-tile:hover{ flex-grow:6; width:100%; }
+  .album-tile img{ width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+  @media (max-width:720px){
+    .album-row{ height:auto; flex-direction:column; gap:12px; }
+    .album-tile{ width:100%; height:200px; }
+    .album-tile:hover{ flex-grow:1; }
+  }
+
+
+  .viz.cmp-photo{ min-height:0 !important; padding:0; display:block; }
+  .viz.cmp-photo img{ width:100%; height:auto; display:block; border-radius:10px; }
+  .compare-side.good .viz.cmp-photo img{ box-shadow:inset 0 0 0 1px rgba(212,175,108,0.35); }
+  .compare-side.bad .viz.cmp-photo img{ box-shadow:inset 0 0 0 1px rgba(224,125,106,0.35); }
+</style>
+
+<style id="presisi-skin">
+  /* PRESISI re-theme: light beton chapters, ink hero/cta/footer, red annotation, brass action */
+  :root{
+    --bg:#EAE8E2; --bg-2:#13253E; --bg-3:#F7F6F2;
+    --fg:#0D1B2E; --fg-muted:rgba(13,27,46,0.68); --fg-faint:rgba(13,27,46,0.45);
+    --gold:#A8842C; --gold-2:#8F6F22;
+    --line:rgba(13,27,46,0.14); --line-strong:rgba(13,27,46,0.26);
+    --card-border:rgba(13,27,46,0.16); --card-border-strong:rgba(168,132,44,0.55);
+    --serif:"Archivo Var","Archivo",system-ui,sans-serif;
+    --sans:"Archivo Var","Archivo",system-ui,sans-serif;
+    --mono:"Plex Mono",ui-monospace,monospace;
+    --ink:#0D1B2E; --steel:#9DB0C7; --red:#D5372D; --brass-bright:#DCB25C;
+    --font-d:"Archivo Var","Archivo",system-ui,sans-serif;
+    --font-m:"Plex Mono",ui-monospace,monospace;
+    --wide:125%; --mid:112%; --max:1240px; --gut:clamp(20px,4vw,56px);
+    --line-inv:rgba(255,255,255,0.16);
+  }
+  body{ font-stretch:100%; }
+  :focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:2px; }
+
+  /* hero: ink with plot grid */
+  .page-hero-overlay{
+    background:
+      linear-gradient(180deg, rgba(13,27,46,0.5) 0%, rgba(13,27,46,0.28) 30%, rgba(13,27,46,0.95) 100%),
+      linear-gradient(90deg, rgba(13,27,46,0.68) 0%, rgba(13,27,46,0.08) 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 84px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 84px) !important;
+  }
+  .page-num{ font-family:var(--mono) !important; color:#D7DEE9 !important; letter-spacing:.2em !important; font-weight:400 !important; }
+  .page-num::before{ background:var(--red) !important; width:26px !important; height:1.5px !important; }
+  .page-title{
+    font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--wide);
+    font-weight:820 !important; letter-spacing:-0.017em !important; color:#fff !important;
+  }
+  .page-lead{ color:#C9D3E2 !important; }
+
+  /* headings on light chapters */
+  .compare-head h2, .album-head h2, .other-scopes h2{
+    font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--mid);
+    font-weight:760 !important; letter-spacing:-0.015em !important; color:var(--ink) !important;
+  }
+  .compare-item h3{ color:var(--ink) !important; font-stretch:var(--mid); }
+  .album-head .eyebrow, .compare-head .eyebrow{
+    font-family:var(--mono) !important; font-weight:400 !important; letter-spacing:.18em !important;
+    color:var(--ink) !important; opacity:.78; display:inline-flex; align-items:center; gap:12px;
+  }
+  .album-head .eyebrow::before, .compare-head .eyebrow::before{
+    content:""; width:26px; height:1.5px; background:var(--red);
+  }
+
+  /* drawing-set corners instead of soft radii */
+  .compare-item{ border-radius:4px !important; background:var(--bg-3) !important; }
+  .compare-side{ border-radius:3px !important; }
+  .compare-side.bad{
+    background:linear-gradient(180deg, rgba(213,55,45,0.07), rgba(213,55,45,0.02)) !important;
+    border:1px solid rgba(213,55,45,0.35) !important;
+  }
+  .compare-side.good{
+    background:linear-gradient(180deg, rgba(168,132,44,0.09), rgba(168,132,44,0.02)) !important;
+    border:1px solid rgba(168,132,44,0.5) !important;
+  }
+  .compare-side.bad .side-label .pill{ background:rgba(213,55,45,0.14) !important; color:#B02A20 !important; }
+  .compare-side.good .side-label .pill{ background:rgba(168,132,44,0.16) !important; color:#8F6F22 !important; }
+  .compare-side .side-label .pill{ border-radius:2px !important; }
+  .compare-side.bad .note strong{ color:#B02A20 !important; }
+  .compare-side.good .note strong{ color:#8F6F22 !important; }
+  .cmp-photo{ border-radius:3px; }
+
+  .album-tile{ border-radius:3px; overflow:hidden; }
+
+  /* CTA: ink chapter */
+  .cta-strip{ background:var(--ink) !important; border-color:var(--line-inv) !important; }
+  .cta-inner h2{
+    font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--mid);
+    font-weight:760 !important; color:#fff !important;
+  }
+  .cta-inner h2 .accent{ color:var(--brass-bright) !important; }
+  .btn{ border-radius:3px !important; font-family:var(--mono) !important; font-weight:500 !important;
+    letter-spacing:.14em !important; background:var(--brass-bright) !important; border-color:var(--brass-bright) !important; color:var(--ink) !important; }
+  .btn:hover{ background:#C9A045 !important; border-color:#C9A045 !important; }
+
+  /* other scopes as sheet cards */
+  .other-list a{ border-radius:3px !important; background:var(--bg-3) !important; }
+  .other-list a .o-num{ color:var(--red) !important; }
+  .other-list a.is-current{ background:var(--ink) !important; border-color:var(--ink) !important; }
+  .other-list a.is-current .o-num{ color:var(--brass-bright) !important; }
+  .other-list a.is-current .o-name{ color:#fff !important; }
+
+  footer{ background:var(--ink) !important; border-top:1px solid var(--line-inv) !important; color:var(--steel) !important; }
+  .footer-inner{ font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; }
+
+  .back-link{ border-radius:3px !important; font-family:var(--font-m) !important; font-weight:500 !important; }
+  @media (max-width:900px){ body{ padding-bottom:76px; } }
+</style>
+<meta name="description" content="Lingkup elektrikal IBK — kabel Kabelmetal & Supreme, panel Schneider dan Chint." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="IBK — Lingkup E-03" />
+<meta property="og:image" content="https://rad-centaur-4bf880.netlify.app/images/og-cover.jpg" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-var.woff2" crossorigin />
+<link rel="stylesheet" href="/assets/presisi.css" />
+</head>
+<body>
+
+<header class="p-nav">
+  <div class="p-nav-in">
+    <a href="../index.html" aria-label="IBK — Beranda"><img src="../images/brand-logo.webp" alt="IndoBangun Berjaya Konstruksi" style="height:30px;width:auto" /></a>
+    <nav class="p-links" aria-label="Utama">
+      <a href="../residential.html" data-i18n="pNavRes">Residensial</a>
+      <a href="../commercial.html" data-i18n="pNavCom">Komersial</a>
+      <a href="../proyek-selesai.html" data-i18n="pNavProyek">Proyek Selesai</a>
+      <a href="../index.html#kontak" data-i18n="pNavKontak">Kontak</a>
+    </nav>
+    <a class="back-link" href="../residential.html" style="margin-left:auto">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span data-i18n="navBack">Beranda</span>
+    </a>
+    <div class="p-lang" role="group" aria-label="Bahasa / Language">
+      <button type="button" data-lang="id" class="on">ID</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+    <button class="p-burger" aria-expanded="false" aria-controls="pmenu">MENU</button>
+  </div>
+</header>
+<nav class="p-menu" id="pmenu" aria-label="Menu seluler">
+  <a href="../residential.html" data-i18n="pNavRes">Residensial</a>
+  <a href="../commercial.html" data-i18n="pNavCom">Komersial</a>
+  <a href="../proyek-selesai.html" data-i18n="pNavProyek">Proyek Selesai</a>
+  <a href="../index.html#kontak" data-i18n="pNavKontak">Kontak</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('../images/header-elektrikal.webp')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container">
+    <p class="page-num">E-03 — <span data-i18n="scopeNumSuffix">Lingkup Pekerjaan</span></p>
+    <h1 class="page-title" data-i18n="title">Elektrikal</h1>
+    <p class="page-lead" data-i18n="lead">Kabel Kabelmetal, Supreme, Extrana, dan Jembo. Panel Schneider dan Chint. Sistem kelistrikan yang stabil, aman, dan siap untuk gaya hidup smart-home modern.</p>
+  </div>
+</section>
+
+
+<!-- PROJECT ALBUM -->
+<section class="section album" id="album">
+  <div class="container">
+    <div class="album-head">
+      <p class="eyebrow" data-i18n="albumEyebrow">Setiap Foto Menceritakan Hasil yang Berbicara Sendiri</p>
+      <h2 data-i18n="albumTitle">Jejak Karya yang Terbangun<br/>dengan Presisi</h2>
+      <p data-i18n="albumDesc">Setiap foto merekam proses, ketekunan, dan hasil yang menjadi kebanggaan kami. Lihat lebih dekat bagaimana IBK menghadirkan bangunan yang kokoh, estetis, dan dirancang untuk bertahan dalam jangka panjang.</p>
+    </div>
+    <div class="album-row">
+      <div class="album-tile"><img src="../images/album-elektrikal-1.webp" alt="album-1" loading="lazy" /></div>
+      <div class="album-tile"><img src="../images/album-elektrikal-2.webp" alt="album-2" loading="lazy" /></div>
+      <div class="album-tile"><img src="../images/album-elektrikal-3.webp" alt="album-3" loading="lazy" /></div>
+      <div class="album-tile"><img src="../images/album-elektrikal-4.webp" alt="album-4" loading="lazy" /></div>
+      <div class="album-tile"><img src="../images/album-elektrikal-5.webp" alt="album-5" loading="lazy" /></div>
+      <div class="album-tile"><img src="../images/album-elektrikal-6.webp" alt="album-6" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="container">
+    <div class="compare-head">
+      <p class="eyebrow" data-i18n="compareEyebrow">Perbandingan Visual</p>
+      <h2 data-i18n="compareTitle">Mengapa pilihan ini penting.</h2>
+      <p data-i18n="compareIntro">Kelistrikan yang dirancang sembarangan tidak hanya membuat tagihan lebih tinggi — ia mempersingkat usia perangkat elektronik dan menambah risiko kebakaran.</p>
+    </div>
+    <div class="compare-item">
+      <h3 data-i18n="item0_h">Stabilitas Tegangan</h3>
+      <p class="ci-desc" data-i18n="item0_d">Tegangan yang tidak stabil mengikis perangkat elektronik Anda — TV, server, peralatan dapur — perlahan tapi pasti.</p>
+      <div class="compare-pair">
+        <div class="compare-side bad">
+          <div>
+            <span class="side-label"><span class="pill" data-i18n="item0_badLabel">Panel Murah</span></span>
+            <div class="viz cmp-photo"><img src="../images/cmp-9.webp" alt="" loading="lazy" /></div>
+          </div>
+          <p class="note" data-i18n="item0_badNote">Tegangan naik-turun dan harmonics yang buruk <strong>memperpendek umur</strong> peralatan elektronik sensitif.</p>
+        </div>
+        <div class="compare-side good">
+          <div>
+            <span class="side-label"><span class="pill" data-i18n="item0_goodLabel">Schneider / Chint (IBK)</span></span>
+            <div class="viz cmp-photo"><img src="../images/cmp-10.webp" alt="" loading="lazy" /></div>
+          </div>
+          <p class="note" data-i18n="item0_goodNote">Panel premium + grounding &lt; 1 &Omega; = <strong>tegangan stabil</strong> dan proteksi maksimal untuk perangkat mahal Anda.</p>
+        </div>
+      </div>
+    </div>
+    <div class="compare-item">
+      <h3 data-i18n="item1_h">Kualitas Pencahayaan</h3>
+      <p class="ci-desc" data-i18n="item1_d">Lampu yang flicker bukan hanya tidak nyaman — ia tanda kabel atau driver yang tidak kompatibel.</p>
+      <div class="compare-pair">
+        <div class="compare-side bad">
+          <div>
+            <span class="side-label"><span class="pill" data-i18n="item1_badLabel">Kabel Generik</span></span>
+            <div class="viz cmp-photo"><img src="../images/cmp-11.webp" alt="" loading="lazy" /></div>
+          </div>
+          <p class="note" data-i18n="item1_badNote">Lampu <strong>berkedip</strong>, panas berlebih di sambungan, dan risiko kabel meleleh dalam beban tinggi.</p>
+        </div>
+        <div class="compare-side good">
+          <div>
+            <span class="side-label"><span class="pill" data-i18n="item1_goodLabel">Kabelmetal / Supreme (IBK)</span></span>
+            <div class="viz cmp-photo"><img src="../images/cmp-12.webp" alt="" loading="lazy" /></div>
+          </div>
+          <p class="note" data-i18n="item1_goodNote">Kabel SNI dengan ukuran tepat — <strong>cahaya stabil</strong>, tidak ada panas berlebih, umur instalasi 25+ tahun.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container cta-inner">
+    <h2 data-i18n="ctaTitle">Tertarik dengan lingkup <span class="accent">Struktur</span> untuk hunian Anda?<br/>Ceritakan proyeknya — kami yang urus sisanya.</h2>
+    <a class="btn" href="https://wa.me/6282110952505" target="_blank" data-i18n="ctaBtn">Hubungi Kami</a>
+  </div>
+</section>
+
+<section class="other-scopes">
+  <div class="container">
+    <h2 data-i18n="otherTitle">Lingkup lainnya</h2>
+    <div class="other-list">
+      <a href="struktur.html" class="">
+        <span class="o-num">S-01</span>
+        <span class="o-name" data-i18n="other0">Struktur</span>
+      </a>
+      <a href="arsitektur.html" class="">
+        <span class="o-num">A-02</span>
+        <span class="o-name" data-i18n="other1">Arsitektur</span>
+      </a>
+      <a href="elektrikal.html" class="is-current">
+        <span class="o-num">E-03</span>
+        <span class="o-name" data-i18n="other2">Elektrikal</span>
+      </a>
+      <a href="plumbing.html" class="">
+        <span class="o-num">P-04</span>
+        <span class="o-name" data-i18n="other3">Plumbing</span>
+      </a>
+      <a href="lighting-smart-home.html" class="">
+        <span class="o-num">L-05</span>
+        <span class="o-name" data-i18n="other4">Lighting & Smart Home</span>
+      </a>
+      <a href="hvac.html" class="">
+        <span class="o-num">M-06</span>
+        <span class="o-name" data-i18n="other5">HVAC</span>
+      </a>
+      <a href="interior-build.html" class="">
+        <span class="o-num">I-07</span>
+        <span class="o-name" data-i18n="other6">Interior Build</span>
+      </a>
+      <a href="furnitur.html" class="">
+        <span class="o-num">F-08</span>
+        <span class="o-name" data-i18n="other7">Furnitur</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 IBK — <span data-i18n="footerNote">Design-Build Residensial &amp; Komersial Jakarta.</span></span>
+    <a href="../residential.html" data-i18n="footerBack">← Kembali ke Beranda</a>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  id: {"navBack":"Beranda","albumEyebrow":"Setiap Foto Menceritakan Hasil yang Berbicara Sendiri","albumTitle":"Jejak Karya yang Terbangun<br/>dengan Presisi","albumDesc":"Setiap foto merekam proses, ketekunan, dan hasil yang menjadi kebanggaan kami. Lihat lebih dekat bagaimana IBK menghadirkan bangunan yang kokoh, estetis, dan dirancang untuk bertahan dalam jangka panjang.","scopeNumSuffix":"Lingkup Pekerjaan","title":"Elektrikal","lead":"Kabel Kabelmetal, Supreme, Extrana, dan Jembo. Panel Schneider dan Chint. Sistem kelistrikan yang stabil, aman, dan siap untuk gaya hidup smart-home modern.","compareEyebrow":"Perbandingan Visual","compareTitle":"Mengapa pilihan ini penting.","compareIntro":"Kelistrikan yang dirancang sembarangan tidak hanya membuat tagihan lebih tinggi — ia mempersingkat usia perangkat elektronik dan menambah risiko kebakaran.","ctaTitle":"Tertarik dengan lingkup <span class=\"accent\">Elektrikal</span> untuk hunian Anda?<br/>Ceritakan proyeknya — kami yang urus sisanya.","ctaBtn":"Hubungi Kami","otherTitle":"Lingkup lainnya","footerNote":"Design-Build Residensial &amp; Komersial Jakarta.","footerBack":"← Kembali ke Beranda","item0_h":"Stabilitas Tegangan","item0_d":"Tegangan yang tidak stabil mengikis perangkat elektronik Anda — TV, server, peralatan dapur — perlahan tapi pasti.","item0_badLabel":"Panel Murah","item0_badNote":"Tegangan naik-turun dan harmonics yang buruk <strong>memperpendek umur</strong> peralatan elektronik sensitif.","item0_goodLabel":"Schneider / Chint (IBK)","item0_goodNote":"Panel premium + grounding &lt; 1 &Omega; = <strong>tegangan stabil</strong> dan proteksi maksimal untuk perangkat mahal Anda.","item1_h":"Kualitas Pencahayaan","item1_d":"Lampu yang flicker bukan hanya tidak nyaman — ia tanda kabel atau driver yang tidak kompatibel.","item1_badLabel":"Kabel Generik","item1_badNote":"Lampu <strong>berkedip</strong>, panas berlebih di sambungan, dan risiko kabel meleleh dalam beban tinggi.","item1_goodLabel":"Kabelmetal / Supreme (IBK)","item1_goodNote":"Kabel SNI dengan ukuran tepat — <strong>cahaya stabil</strong>, tidak ada panas berlebih, umur instalasi 25+ tahun.","other0":"Struktur","other1":"Arsitektur","other2":"Elektrikal","other3":"Plumbing","other4":"Lighting & Smart Home","other5":"HVAC","other6":"Interior Build","other7":"Furnitur"},
+  en: {"navBack":"Home","albumEyebrow":"Project Album","albumTitle":"Our Latest Creations","albumDesc":"A visual collection of our most recent works — each piece crafted with intention, precision, and a consistent standard.","scopeNumSuffix":"Scope of Work","title":"Electrical","lead":"Cables from Kabelmetal, Supreme, Extrana, and Jembo. Schneider and Chint panels. A stable, safe electrical system ready for modern smart-home living.","compareEyebrow":"Visual Comparison","compareTitle":"Why this choice matters.","compareIntro":"Carelessly designed wiring doesn't just raise your bills — it shortens the life of your electronics and increases fire risk.","ctaTitle":"Interested in our <span class=\"accent\">Electrical</span> scope for your home?<br/>Tell us about the project — we will handle the rest.","ctaBtn":"Contact Us","otherTitle":"Other scopes","footerNote":"Design-Build Residential &amp; Commercial Jakarta.","footerBack":"← Back to Home","item0_h":"Voltage Stability","item0_d":"Unstable voltage erodes your electronics — TVs, servers, kitchen appliances — slowly but surely.","item0_badLabel":"Budget Panel","item0_badNote":"Voltage swings and poor harmonics <strong>shorten the lifespan</strong> of sensitive electronics.","item0_goodLabel":"Schneider / Chint (IBK)","item0_goodNote":"Premium panels + grounding &lt; 1 &Omega; = <strong>stable voltage</strong> and maximum protection for your expensive devices.","item1_h":"Lighting Quality","item1_d":"A flickering light isn't just uncomfortable — it's a sign of incompatible cabling or drivers.","item1_badLabel":"Generic Cable","item1_badNote":"Lights <strong>flicker</strong>, joints overheat, and there's a real risk of cable melting under load.","item1_goodLabel":"Kabelmetal / Supreme (IBK)","item1_goodNote":"SNI-certified cable, properly sized — <strong>steady light</strong>, no overheating, 25+ years of service.","other0":"Structure","other1":"Architecture","other2":"Electrical","other3":"Plumbing","other4":"Lighting & Smart Home","other5":"HVAC","other6":"Interior Build","other7":"Furniture"}
+};
+function setLang(lang){
+  if(!I18N[lang]) return;
+  document.documentElement.lang = lang;
+  const dict = I18N[lang];
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if(dict[key] != null) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll(".lang-toggle button").forEach(b => {
+    b.classList.toggle("is-active", b.dataset.lang === lang);
+  });
+  try { localStorage.setItem("ibk-lang", lang); } catch(e){}
+}
+document.querySelectorAll(".lang-toggle button").forEach(btn => {
+  btn.addEventListener("click", () => setLang(btn.dataset.lang));
+});
+const savedLang = (() => { try { return localStorage.getItem("ibk-lang"); } catch(e){ return null; } })();
+setLang(savedLang || "id");
+
+// Update back link based on origin (residensial / commercial)
+(function(){
+  try {
+    const origin = localStorage.getItem('ibk-scope-origin') || 'residensial';
+    const link = document.querySelector('.back-link');
+    if(link){
+      link.href = origin === 'commercial' ? '../commercial.html' : '../residential.html';
+    }
+  } catch(e) {}
+})();
+
+</script>
+
+<div class="p-wa-bar"><a class="p-btn" href="https://wa.me/6282110952505" data-i18n="pWaBar">Diskusi Proyek via WhatsApp</a></div>
+<script>
+Object.assign(I18N.id, {pNavRes:"Residensial", pNavCom:"Komersial", pNavProyek:"Proyek Selesai", pNavKontak:"Kontak", pWaBar:"Diskusi Proyek via WhatsApp"});
+Object.assign(I18N.en, {pNavRes:"Residential", pNavCom:"Commercial", pNavProyek:"Completed Projects", pNavKontak:"Contact", pWaBar:"Discuss a Project on WhatsApp"});
+try { setLang(localStorage.getItem('ibk-lang') || 'id'); } catch(e) {}
+</script>
+<script src="/assets/presisi.js" defer></script>
+</body>
+</html>

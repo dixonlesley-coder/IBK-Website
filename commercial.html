@@ -1,310 +1,510 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="IBK Komersial — kontraktor design-build untuk industri, perhotelan, rumah sakit, pusat data, dan perkantoran. IDR 300M+ proyek diserahkan.">
-  <title>IBK Komersial — Industri · Perhotelan · Pusat Data</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/pages.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Komersial — IBK | Design-Build Industri, Perhotelan &amp; Pusat Data</title>
+<meta name="description" content="IBK Komersial — kontraktor design-build untuk pabrik, hotel merek internasional, rumah sakit, dan pusat data. Struktur, arsitektur, dan MEP lengkap dalam satu kontrak." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="IBK Komersial — Rancang. Bangun. Serahkan." />
+<meta property="og:description" content="Industri, perhotelan, fasilitas kritis, dan pusat data — referensi terbukti dari Subang sampai Cikarang." />
+<meta property="og:image" content="https://rad-centaur-4bf880.netlify.app/images/og-cover.jpg" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-var.woff2" crossorigin />
+<link rel="preload" as="image" href="images/hero-com-1.webp" fetchpriority="high" />
+<link rel="stylesheet" href="/assets/presisi.css" />
+<style>
+.hero{min-height:92svh}
+.hero .p-hero-bg img{position:absolute;inset:0;opacity:0;animation:heroFade 21s infinite}
+.hero .p-hero-bg img:nth-child(1){animation-delay:0s}
+.hero .p-hero-bg img:nth-child(2){animation-delay:7s}
+.hero .p-hero-bg img:nth-child(3){animation-delay:14s}
+@keyframes heroFade{0%{opacity:0}5%{opacity:1}33%{opacity:1}43%{opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.hero .p-hero-bg img:first-child{opacity:1}}
+
+.seks{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sek{background:var(--ink-2);border:1px solid var(--line-inv);border-radius:4px;padding:28px 26px;position:relative}
+.sek::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--brass-bright);border-radius:4px 4px 0 0}
+.sek .tag{font-family:var(--font-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-bright);display:block;margin-bottom:14px}
+.sek h3{font-stretch:var(--mid);font-weight:740;font-size:21px;color:#fff;line-height:1.2;margin-bottom:10px}
+.sek p{font-size:14.5px;line-height:1.66;color:var(--steel)}
+.sek ul{list-style:none;margin:16px 0 0;padding:0}
+.sek li{position:relative;padding-left:18px;font-size:13.8px;line-height:1.6;color:#C9D3E2;margin:7px 0}
+.sek li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:1.5px;background:var(--red)}
+.sek .ref{margin-top:18px;padding-top:14px;border-top:1px solid var(--line-inv);font-family:var(--font-m);font-size:11px;letter-spacing:.06em;line-height:1.8;color:#DDE4EE}
+.sek .ref span{color:#647899}
+
+.form-note{font-family:var(--font-m);font-size:10.5px;letter-spacing:.1em;opacity:.6;margin-top:14px}
+.cta-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.cta-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.cta-side{border:1px solid var(--line-inv);border-radius:4px;padding:26px}
+.cta-side .k{font-family:var(--font-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-bright);display:block;margin-bottom:14px}
+.cta-side .row{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line-inv);font-family:var(--font-m);font-size:12px;color:#DDE4EE}
+.cta-side .row span{color:#647899}
+.cta-side .row:last-child{border-bottom:0}
+@media (max-width:900px){.seks{grid-template-columns:1fr}.cta-grid{grid-template-columns:1fr}}
+</style>
 </head>
-<body>
+<body class="presisi">
 
-  <!-- NAV -->
-  <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
-    <div class="nav__container">
-      <a href="index.html" class="nav__logo" aria-label="IBK Home">
-    <img src="images/brand/icon-home.png" alt="IBK Logo">
-  </a>
-      <div class="nav__links" id="nav-links">
-        <a href="#stats"      class="nav__link" data-i18n="nav.about">Tentang Kami</a>
-        <a href="#capabilities" class="nav__link" data-i18n="nav.capabilities">Kemampuan</a>
-        <a href="#sectors"    class="nav__link" data-i18n="nav.sectors">Sektor</a>
-        <a href="#portfolio"  class="nav__link" data-i18n="nav.portfolio">Portofolio</a>
-        <a href="#contact"    class="nav__link" data-i18n="nav.contact">Kontak</a>
-        <a href="residential.html" class="nav__link nav__link--alt" data-i18n="nav.residential">Residensial</a>
-      </div>
-      <div class="nav__actions">
-        <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language / Ganti bahasa">
-          <span class="lang-toggle__option active" id="lang-id">ID</span>
-          <span class="lang-toggle__divider">/</span>
-          <span class="lang-toggle__option" id="lang-en">EN</span>
-        </button>
-        <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+<header class="p-nav">
+  <div class="p-nav-in">
+    <a href="index.html" aria-label="IBK — Beranda"><img src="images/brand-logo.webp" alt="IndoBangun Berjaya Konstruksi" /></a>
+    <nav class="p-links" aria-label="Utama">
+      <a href="residential.html" data-i18n="navResidential">Residensial</a>
+      <a href="commercial.html" aria-current="page" data-i18n="pNavCom">Komersial</a>
+      <a href="proyek-selesai.html" data-i18n="navDone">Proyek Selesai</a>
+      <a href="#sektor" data-i18n="navSektor">Sektor</a>
+      <a href="#contact" data-i18n="pNavKontak">Kontak</a>
+    </nav>
+    <div class="p-lang" role="group" aria-label="Bahasa / Language">
+      <button type="button" data-lang="id" class="on">ID</button>
+      <button type="button" data-lang="en">EN</button>
     </div>
-  </nav>
+    <a class="p-btn brass" href="https://wa.me/6282110952505" style="margin-left:14px">WhatsApp</a>
+    <button class="p-burger" aria-expanded="false" aria-controls="pmenu">MENU</button>
+  </div>
+</header>
+<nav class="p-menu" id="pmenu" aria-label="Menu seluler">
+  <a href="residential.html" data-i18n="navResidential">Residensial</a>
+  <a href="commercial.html" data-i18n="pNavCom">Komersial</a>
+  <a href="proyek-selesai.html" data-i18n="navDone">Proyek Selesai</a>
+  <a href="#sektor" data-i18n="navSektor">Sektor</a>
+  <a href="#contact" data-i18n="pNavKontak">Kontak</a>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero commercial-hero" id="hero" aria-label="Commercial Hero">
-    <div class="hero__bg" aria-hidden="true">
-      <img src="images/commercial/commercial-hero.jpg" alt="" class="hero__bg-img" loading="eager">
+<section class="p-hero hero on-ink" id="top">
+  <div class="p-hero-bg" aria-hidden="true">
+    <img src="images/hero-com-1.webp" alt="" fetchpriority="high" />
+    <img src="images/hero-com-2.webp" alt="" loading="lazy" />
+    <img src="images/hero-com-3.webp" alt="" loading="lazy" />
+  </div>
+  <div class="p-hero-in">
+    <p class="p-eyebrow" data-i18n="heroEyebrow">Komersial · Industri · Perhotelan · Pusat Data</p>
+    <h1 class="p-h1"><span data-i18n="heroTitle1">Rancang. Bangun.</span> <em data-i18n="heroTitle2">Serahkan.</em></h1>
+    <p class="p-hero-sub" data-i18n="heroDesc"></p>
+    <div class="p-dim" aria-hidden="true"><span class="rule"></span><span class="lbl">Subang · Bandung · Jakarta · Cikarang</span><span class="rule"></span></div>
+    <div class="p-hero-cta">
+      <a class="p-btn brass" href="https://wa.me/6282110952505" data-i18n="heroBtn2">Diskusi Proyek</a>
+      <a class="p-btn ghost" href="#portfolio" data-i18n="heroBtn1">Lihat Portofolio</a>
     </div>
-    <div class="container">
-      <div class="hero__content">
-        <p class="hero__eyebrow" data-i18n="com.hero.eyebrow">Komersial · Industri · Perhotelan · Pusat Data</p>
-        <h1 class="hero__headline" data-i18n="com.hero.headline">Rancang. Bangun.<br>Serahkan.</h1>
-        <p class="hero__sub" data-i18n="com.hero.sub">Dari subkontraktor MEP spesialis menjadi kontraktor design-build terintegrasi penuh. IBK menghadirkan struktur, arsitektur, dan MEP lengkap untuk fasilitas paling menuntut di Indonesia.</p>
-        <div class="hero__cta-group">
-          <a href="#portfolio" class="btn btn--primary" data-i18n="com.hero.cta1">Lihat Portofolio</a>
-          <a href="#contact"   class="btn btn--ghost"   data-i18n="com.hero.cta2">Diskusi Proyek</a>
+  </div>
+</section>
+
+<!-- SCOPE (light) -->
+<section class="chapter" id="about">
+  <div class="wrap">
+    <div class="chapter-head rev">
+      <div class="stack">
+        <p class="p-eyebrow" data-i18n="scopeEyebrow">Lingkup Pekerjaan</p>
+        <h2 class="p-h2"><span data-i18n="scopeTitle1">Pengerjaan Penuh dalam</span> <em style="font-style:normal;color:var(--brass)" data-i18n="scopeTitle2">Satu Kontrak</em><span data-i18n="scopeTitle3"> Yang Kami Kerjakan.</span></h2>
+        <p class="p-lede" data-i18n="scopeDesc"></p>
+      </div>
+      <span class="p-sheet">LBR S-01 — F-08</span>
+    </div>
+    <div class="p-scopes rev" id="scope">
+      <a class="p-scope" href="scope/struktur.html"><span class="code">S-01</span><span class="name" data-i18n="scope1Title">Struktur</span><span class="desc" data-i18n="scope1Desc"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/arsitektur.html"><span class="code">A-02</span><span class="name" data-i18n="scope2Title">Arsitektur</span><span class="desc" data-i18n="scope2Desc"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/elektrikal.html"><span class="code">E-03</span><span class="name" data-i18n="scope3Title">Elektrikal</span><span class="desc" data-i18n="scope3Desc"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/plumbing.html"><span class="code">P-04</span><span class="name" data-i18n="scope4Title">Plumbing</span><span class="desc" data-i18n="scope4Desc"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/lighting-smart-home.html"><span class="code">L-05</span><span class="name" data-i18n="scope5Title">Lighting &amp; Smart Home</span><span class="desc" data-i18n="scope5Desc"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/hvac.html"><span class="code">M-06</span><span class="name" data-i18n="scope6Title">HVAC</span><span class="desc" data-i18n="scope6Desc"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/interior-build.html"><span class="code">I-07</span><span class="name" data-i18n="scope7Title">Interior Build</span><span class="desc" data-i18n="scope7Desc"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="p-scope" href="scope/furnitur.html"><span class="code">F-08</span><span class="name" data-i18n="scope8Title">Furnitur</span><span class="desc" data-i18n="scope8Desc"></span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS (ink) -->
+<section class="chapter on-ink" id="sektor">
+  <div class="wrap">
+    <div class="chapter-head rev">
+      <div class="stack">
+        <p class="p-eyebrow" data-i18n="sektorEyebrow">Pasar Kami</p>
+        <h2 class="p-h2" data-i18n="sektorTitle">Sektor yang Kami Layani</h2>
+        <p class="p-lede" data-i18n="sektorDesc"></p>
+      </div>
+      <span class="p-sheet">LBR PS-01</span>
+    </div>
+    <div class="seks">
+      <article class="sek rev">
+        <span class="tag" data-i18n="sek1Tag">Industri</span>
+        <h3 data-i18n="sek1Title">Pabrik, Gudang &amp; Manufaktur</h3>
+        <p data-i18n="sek1Desc"></p>
+        <ul><li data-i18n="sek1B1"></li><li data-i18n="sek1B2"></li><li data-i18n="sek1B3"></li></ul>
+        <div class="ref"><span data-i18n="sektorRefLabel">Referensi:</span> <b data-i18n="sek1RefName">Subang Prosperity Hat Factory</b><br/><span data-i18n="sek1RefDetail"></span></div>
+      </article>
+      <article class="sek rev">
+        <span class="tag" data-i18n="sek2Tag">Perhotelan</span>
+        <h3 data-i18n="sek2Title">Standar Merek Internasional</h3>
+        <p data-i18n="sek2Desc"></p>
+        <ul><li data-i18n="sek2B1"></li><li data-i18n="sek2B2"></li><li data-i18n="sek2B3"></li></ul>
+        <div class="ref"><span data-i18n="sektorRefLabel">Referensi:</span> <b data-i18n="sek2RefName">Hilton Bandung</b><br/><span data-i18n="sek2RefDetail"></span></div>
+      </article>
+      <article class="sek rev">
+        <span class="tag" data-i18n="sek3Tag">Komersial &amp; Kesehatan</span>
+        <h3 data-i18n="sek3Title">Kantor, Rumah Sakit &amp; Fasilitas Kritis</h3>
+        <p data-i18n="sek3Desc"></p>
+        <ul><li data-i18n="sek3B1"></li><li data-i18n="sek3B2"></li><li data-i18n="sek3B3"></li></ul>
+        <div class="ref"><span data-i18n="sektorRefLabel">Referensi:</span> <b data-i18n="sek3RefName">RS Rengasdengklok + RS Adhyaksa Banten</b><br/><span data-i18n="sek3RefDetail"></span></div>
+      </article>
+      <article class="sek rev">
+        <span class="tag" data-i18n="sek4Tag">Pusat Data</span>
+        <h3 data-i18n="sek4Title">Lingkungan Teknis Paling Menuntut</h3>
+        <p data-i18n="sek4Desc"></p>
+        <ul><li data-i18n="sek4B1"></li><li data-i18n="sek4B2"></li><li data-i18n="sek4B3"></li></ul>
+        <div class="ref"><span data-i18n="sektorRefLabel">Referensi:</span> <b data-i18n="sek4RefName">HDC Hyperscale Cikarang</b><br/><span data-i18n="sek4RefDetail"></span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HILTON REFERENCE BAND (light) -->
+<section class="chapter" id="referensi">
+  <div class="wrap">
+    <div class="p-band">
+      <div class="ph rev" style="border-color:var(--line)"><img src="images/port-hilton.webp" alt="Menara Hilton Bandung — proyek referensi perhotelan IBK" loading="lazy" /></div>
+      <div class="rev">
+        <p class="p-eyebrow"><span data-i18n="refEyebrow">Referensi Perhotelan</span>&nbsp;— LBR K-017</p>
+        <h2 class="p-h2" data-i18n="refName">Hilton Bandung</h2>
+        <p class="p-lede" style="margin-top:14px" data-i18n="refFoot"></p>
+        <div class="p-tblock" style="border-color:var(--line)">
+          <div style="border-color:var(--line)"><span class="k" style="color:#8A93A3" data-i18n="refKontrak">Nilai Kontrak</span><span class="v" style="color:var(--ink);font-family:var(--font-d);font-stretch:var(--mid);font-weight:760;font-size:19px">IDR 43,3 M</span></div>
+          <div style="border-color:var(--line)"><span class="k" style="color:#8A93A3" data-i18n="refPeriode">Periode</span><span class="v" style="color:var(--ink);font-family:var(--font-d);font-stretch:var(--mid);font-weight:760;font-size:19px">2025–2026</span></div>
+          <div><span class="k" style="color:#8A93A3" data-i18n="refLingkup">Ruang Lingkup</span><span class="v" style="color:var(--ink);font-family:var(--font-m);font-size:11px">FIRE · EL · HVAC</span></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- STATS -->
-  <section class="section com-stats" id="stats">
-    <div class="container">
-      <div class="section__header">
-        <p class="section__eyebrow" data-i18n="com.stats.eyebrow">Rekam Jejak</p>
-        <h2 class="section__title" data-i18n="com.stats.title">Angka yang Bicara</h2>
+<!-- PORTFOLIO (ink) -->
+<section class="chapter on-ink" id="portfolio">
+  <div class="wrap">
+    <div class="chapter-head rev">
+      <div class="stack">
+        <p class="p-eyebrow" data-i18n="portEyebrow">Portofolio</p>
+        <h2 class="p-h2" data-i18n="pPortTitle">Keahlian yang teruji melalui beragam proyek referensi.</h2>
+        <p class="p-lede" data-i18n="portDesc"></p>
       </div>
-      <div class="com-stats-grid">
-        <div class="com-stat">
-          <div class="com-stat__value" data-i18n="com.stats.s1_val">IDR 300M+</div>
-          <div class="com-stat__label" data-i18n="com.stats.s1_lbl">Nilai Proyek Diserahkan</div>
-        </div>
-        <div class="com-stat">
-          <div class="com-stat__value" data-i18n="com.stats.s2_val">20+</div>
-          <div class="com-stat__label" data-i18n="com.stats.s2_lbl">Proyek Terselesaikan</div>
-        </div>
-        <div class="com-stat">
-          <div class="com-stat__value" data-i18n="com.stats.s3_val">10</div>
-          <div class="com-stat__label" data-i18n="com.stats.s3_lbl">Tahun Pengalaman</div>
-        </div>
-        <div class="com-stat">
-          <div class="com-stat__value" data-i18n="com.stats.s4_val">255</div>
-          <div class="com-stat__label" data-i18n="com.stats.s4_lbl">Anggota Tim</div>
-        </div>
-      </div>
+      <span class="p-sheet">LBR P-01</span>
     </div>
-  </section>
-
-  <!-- CAPABILITIES -->
-  <section class="section capabilities" id="capabilities">
-    <div class="container">
-      <div class="section__header">
-        <p class="section__eyebrow" data-i18n="com.cap.eyebrow">Pengerjaan Penuh dalam Satu Kontrak</p>
-        <h2 class="section__title" data-i18n="com.cap.title">Kapabilitas Komersial</h2>
-        <p class="section__lead" data-i18n="com.cap.lead">Struktur, arsitektur, dan MEP lengkap — semuanya dikendalikan IBK. Tanpa subkontraktor pihak ketiga untuk sistem kritis.</p>
-      </div>
-      <div class="diff-grid">
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">01</div>
-          <h3 class="diff-card__title" data-i18n="com.cap.c1_title">Struktur</h3>
-          <p class="diff-card__text" data-i18n="com.cap.c1_text">Beton K-400, baja TS-420, dan sistem balok ganda untuk tanah pesisir Jakarta. Spesifikasi tinggi dari pondasi ke atas.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">02</div>
-          <h3 class="diff-card__title" data-i18n="com.cap.c2_title">Arsitektur</h3>
-          <p class="diff-card__text" data-i18n="com.cap.c2_text">Design-build terintegrasi penuh. Sistem ramah iklim — tanpa kayu, cat, atau bata merah.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">03</div>
-          <h3 class="diff-card__title" data-i18n="com.cap.c3_title">Elektrikal</h3>
-          <p class="diff-card__text" data-i18n="com.cap.c3_text">Kabel Kabelmetal, Supreme, Extrana, dan Jembo. Panel Schneider dan Chint. Dipilih untuk keandalan jangka panjang.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">04</div>
-          <h3 class="diff-card__title" data-i18n="com.cap.c4_title">Plumbing</h3>
-          <p class="diff-card__text" data-i18n="com.cap.c4_text">PPR Toro Italy untuk air bersih. Rucika PVC untuk drainase. Magnaplast akustik untuk limbah dapur.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">05</div>
-          <h3 class="diff-card__title" data-i18n="com.cap.c5_title">Sistem Pemadam Kebakaran</h3>
-          <p class="diff-card__text" data-i18n="com.cap.c5_text">Instalasi sprinkler dan pemadam lengkap. Terbukti di residensial, perhotelan, rumah sakit, pusat data, dan industri.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">06</div>
-          <h3 class="diff-card__title" data-i18n="com.cap.c6_title">HVAC</h3>
-          <p class="diff-card__text" data-i18n="com.cap.c6_text">Sistem VRV dan sentral untuk residensial, hotel, industri, dan pusat data.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">07</div>
-          <h3 class="diff-card__title" data-i18n="com.cap.c7_title">Interior Build</h3>
-          <p class="diff-card__text" data-i18n="com.cap.c7_text">Fit-out interior penuh — partisi, plafon, lantai, dan finishing. Terintegrasi dalam kontrak utama, tanpa subkontraktor pihak ketiga.</p>
-        </article>
-        <article class="diff-card">
-          <div class="diff-card__icon" aria-hidden="true">08</div>
-          <h3 class="diff-card__title" data-i18n="com.cap.c8_title">Furnitur</h3>
-          <p class="diff-card__text" data-i18n="com.cap.c8_text">Furnitur built-in dan custom — kitchen set, lemari, vanity. Diproduksi di workshop IBK sesuai detail arsitek.</p>
-        </article>
-      </div>
+    <div class="p-projs">
+      <a class="p-proj" href="proyek-selesai.html">
+        <div class="ph"><span class="st" data-i18n="pStProses">Dalam Proses</span><img src="images/port-subang.webp" alt="Subang Prosperity Hat Factory" loading="lazy" /></div>
+        <div class="body"><h3 data-i18n="sek1RefName">Subang Prosperity Hat Factory</h3><p class="sub" data-i18n="pSubangSub">Industri — struktur + MEP lengkap.</p></div>
+        <div class="p-tblock"><div><span class="k">No.</span><span class="v">K-020</span></div><div><span class="k" data-i18n="pTbLok">Lokasi</span><span class="v">Subang</span></div><div><span class="k" data-i18n="pTbNilai">Nilai</span><span class="v">IDR 100 M</span></div></div>
+      </a>
+      <a class="p-proj" href="proyek-selesai.html">
+        <div class="ph"><span class="st done" data-i18n="pStSelesai">Selesai</span><img src="images/port-kejagung.webp" alt="Gedung Kejaksaan Agung RI" loading="lazy" /></div>
+        <div class="body"><h3>Kejaksaan Agung RI</h3><p class="sub" data-i18n="pKejagungSub">Kantor pemerintah — bersama PT PP (Persero).</p></div>
+        <div class="p-tblock"><div><span class="k">No.</span><span class="v">K-011</span></div><div><span class="k" data-i18n="pTbLok">Lokasi</span><span class="v">Jakarta</span></div><div><span class="k" data-i18n="pTbKlien">Klien</span><span class="v">PT PP</span></div></div>
+      </a>
+      <a class="p-proj" href="proyek-selesai.html">
+        <div class="ph"><span class="st done" data-i18n="pStSelesai">Selesai</span><img src="images/port-hdc.webp" alt="HDC Hyperscale Data Center Cikarang" loading="lazy" /></div>
+        <div class="body"><h3>HDC Hyperscale DC</h3><p class="sub" data-i18n="pHdcSub">Pusat data — MEP kepadatan tinggi.</p></div>
+        <div class="p-tblock"><div><span class="k">No.</span><span class="v">K-014</span></div><div><span class="k" data-i18n="pTbLok">Lokasi</span><span class="v">Cikarang</span></div><div><span class="k" data-i18n="pTbNilai">Nilai</span><span class="v">IDR 40 M</span></div></div>
+      </a>
     </div>
-  </section>
+    <div class="rev" style="margin-top:26px"><a class="p-btn ghost" href="proyek-selesai.html" data-i18n="pProjMore">Lihat 19 proyek selesai →</a></div>
+  </div>
+</section>
 
-  <!-- SECTORS -->
-  <section class="section com-sectors" id="sectors">
-    <div class="container">
-      <div class="section__header">
-        <p class="section__eyebrow" data-i18n="com.sect.eyebrow">Pasar Kami</p>
-        <h2 class="section__title" data-i18n="com.sect.title">Sektor yang Kami Layani</h2>
-        <p class="section__lead" data-i18n="com.sect.lead">Empat pasar inti — masing-masing dengan referensi proyek yang telah diserahkan.</p>
-      </div>
-      <div class="sector-grid">
-
-        <article class="sector-card">
-          <p class="sector-card__eyebrow" data-i18n="com.sect.ind_eyebrow">Industri</p>
-          <h3 class="sector-card__title" data-i18n="com.sect.ind_title">Pabrik, Gudang &amp; Manufaktur</h3>
-          <p class="sector-card__text" data-i18n="com.sect.ind_text">Seiring investasi FDI masuk ke kawasan industri Indonesia (Subang, Karawang, Batang, Kendal), IBK menghadirkan pengerjaan penuh untuk pabrik dan gudang — kontrak langsung, tanpa perantara.</p>
-          <ul class="sector-card__list">
-            <li data-i18n="com.sect.ind_l1">Rangka RC, baja pre-engineered, pondasi berat</li>
-            <li data-i18n="com.sect.ind_l2">Plumbing, pemadam kebakaran, HVAC, elektrikal</li>
-            <li data-i18n="com.sect.ind_l3">Keandalan jadwal — menyesuaikan milestone operasional Anda</li>
-          </ul>
-          <p class="sector-card__ref" data-i18n="com.sect.ind_ref">Referensi: <strong>Subang Prosperity Hat Factory</strong> — IDR 100M, Struktur + MEP Lengkap, 2025–2026</p>
-        </article>
-
-        <article class="sector-card">
-          <p class="sector-card__eyebrow" data-i18n="com.sect.hosp_eyebrow">Perhotelan</p>
-          <h3 class="sector-card__title" data-i18n="com.sect.hosp_title">Standar Merek Internasional</h3>
-          <p class="sector-card__text" data-i18n="com.sect.hosp_text">Dari Hilton Bandung, IBK membuka akses ke jaringan hotel internasional dengan standar teknik dan keselamatan kebakaran kelas dunia — siap menerima proyek Marriott, IHG, dan Accor.</p>
-          <ul class="sector-card__list">
-            <li data-i18n="com.sect.hosp_l1">Sistem pemadam kebakaran sesuai standar merek</li>
-            <li data-i18n="com.sect.hosp_l2">Elektrikal &amp; HVAC berstandar hospitality</li>
-            <li data-i18n="com.sect.hosp_l3">Dokumentasi kepatuhan lengkap</li>
-          </ul>
-          <p class="sector-card__ref" data-i18n="com.sect.hosp_ref">Referensi: <strong>Hilton Bandung</strong> — IDR 43,3M, Fire Suppression + Elektrikal + HVAC, 2025–2026</p>
-        </article>
-
-        <article class="sector-card">
-          <p class="sector-card__eyebrow" data-i18n="com.sect.com_eyebrow">Komersial &amp; Kesehatan</p>
-          <h3 class="sector-card__title" data-i18n="com.sect.com_title">Kantor, Rumah Sakit &amp; Fasilitas Kritis</h3>
-          <p class="sector-card__text" data-i18n="com.sect.com_text">Dari BSI Tower Jakarta hingga dua proyek rumah sakit berturut-turut — disiplin teknik yang sama untuk fasilitas di mana keandalan sistem bukan sekadar harapan.</p>
-          <ul class="sector-card__list">
-            <li data-i18n="com.sect.com_l1">MEP rumah sakit — gas medis, air bersih, drainase, HVAC</li>
-            <li data-i18n="com.sect.com_l2">Kantor &amp; komersial — plumbing, fire, full-scope fit-out</li>
-            <li data-i18n="com.sect.com_l3">Kepatuhan regulasi penuh, tanpa celah dokumentasi</li>
-          </ul>
-          <p class="sector-card__ref" data-i18n="com.sect.com_ref">Referensi: <strong>RS Rengasdengklok + RS Adhyaksa Banten</strong> — Plumbing, Kebakaran, Elektrikal, 2023–2025</p>
-        </article>
-
-        <article class="sector-card">
-          <p class="sector-card__eyebrow" data-i18n="com.sect.dc_eyebrow">Pusat Data</p>
-          <h3 class="sector-card__title" data-i18n="com.sect.dc_title">Lingkungan Teknis Paling Menuntut</h3>
-          <p class="sector-card__text" data-i18n="com.sect.dc_text">Pengalaman di fasilitas hyperscale dan SCBD. MEP pusat data menuntut kepadatan daya tinggi, redundansi, dan jadwal yang tidak bisa digeser.</p>
-          <ul class="sector-card__list">
-            <li data-i18n="com.sect.dc_l1">Mekanikal — HVAC kepadatan tinggi, pipa pendingin, fire suppression</li>
-            <li data-i18n="com.sect.dc_l2">Instalasi lantai-raised dan distribusi listrik redundan</li>
-            <li data-i18n="com.sect.dc_l3">Komisioning sesuai milestone operasional klien</li>
-          </ul>
-          <p class="sector-card__ref" data-i18n="com.sect.dc_ref">Referensi: <strong>HDC Hyperscale Cikarang</strong> (IDR 40M) + <strong>SCBD Data Center</strong> (IDR 35,5M), 2021–2022</p>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FLAGSHIP HOSPITALITY REFERENCE -->
-  <section class="section com-flagship" id="flagship" aria-label="Flagship hospitality reference">
-    <div class="container">
-      <div class="flagship-grid">
-        <div class="flagship-media">
-          <img src="images/commercial/hilton-bandung.jpg" alt="Hilton Bandung" loading="lazy">
-          <p class="flagship-media__caption" data-i18n="com.flag.caption">Standar Merek Internasional · Bandung</p>
-        </div>
-        <div class="flagship-body">
-          <p class="section__eyebrow" data-i18n="com.flag.eyebrow">Referensi Perhotelan</p>
-          <h2 class="section__title" data-i18n="com.flag.title">Hilton Bandung</h2>
-          <dl class="flagship-dl">
-            <div><dt data-i18n="com.flag.l_value">Nilai Kontrak</dt><dd data-i18n="com.flag.v_value">IDR 43.300.000.000</dd></div>
-            <div><dt data-i18n="com.flag.l_scope">Ruang Lingkup</dt><dd data-i18n="com.flag.v_scope">Fire Suppression, Elektrikal, HVAC</dd></div>
-            <div><dt data-i18n="com.flag.l_owner">Pemilik</dt><dd data-i18n="com.flag.v_owner">PT. Layana Buana Hotelindo</dd></div>
-            <div><dt data-i18n="com.flag.l_period">Periode</dt><dd data-i18n="com.flag.v_period">2025 – 2026</dd></div>
-            <div><dt data-i18n="com.flag.l_brand">Merek</dt><dd data-i18n="com.flag.v_brand">Hilton Hotels &amp; Resorts</dd></div>
-          </dl>
-          <p class="flagship-significance" data-i18n="com.flag.significance">Proyek merek hotel internasional pertama IBK — membuktikan kapabilitas IBK memenuhi standar teknik dan keselamatan kebakaran kelas dunia. Membuka akses ke jaringan Marriott, IHG, dan Accor.</p>
+<!-- CTA -->
+<section class="chapter on-ink" id="contact" style="background:#0B1728">
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="rev">
+        <p class="p-eyebrow" data-i18n="pCtaEyebrow">Mulai — LBR K-01</p>
+        <h2 class="p-h2"><span data-i18n="ctaTitle1">Punya proyek komersial?</span> <em style="font-style:normal;color:var(--brass-bright)" data-i18n="ctaTitle2">Ceritakan ruangnya — kami yang urus sisanya.</em></h2>
+        <div class="cta-actions">
+          <a class="p-btn brass" href="https://wa.me/6282110952505" data-i18n="ctaBtn">Hubungi Tim Komersial</a>
+          <a class="p-btn ghost" href="IBK_Company_Profile_2026.pdf" download data-i18n="pCtaPdf">Unduh Company Profile (PDF)</a>
         </div>
       </div>
+      <aside class="cta-side rev">
+        <span class="k" data-i18n="pCtaSideK">Kontak Langsung</span>
+        <div class="row"><span>WhatsApp</span>+62 821 1095 2505</div>
+        <div class="row"><span>Email</span>dixon@ibkkonstruksi.com</div>
+        <div class="row"><span data-i18n="pCtaKantor">Kantor</span>Pluit, Jakarta Utara</div>
+      </aside>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ENGINEERING -->
-  <section class="section com-engineering" id="engineering">
-    <div class="container">
-      <div class="section__header">
-        <p class="section__eyebrow" data-i18n="com.eng.eyebrow">Filosofi Rekayasa</p>
-        <h2 class="section__title" data-i18n="com.eng.title">Dibangun untuk Iklim, Tanah &amp; Realitas Indonesia</h2>
-        <p class="section__lead" data-i18n="com.eng.lead">Setiap keputusan teknik dipilih untuk memangkas biaya perawatan sepanjang umur bangunan.</p>
-      </div>
-      <div class="eng-grid">
-        <article class="eng-card"><h3 class="eng-card__title" data-i18n="com.eng.e1_title">Sistem Celah Seismik</h3><p class="eng-card__text" data-i18n="com.eng.e1_text">Blok AAC dengan celah sengaja terhadap kolom &amp; balok — diisi backer rod + sealant.</p></article>
-        <article class="eng-card"><h3 class="eng-card__title" data-i18n="com.eng.e2_title">Bebas Cat</h3><p class="eng-card__text" data-i18n="com.eng.e2_text">Panel WPC dan keramik lembut menggantikan cat sepenuhnya.</p></article>
-        <article class="eng-card"><h3 class="eng-card__title" data-i18n="com.eng.e3_title">Bebas Kayu</h3><p class="eng-card__text" data-i18n="com.eng.e3_text">Setiap pintu, panel, lemari, dan plafon bebas kayu.</p></article>
-        <article class="eng-card"><h3 class="eng-card__title" data-i18n="com.eng.e4_title">Struktur Balok Ganda</h3><p class="eng-card__text" data-i18n="com.eng.e4_text">Mendistribusikan beban ke dua balok — mengendalikan penurunan diferensial.</p></article>
-        <article class="eng-card"><h3 class="eng-card__title" data-i18n="com.eng.e5_title">Waterproofing Tiga Lapis</h3><p class="eng-card__text" data-i18n="com.eng.e5_text">Membran perekat + lapisan PU + campuran beton integral.</p></article>
-        <article class="eng-card"><h3 class="eng-card__title" data-i18n="com.eng.e6_title">Struktur Minim Baja</h3><p class="eng-card__text" data-i18n="com.eng.e6_text">Beton RC &amp; sistem pasca-tarik menggantikan baja terbuka.</p></article>
-      </div>
+<footer class="p-foot">
+  <div class="p-foot-in">
+    <div class="brand">
+      <img src="images/brand-logo.webp" alt="IndoBangun Berjaya Konstruksi" />
+      <p data-i18n="footerNote">Design-build residensial &amp; komersial Jakarta.</p>
     </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section class="section com-portfolio" id="portfolio">
-    <div class="container">
-      <div class="section__header">
-        <p class="section__eyebrow" data-i18n="com.port.eyebrow">Portofolio</p>
-        <h2 class="section__title" data-i18n="com.port.title">IDR 300M+ dari 10 Proyek Referensi</h2>
-        <p class="section__lead" data-i18n="com.port.lead">Pilihan proyek komersial, industri, perhotelan, dan pusat data yang telah diserahkan.</p>
-      </div>
-      <div class="projects-grid" data-projects-grid data-track="commercial"></div>
+    <div>
+      <h4 data-i18n="pFootNav">Navigasi</h4>
+      <a href="index.html" data-i18n="pFootHome">Beranda</a>
+      <a href="residential.html" data-i18n="navResidential">Residensial</a>
+      <a href="commercial.html" data-i18n="pNavCom">Komersial</a>
+      <a href="proyek-selesai.html" data-i18n="navDone">Proyek Selesai</a>
     </div>
-  </section>
-
-  <!-- CONTACT / CTA -->
-  <section class="section com-cta" id="contact">
-    <div class="container">
-      <p class="section__eyebrow" data-i18n="com.cta.eyebrow">Siap Mulai</p>
-      <h2 class="section__title" data-i18n="com.cta.title">Mari Diskusikan Proyek Anda</h2>
-      <p class="section__lead" data-i18n="com.cta.sub">Kami menilai lokasi, menentukan ruang lingkup, dan menunjukkan secara konkret apa yang IBK hadirkan — termasuk penghematan sepanjang umur bangunan.</p>
-      <div class="com-cta__actions">
-        <a href="https://wa.me/6282110952505?text=Halo%20IBK%2C%20saya%20tertarik%20mendiskusikan%20proyek%20komersial."
-           class="btn btn--primary" target="_blank" rel="noopener noreferrer"
-           data-i18n="com.cta.primary">Diskusi via WhatsApp</a>
-        <a href="index.html" class="btn btn--ghost" data-i18n="com.cta.secondary">Kembali ke Beranda</a>
-      </div>
+    <div>
+      <h4 data-i18n="pFootScope">Lingkup</h4>
+      <a href="scope/struktur.html" data-i18n="scope1Title">Struktur</a>
+      <a href="scope/arsitektur.html" data-i18n="scope2Title">Arsitektur</a>
+      <a href="scope/elektrikal.html">MEP</a>
+      <a href="scope/interior-build.html" data-i18n="pFootInterior">Interior &amp; Furnitur</a>
     </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a href="index.html" class="nav__logo" aria-label="IBK Home">
-            <img src="../images/brand/indobangun-logo.png" alt="IBK Logo">
-          </a> <p class="footer__tagline" data-i18n="footer.tagline">Kontraktor design-build terintegrasi penuh di Jakarta.</p>
-        </div>
-        <nav class="footer__links" aria-label="Footer navigation">
-          <h5 class="footer__links-title" data-i18n="footer.nav_title">Navigasi</h5>
-          <a href="index.html"        data-i18n="nav.home">Beranda</a>
-          <a href="residential.html"  data-i18n="nav.residential">Residensial</a>
-          <a href="#sectors"          data-i18n="nav.sectors">Sektor</a>
-          <a href="#portfolio"        data-i18n="nav.portfolio">Portofolio</a>
-          <a href="#contact"          data-i18n="nav.contact">Kontak</a>
-        </nav>
-        <div class="footer__contact">
-          <h5 class="footer__links-title" data-i18n="footer.contact_title">Kontak</h5>
-          <a href="https://wa.me/6282110952505">+62 821 1095 2505</a>
-          <a href="mailto:dixon@ibkonstruksi.com">dixon@ibkonstruksi.com</a>
-          <span data-i18n="contact.address">Jakarta Selatan, DKI Jakarta</span>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p data-i18n="footer.copyright">© 2025 PT. Indobangun Berjaya Konstruksi. Seluruh hak cipta dilindungi.</p>
-      </div>
+    <div>
+      <h4 data-i18n="pFootKontak">Kontak</h4>
+      <p>+62 821 1095 2505<br/>dixon@ibkkonstruksi.com<br/><span data-i18n="pFootAlamat">Pluit, Jakarta Utara · Kantor 6 Lantai</span></p>
     </div>
-  </footer>
+  </div>
+  <div class="p-legal"><span data-i18n="pFootLegal">© 2026 PT. Indobangun Berjaya Konstruksi</span><span>Skala 1 : 1</span></div>
+</footer>
 
-  <script src="js/i18n.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/projects-grid.js"></script>
-  <script src="js/main.js"></script>
+<div class="p-wa-bar"><a class="p-btn" href="https://wa.me/6282110952505" data-i18n="pWaBar">Diskusi Proyek via WhatsApp</a></div>
+
+<script>
+const I18N = {
+  id: {
+    navAbout:"Tentang", navScope:"Lingkup", navSektor:"Sektor", navProjects:"Portofolio", navDone:"Proyek Selesai", navResidential:"Residensial",
+    heroEyebrow:"Komersial · Industri · Perhotelan · Pusat Data",
+    heroTitle1:"Rancang. Bangun.",
+    heroTitle2:"Serahkan.",
+    heroDesc:"Dari subkontraktor MEP spesialis menjadi kontraktor design-build terintegrasi penuh. IBK menghadirkan struktur, arsitektur, dan MEP lengkap untuk fasilitas paling menuntut di Indonesia.",
+    heroBtn1:"Lihat Portofolio", heroBtn2:"Diskusi Proyek",
+    scopeEyebrow:"Lingkup Pekerjaan",
+    scopeTitle1:"Pengerjaan Penuh dalam", scopeTitle2:"Satu Kontrak", scopeTitle3:" Yang Kami Kerjakan.",
+    scopeDesc:"Dari pondasi sampai serah terima kunci — arsitektur, struktur, MEP, interior, hingga perizinan ditangani satu tim. Tidak ada celah koordinasi, tidak ada saling tunjuk, satu titik tanggung jawab.",
+    scopeMore:"Selengkapnya", scopeMore2:"Selengkapnya", scopeMore3:"Selengkapnya", scopeMore4:"Selengkapnya",
+    scopeMore5:"Selengkapnya", scopeMore6:"Selengkapnya", scopeMore7:"Selengkapnya", scopeMore8:"Selengkapnya",
+    scopeNum1:"01 — STRUKTUR", scopeNum2:"02 — ARSITEKTUR", scopeNum3:"03 — ELEKTRIKAL", scopeNum4:"04 — PLUMBING",
+    scopeNum5:"05 — LIGHTING &amp; SMART HOME", scopeNum6:"06 — HVAC", scopeNum7:"07 — INTERIOR BUILD", scopeNum8:"08 — FURNITUR",
+    scope1Title:"Struktur", scope1Desc:"Beton K-400, baja TS-420, dan sistem balok ganda…",
+    scope2Title:"Arsitektur", scope2Desc:"Design-build terintegrasi penuh. Sistem ramah iklim — tanpa kayu, cat, atau bata merah…",
+    scope3Title:"Elektrikal", scope3Desc:"Kabel Kabelmetal, Supreme, Extrana, dan Jembo. Panel Schneider dan Chint…",
+    scope4Title:"Plumbing", scope4Desc:"PPR Toro Italy untuk air bersih. Rucika PVC untuk drainase…",
+    scope5Title:"Lighting &amp; Smart Home", scope5Desc:"Otomasi pencahayaan Aqara dan kunci pintar. Jaringan Unifi dan CCTV, Solar dan…",
+    scope6Title:"HVAC", scope6Desc:"Sistem VRV dan sentral untuk residensial, hotel, industri, dan pusat data…",
+    scope7Title:"Interior Build", scope7Desc:"Dari detail plafon, dinding, custom kabinet, hingga finishing premium, setiap sudut dirancang untuk…",
+    scope8Title:"Furnitur", scope8Desc:"Menghadirkan custom furniture dengan detail presisi, material pilihan, dan desain yang menyatu sempurna dengan karakter interior…",
+
+    sektorEyebrow:"Pasar Kami", sektorTitle:"Sektor yang Kami Layani",
+    sektorDesc:"Empat pasar inti — masing-masing dengan referensi proyek yang telah diserahkan.",
+    sektorRefLabel:"Referensi:",
+    sek1Tag:"Industri", sek1Title:"Pabrik, Gudang & Manufaktur",
+    sek1Desc:"Seiring investasi FDI masuk ke kawasan industri Indonesia (Subang, Karawang, Batang, Kendal), IBK menghadirkan pengerjaan penuh untuk pabrik dan gudang — kontrak langsung, tanpa perantara.",
+    sek1B1:"Rangka RC, baja pre-engineered, pondasi berat",
+    sek1B2:"Plumbing, pemadam kebakaran, HVAC, elektrikal",
+    sek1B3:"Keandalan jadwal — menyesuaikan milestone operasional Anda",
+    sek1RefName:"Subang Prosperity Hat Factory", sek1RefDetail:"IDR 100M, Struktur + MEP Lengkap, 2025–2026",
+    sek2Tag:"Perhotelan", sek2Title:"Standar Merek Internasional",
+    sek2Desc:"Dari Hilton Bandung, IBK membuka akses ke jaringan hotel internasional dengan standar teknik dan keselamatan kebakaran kelas dunia — siap menerima proyek Marriott, IHG, dan Accor.",
+    sek2B1:"Sistem pemadam kebakaran sesuai standar merek",
+    sek2B2:"Elektrikal & HVAC berstandar hospitality",
+    sek2B3:"Dokumentasi kepatuhan lengkap",
+    sek2RefName:"Hilton Bandung", sek2RefDetail:"IDR 43,3M, Fire Suppression + Elektrikal + HVAC, 2025–2026",
+    sek3Tag:"Komersial & Kesehatan", sek3Title:"Kantor, Rumah Sakit & Fasilitas Kritis",
+    sek3Desc:"Dari BSI Tower Jakarta hingga dua proyek rumah sakit berturut-turut — disiplin teknik yang sama untuk fasilitas di mana keandalan sistem bukan sekadar harapan.",
+    sek3B1:"MEP rumah sakit — gas medis, air bersih, drainase, HVAC",
+    sek3B2:"Kantor & komersial — plumbing, fire, full-scope fit-out",
+    sek3B3:"Kepatuhan regulasi penuh, tanpa celah dokumentasi",
+    sek3RefName:"RS Rengasdengklok + RS Adhyaksa Banten", sek3RefDetail:"Plumbing, Kebakaran, Elektrikal, 2023–2025",
+    sek4Tag:"Pusat Data", sek4Title:"Lingkungan Teknis Paling Menuntut",
+    sek4Desc:"Pengalaman di fasilitas hyperscale dan SCBD. MEP pusat data menuntut kepadatan daya tinggi, redundansi, dan jadwal yang tidak bisa digeser — IBK mengerjakan sesuai milestone operasional Anda.",
+    sek4B1:"Mekanikal — HVAC kepadatan tinggi, pipa pendingin, fire suppression",
+    sek4B2:"Instalasi lantai-raised dan distribusi listrik redundan",
+    sek4B3:"Komisioning sesuai milestone operasional klien",
+    sek4RefName:"HDC Hyperscale Cikarang", sek4RefDetail:"(IDR 40M) + <strong>SCBD Data Center</strong> (IDR 35,5M), 2021–2022",
+
+    refImgCaption:"Standar Merek Internasional · Bandung",
+    refEyebrow:"Referensi Perhotelan", refName:"Hilton Bandung",
+    refKontrak:"Nilai Kontrak", refLingkup:"Ruang Lingkup", refLingkupV:"Fire Suppression, Elektrikal, HVAC",
+    refPemilik:"Pemilik", refPeriode:"Periode", refMerek:"Merek",
+    refFoot:"Proyek merek hotel internasional pertama IBK — membuktikan kapabilitas IBK memenuhi standar teknik dan keselamatan kebakaran kelas dunia. Membuka akses ke jaringan Marriott, IHG, dan Accor.",
+
+    rekEyebrow:"Filosofi Rekayasa",
+    rekTitle:"Dibangun untuk Iklim, Tanah & Realitas Indonesia",
+    rekDesc:"Setiap keputusan teknik dipilih untuk memangkas biaya perawatan sepanjang umur bangunan.",
+    rekStd:"Standar", rekIbk:"IBK",
+    rek1Title:"Sistem Celah Seismik",
+    rek1Desc:"Blok AAC dengan celah sengaja terhadap kolom & balok — diisi backer rod + sealant. Memutus transfer pergerakan struktur, mencegah retak rambut.",
+    rek1BadNote:"Bata kaku ke struktur — <strong>retak rambut</strong> ketika rangka bergerak.",
+    rek1GoodNote:"Celah seismik + sealant <strong>menyerap pergerakan</strong> — bebas retak.",
+    rek2Title:"Bebas Cat",
+    rek2Desc:"Panel WPC dan keramik lembut menggantikan cat sepenuhnya. Tanpa siklus cat ulang 3–5 tahun, tanpa bau, serah-terima lebih cepat.",
+    rek2BadNote:"Cat tropis <strong>terkelupas</strong> setiap 3–5 tahun.",
+    rek2GoodNote:"WPC + keramik lembut — <strong>tanpa repainting</strong> seumur hidup.",
+    rek3Title:"Bebas Kayu",
+    rek3Desc:"Setiap pintu, panel, lemari, dan plafon bebas kayu. Honeycomb aluminium, WPC, dan keramik lembut menggantikan semua aplikasi kayu.",
+    rek3BadNote:"Kayu di tropis <strong>dimakan rayap</strong>, melengkung.",
+    rek3GoodNote:"Honeycomb + WPC — <strong>bebas rayap</strong>, tidak melengkung.",
+    rek4Title:"Struktur Balok Ganda",
+    rek4Desc:"Mendistribusikan beban ke dua balok — mengendalikan penurunan diferensial di tanah lempung pesisir Jakarta.",
+    rek4BadNote:"Balok tunggal <strong>melendut</strong> dan lantai miring.",
+    rek4GoodNote:"Balok ganda <strong>tetap rata</strong> di tanah lempung Jakarta.",
+    rek5Title:"Waterproofing Tiga Lapis",
+    rek5Desc:"Membran perekat + lapisan PU + campuran beton integral di seluruh basement dan area basah. Pencegahan 10× lebih murah dari remediasi.",
+    rek5BadNote:"Satu lapis cat <strong>rembes</strong> setelah 1–2 tahun.",
+    rek5GoodNote:"Tiga lapis <strong>memblokir air total</strong> di basement.",
+    rek6Title:"Struktur Minim Baja",
+    rek6Desc:"Beton RC & sistem pasca-tarik menggantikan baja terbuka di mana memungkinkan — memangkas biaya korosi sepanjang umur bangunan.",
+    rek6BadNote:"Baja terbuka <strong>berkarat</strong> di iklim tropis lembab.",
+    rek6GoodNote:"Beton RC + pasca-tarik — <strong>tanpa korosi</strong>, lebih murah.",
+
+    portEyebrow:"Portofolio", portTitle:"Keahlian yang Teruji Melalui Beragam Proyek Referensi",
+    portDesc:"Pilihan proyek komersial, industri, perhotelan, dan pusat data yang telah diserahkan.",
+
+    ctaTitle1:"Punya proyek komersial?",
+    ctaTitle2:"Ceritakan ruangnya — kami yang urus sisanya.",
+    ctaBtn:"Hubungi Tim Komersial",
+    footerNote:"Design-Build Residensial &amp; Komersial Jakarta.",
+    footerBack:"← Kembali ke Residensial"
+  },
+  en: {
+    navAbout:"About", navScope:"Scope", navSektor:"Sectors", navProjects:"Portfolio", navDone:"Completed", navResidential:"Residential",
+    heroEyebrow:"Commercial · Industry · Hospitality · Data Centres",
+    heroTitle1:"Design. Build.",
+    heroTitle2:"Deliver.",
+    heroDesc:"From a specialist MEP subcontractor to a fully integrated design-build contractor. IBK delivers complete structure, architecture, and MEP for Indonesia's most demanding facilities.",
+    heroBtn1:"View Portfolio", heroBtn2:"Discuss a Project",
+    scopeEyebrow:"Scope of Work",
+    scopeTitle1:"Full Delivery in", scopeTitle2:"One Contract", scopeTitle3:" — Everything We Build.",
+    scopeDesc:"From foundation to handover — architecture, structure, MEP, interior, and permits handled by one team. No coordination gaps, no finger-pointing, one point of accountability.",
+    scopeMore:"Learn more", scopeMore2:"Learn more", scopeMore3:"Learn more", scopeMore4:"Learn more",
+    scopeMore5:"Learn more", scopeMore6:"Learn more", scopeMore7:"Learn more", scopeMore8:"Learn more",
+    scopeNum1:"01 — STRUCTURE", scopeNum2:"02 — ARCHITECTURE", scopeNum3:"03 — ELECTRICAL", scopeNum4:"04 — PLUMBING",
+    scopeNum5:"05 — LIGHTING &amp; SMART HOME", scopeNum6:"06 — HVAC", scopeNum7:"07 — INTERIOR BUILD", scopeNum8:"08 — FURNITURE",
+    scope1Title:"Structure", scope1Desc:"K-400 concrete, TS-420 steel, and a dual-beam system…",
+    scope2Title:"Architecture", scope2Desc:"Fully integrated design-build. A climate-friendly system — no wood, paint, or red brick…",
+    scope3Title:"Electrical", scope3Desc:"Kabelmetal, Supreme, Extrana, and Jembo cabling. Schneider and Chint panels…",
+    scope4Title:"Plumbing", scope4Desc:"PPR Toro Italy for clean water. Rucika PVC for drainage…",
+    scope5Title:"Lighting &amp; Smart Home", scope5Desc:"Aqara lighting automation and smart locks. Unifi networking and CCTV, solar and…",
+    scope6Title:"HVAC", scope6Desc:"VRV and central systems for residential, hotel, industrial, and data-center use…",
+    scope7Title:"Interior Build", scope7Desc:"From ceiling and wall details to custom cabinetry and premium finishing, every corner is designed to…",
+    scope8Title:"Furniture", scope8Desc:"Custom furniture with precise detail, premium materials, and designs that blend seamlessly with the interior character…",
+
+    sektorEyebrow:"Our Markets", sektorTitle:"Sectors We Serve",
+    sektorDesc:"Four core markets — each with delivered project references.",
+    sektorRefLabel:"Reference:",
+    sek1Tag:"Industry", sek1Title:"Factories, Warehouses & Manufacturing",
+    sek1Desc:"As FDI flows into Indonesia's industrial corridors (Subang, Karawang, Batang, Kendal), IBK delivers full builds for factories and warehouses — direct contract, no middlemen.",
+    sek1B1:"RC frame, pre-engineered steel, heavy foundations",
+    sek1B2:"Plumbing, fire suppression, HVAC, electrical",
+    sek1B3:"Schedule reliability — aligned to your operational milestones",
+    sek1RefName:"Subang Prosperity Hat Factory", sek1RefDetail:"IDR 100M, Full Structure + MEP, 2025–2026",
+    sek2Tag:"Hospitality", sek2Title:"International Brand Standard",
+    sek2Desc:"From Hilton Bandung, IBK unlocks access to the international hotel network with world-class engineering and fire safety standards — ready for Marriott, IHG, and Accor.",
+    sek2B1:"Fire suppression to brand standard",
+    sek2B2:"Hospitality-grade electrical & HVAC",
+    sek2B3:"Complete compliance documentation",
+    sek2RefName:"Hilton Bandung", sek2RefDetail:"IDR 43.3M, Fire Suppression + Electrical + HVAC, 2025–2026",
+    sek3Tag:"Commercial & Healthcare", sek3Title:"Offices, Hospitals & Critical Facilities",
+    sek3Desc:"From BSI Tower Jakarta to two consecutive hospital projects — the same engineering discipline for facilities where system reliability isn't just a hope.",
+    sek3B1:"Hospital MEP — medical gas, clean water, drainage, HVAC",
+    sek3B2:"Office & commercial — plumbing, fire, full-scope fit-out",
+    sek3B3:"Full regulatory compliance, no documentation gaps",
+    sek3RefName:"RS Rengasdengklok + RS Adhyaksa Banten", sek3RefDetail:"Plumbing, Fire, Electrical, 2023–2025",
+    sek4Tag:"Data Centres", sek4Title:"The Most Demanding Technical Environment",
+    sek4Desc:"Experience in hyperscale and SCBD facilities. Data centre MEP demands high power density, redundancy, and an immovable schedule — IBK delivers to your operational milestones.",
+    sek4B1:"Mechanical — high-density HVAC, chilled-water piping, fire suppression",
+    sek4B2:"Raised-floor installation and redundant power distribution",
+    sek4B3:"Commissioning to client operational milestones",
+    sek4RefName:"HDC Hyperscale Cikarang", sek4RefDetail:"(IDR 40M) + <strong>SCBD Data Center</strong> (IDR 35.5M), 2021–2022",
+
+    refImgCaption:"International Brand Standard · Bandung",
+    refEyebrow:"Hospitality Reference", refName:"Hilton Bandung",
+    refKontrak:"Contract Value", refLingkup:"Scope", refLingkupV:"Fire Suppression, Electrical, HVAC",
+    refPemilik:"Owner", refPeriode:"Period", refMerek:"Brand",
+    refFoot:"IBK's first international hotel-brand project — proof that we meet world-class engineering and fire safety standards. Opens access to the Marriott, IHG, and Accor networks.",
+
+    rekEyebrow:"Engineering Philosophy",
+    rekTitle:"Built for Indonesia's Climate, Soil & Reality",
+    rekDesc:"Every technical decision is chosen to cut maintenance cost across the lifetime of the building.",
+    rekStd:"Standard", rekIbk:"IBK",
+    rek1Title:"Seismic Gap System",
+    rek1Desc:"AAC blocks with a deliberate gap to columns & beams — filled with backer rod + sealant. Decouples structural movement, prevents hair-line cracks.",
+    rek1BadNote:"Rigid brick into the structure — <strong>hair-line cracks</strong> when the frame moves.",
+    rek1GoodNote:"Seismic gap + sealant <strong>absorbs movement</strong> — crack-free.",
+    rek2Title:"Paint-Free",
+    rek2Desc:"WPC panels and soft ceramics fully replace paint. No 3–5-year repaint cycle, no construction smell, faster handover.",
+    rek2BadNote:"Tropical paint <strong>peels</strong> every 3–5 years.",
+    rek2GoodNote:"WPC + soft ceramic — <strong>no repainting</strong> for the home's lifetime.",
+    rek3Title:"Wood-Free",
+    rek3Desc:"Every door, panel, cabinet, and ceiling is wood-free. Aluminium honeycomb, WPC, and soft ceramic replace all wood applications.",
+    rek3BadNote:"Wood in the tropics is <strong>eaten by termites</strong>, warps.",
+    rek3GoodNote:"Honeycomb + WPC — <strong>termite-free</strong>, no warping.",
+    rek4Title:"Dual-Beam Structure",
+    rek4Desc:"Loads distributed across two beams — controlling differential settlement on Jakarta's coastal clay soil.",
+    rek4BadNote:"Single beam <strong>deflects</strong> and floors tilt.",
+    rek4GoodNote:"Dual beams <strong>stay level</strong> on Jakarta's clay.",
+    rek5Title:"Triple-Layer Waterproofing",
+    rek5Desc:"Bonded membrane + PU layer + integral concrete mix throughout basements and wet areas. Prevention is 10× cheaper than remediation.",
+    rek5BadNote:"A single paint coat <strong>seeps</strong> after 1–2 years.",
+    rek5GoodNote:"Three layers <strong>fully block water</strong> in basements.",
+    rek6Title:"Steel-Minimal Structure",
+    rek6Desc:"RC concrete & post-tensioned systems replace exposed steel where possible — cutting corrosion costs over the building's lifetime.",
+    rek6BadNote:"Exposed steel <strong>rusts</strong> in humid tropical climate.",
+    rek6GoodNote:"RC + post-tension — <strong>no corrosion</strong>, cheaper.",
+
+    portEyebrow:"Portfolio", portTitle:"Expertise Proven Across Diverse Reference Projects",
+    portDesc:"Selected commercial, industrial, hospitality, and data centre projects delivered.",
+
+    ctaTitle1:"Got a commercial project?",
+    ctaTitle2:"Tell us the space — we'll handle the rest.",
+    ctaBtn:"Talk to Commercial",
+    footerNote:"Design-Build Residential &amp; Commercial Jakarta.",
+    footerBack:"← Back to Residential"
+  }
+};
+Object.assign(I18N.id, {
+  pNavCom:"Komersial", pNavKontak:"Kontak",
+  pPortTitle:"Keahlian yang teruji melalui beragam proyek referensi.",
+  pStProses:"Dalam Proses", pStSelesai:"Selesai",
+  pSubangSub:"Industri — struktur + MEP lengkap.",
+  pKejagungSub:"Kantor pemerintah — bersama PT PP (Persero).",
+  pHdcSub:"Pusat data — MEP kepadatan tinggi.",
+  pTbLok:"Lokasi", pTbNilai:"Nilai", pTbKlien:"Klien",
+  pProjMore:"Lihat 19 proyek selesai →",
+  pCtaEyebrow:"Mulai — LBR K-01", pCtaPdf:"Unduh Company Profile (PDF)",
+  pCtaSideK:"Kontak Langsung", pCtaKantor:"Kantor",
+  pFootNav:"Navigasi", pFootHome:"Beranda", pFootScope:"Lingkup",
+  pFootInterior:"Interior & Furnitur", pFootKontak:"Kontak",
+  pFootAlamat:"Pluit, Jakarta Utara · Kantor 6 Lantai",
+  pFootLegal:"© 2026 PT. Indobangun Berjaya Konstruksi",
+  pWaBar:"Diskusi Proyek via WhatsApp"
+});
+Object.assign(I18N.en, {
+  pNavCom:"Commercial", pNavKontak:"Contact",
+  pPortTitle:"Proven capability across diverse reference projects.",
+  pStProses:"In Progress", pStSelesai:"Completed",
+  pSubangSub:"Industrial — structure + complete MEP.",
+  pKejagungSub:"Government office — alongside PT PP (Persero).",
+  pHdcSub:"Data center — high-density MEP.",
+  pTbLok:"Location", pTbNilai:"Value", pTbKlien:"Client",
+  pProjMore:"See 19 completed projects →",
+  pCtaEyebrow:"Start — SHT K-01", pCtaPdf:"Download Company Profile (PDF)",
+  pCtaSideK:"Direct Contact", pCtaKantor:"Office",
+  pFootNav:"Navigation", pFootHome:"Home", pFootScope:"Scope",
+  pFootInterior:"Interior & Furniture", pFootKontak:"Contact",
+  pFootAlamat:"Pluit, North Jakarta · 6-Storey Office",
+  pFootLegal:"© 2026 PT. Indobangun Berjaya Konstruksi",
+  pWaBar:"Discuss a Project on WhatsApp"
+});
+function setLang(lang){
+  const dict = I18N[lang] || I18N.id;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (dict[k] !== undefined) el.innerHTML = dict[k];
+  });
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('ibk-lang', lang); } catch(e){}
+}
+window.setLang = setLang;
+(function(){
+  let saved = 'id';
+  try { saved = localStorage.getItem('ibk-lang') || 'id'; } catch(e){}
+  setLang(saved);
+})();
+</script>
+<script src="/assets/presisi.js" defer></script>
 </body>
 </html>

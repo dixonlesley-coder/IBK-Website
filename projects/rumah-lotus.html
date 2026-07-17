@@ -1,160 +1,383 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Rumah Lotus — proyek hunian unggulan IBK di PIK2. Tiga lantai, smart home terintegrasi, atap hijau, dan standar material premium.">
-  <title>Rumah Lotus — IBK</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/pages.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rumah Lotus — IBK</title>
+<meta name="description" content="Rumah Lotus — proyek hunian unggulan IBK di PIK2. Tiga lantai, smart home terintegrasi, dan standar material premium." />
+<style>
+  :root{
+    --bg:#0a1832; --bg-2:#0d1e3b; --bg-3:#122448;
+    --fg:#ecead8; --fg-muted:rgba(236,234,216,0.65); --fg-faint:rgba(236,234,216,0.45);
+    --gold:#d4af6c; --gold-2:#c89b50;
+    --line:rgba(236,234,216,0.08); --line-strong:rgba(236,234,216,0.16);
+    --card-border:rgba(212,175,108,0.18); --card-border-strong:rgba(212,175,108,0.35);
+    --serif:"Cormorant Garamond","Times New Roman",serif;
+    --sans:"Manrope",system-ui,-apple-system,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ background:var(--bg); color:var(--fg); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  button{ font-family:inherit; cursor:pointer; }
+  .container{ width:100%; max-width:1240px; margin:0 auto; padding:0 32px; }
+
+  .nav{ position:fixed; top:0; left:0; right:0; z-index:60; padding:18px 0;
+    background:rgba(10,24,50,0.92); box-shadow:0 1px 0 var(--line);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; }
+  .brand{ display:flex; align-items:center; }
+  .brand-logo{ height:38px; width:auto; }
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  .lang-toggle{ display:inline-flex; align-items:center; gap:6px; border:1px solid var(--line-strong);
+    border-radius:999px; padding:6px 4px; font-size:12px; font-weight:600; letter-spacing:0.08em; }
+  .lang-toggle button{ border:0; background:transparent; color:var(--fg-muted); padding:4px 10px;
+    border-radius:999px; font-weight:600; font-size:11.5px; letter-spacing:0.1em; transition:all .2s ease; }
+  .lang-toggle button.is-active{ background:var(--gold); color:var(--bg); }
+  .back-link{ display:inline-flex; align-items:center; gap:10px; font-size:11.5px; font-weight:600;
+    letter-spacing:0.18em; text-transform:uppercase; color:var(--fg-muted);
+    border:1px solid var(--line-strong); padding:10px 18px; border-radius:999px; transition:all .25s ease; }
+  .back-link:hover{ color:var(--bg); background:var(--gold); border-color:var(--gold); }
+  @media (max-width:560px){ .back-link{ display:none; } .brand-logo{ height:32px; } .container{ padding:0 20px; } }
+
+  /* HERO */
+  .lotus-hero{ position:relative; min-height:620px; display:flex; align-items:flex-end;
+    overflow:hidden; padding:140px 0 64px; }
+  .lotus-hero-bg{ position:absolute; inset:0; background-size:cover; background-position:center; z-index:0;
+    opacity:0; transition:opacity .9s ease; }
+  .lotus-hero-bg.is-active{ opacity:1; }
+  .lotus-hero-dots{ position:absolute; bottom:24px; left:50%; transform:translateX(-50%); z-index:3;
+    display:flex; gap:8px; }
+  .lotus-hero-dots .dot{ width:7px; height:7px; border-radius:50%; background:rgba(236,234,216,0.4);
+    transition:all .25s ease; cursor:pointer; border:none; padding:0; }
+  .lotus-hero-dots .dot.is-active{ background:var(--gold); width:22px; border-radius:999px; }
+  .lotus-hero-overlay{ position:absolute; inset:0; z-index:1;
+    background:linear-gradient(180deg, rgba(10,24,50,0.5) 0%, rgba(10,24,50,0.3) 35%, rgba(10,24,50,0.95) 100%),
+      linear-gradient(90deg, rgba(10,24,50,0.6) 0%, rgba(10,24,50,0.1) 60%); }
+  .lotus-hero .container{ position:relative; z-index:2; width:100%; }
+  .lotus-eyebrow{ font-size:12px; font-weight:600; letter-spacing:0.28em; text-transform:uppercase;
+    color:var(--gold); margin:0 0 22px; display:inline-flex; align-items:center; gap:14px; }
+  .lotus-eyebrow::before{ content:""; width:36px; height:1px; background:var(--gold); }
+  .lotus-title{ font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(48px,7vw,92px); line-height:1.02; letter-spacing:-0.01em; margin:0 0 24px;
+    color:#f4f1e1; text-shadow:0 2px 30px rgba(0,0,0,0.45); }
+  .lotus-lead{ font-size:16px; line-height:1.7; color:rgba(236,234,216,0.85); margin:0; max-width:640px; }
+
+  /* STATS */
+  .lotus-stats{ background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .lotus-stats-grid{ display:grid; grid-template-columns:repeat(3,1fr); }
+  .lotus-stat{ padding:36px 32px; border-left:1px solid var(--line); }
+  .lotus-stat:first-child{ border-left:0; }
+  .lotus-stat .label{ font-family:var(--mono); font-size:10.5px; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--fg-faint); margin:0 0 10px; }
+  .lotus-stat .value{ font-family:var(--serif); font-style:italic; font-weight:500; font-size:32px;
+    line-height:1; color:#f4f1e1; }
+  @media (max-width:760px){ .lotus-stats-grid{ grid-template-columns:1fr 1fr; }
+    .lotus-stat:nth-child(odd){ border-left:0; } .lotus-stat{ border-top:1px solid var(--line); }
+    .lotus-stat:nth-child(1), .lotus-stat:nth-child(2){ border-top:0; } }
+
+  /* SYSTEMS */
+  .systems{ padding:120px 0; }
+  .systems-head{ max-width:760px; margin:0 0 60px; }
+  .systems-head .eyebrow{ font-size:11.5px; font-weight:600; letter-spacing:0.32em; color:var(--gold);
+    text-transform:uppercase; margin:0 0 18px; }
+  .systems-head h2{ font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(32px,4.4vw,56px); line-height:1.06; margin:0 0 18px; color:#f4f1e1; }
+  .systems-head p{ font-size:15px; line-height:1.7; color:var(--fg-muted); margin:0; max-width:560px; }
+  .systems-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .system-card{ background:rgba(255,255,255,0.025); border:1px solid var(--card-border);
+    border-radius:16px; padding:32px 28px; transition:border-color .3s ease, transform .3s ease; }
+  .system-card:hover{ border-color:var(--card-border-strong); transform:translateY(-3px); }
+  .system-num{ font-family:var(--mono); font-size:12px; letter-spacing:0.18em; color:var(--gold);
+    margin:0 0 18px; }
+  .system-card h3{ font-family:var(--sans); font-weight:700; font-size:18px; margin:0 0 14px;
+    color:#f4f1e1; letter-spacing:-0.005em; }
+  .system-card p{ font-size:13.5px; line-height:1.65; color:var(--fg-muted); margin:0; }
+  @media (max-width:960px){ .systems-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:620px){ .systems-grid{ grid-template-columns:1fr; } .systems{ padding:80px 0; } }
+
+  /* CTA */
+  .lotus-cta{ background:var(--bg-2); border-top:1px solid var(--line); padding:90px 0; text-align:center; }
+  .lotus-cta .eyebrow{ font-size:11.5px; font-weight:600; letter-spacing:0.32em; color:var(--gold);
+    text-transform:uppercase; margin:0 0 20px; text-align:center; }
+  .lotus-cta h2{ font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(30px,4vw,52px); line-height:1.08; margin:0 auto 22px; color:#f4f1e1; max-width:680px; }
+  .lotus-cta p{ font-size:15px; line-height:1.7; color:var(--fg-muted); margin:0 auto 36px; max-width:560px; }
+  .cta-btns{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn{ display:inline-flex; align-items:center; gap:10px; padding:14px 28px; border-radius:999px;
+    font-size:12px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; transition:all .25s ease; }
+  .btn--solid{ background:var(--gold); border:1px solid var(--gold); color:var(--bg); }
+  .btn--solid:hover{ background:var(--gold-2); border-color:var(--gold-2); }
+  .btn--ghost{ border:1px solid var(--line-strong); color:var(--fg); background:transparent; }
+  .btn--ghost:hover{ border-color:var(--fg); background:rgba(236,234,216,0.06); }
+
+  footer{ padding:40px 0; border-top:1px solid var(--line); font-size:12.5px; color:var(--fg-faint); background:#050c1f; }
+  .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+</style>
+
+<style id="presisi-skin">
+  :root{
+    --bg:#EAE8E2; --bg-2:#F7F6F2; --bg-3:#F7F6F2;
+    --fg:#0D1B2E; --fg-muted:rgba(13,27,46,0.68); --fg-faint:rgba(13,27,46,0.45);
+    --gold:#A8842C; --gold-2:#8F6F22;
+    --line:rgba(13,27,46,0.14); --line-strong:rgba(13,27,46,0.26);
+    --card-border:rgba(13,27,46,0.16); --card-border-strong:rgba(168,132,44,0.55);
+    --serif:"Archivo Var","Archivo",system-ui,sans-serif;
+    --sans:"Archivo Var","Archivo",system-ui,sans-serif;
+    --mono:"Plex Mono",ui-monospace,monospace;
+    --ink:#0D1B2E; --steel:#9DB0C7; --red:#D5372D; --brass-bright:#DCB25C;
+    --font-d:"Archivo Var","Archivo",system-ui,sans-serif;
+    --font-m:"Plex Mono",ui-monospace,monospace;
+    --wide:125%; --mid:112%; --max:1240px; --gut:clamp(20px,4vw,56px);
+    --line-inv:rgba(255,255,255,0.16);
+  }
+  body{ font-stretch:100%; }
+  :focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:2px; }
+
+  .lotus-hero{ background:var(--ink); }
+  .lotus-hero-overlay{
+    background:
+      linear-gradient(180deg, rgba(13,27,46,0.5) 0%, rgba(13,27,46,0.3) 35%, rgba(13,27,46,0.95) 100%),
+      linear-gradient(90deg, rgba(13,27,46,0.6) 0%, rgba(13,27,46,0.1) 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 84px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 84px) !important;
+  }
+  .lotus-eyebrow{ font-family:var(--mono) !important; font-weight:400 !important; letter-spacing:.2em !important; color:#D7DEE9 !important; }
+  .lotus-eyebrow::before{ background:var(--red) !important; height:1.5px !important; width:26px !important; }
+  .lotus-title{
+    font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--wide);
+    font-weight:820 !important; letter-spacing:-0.017em !important; color:#fff !important; text-shadow:none !important;
+  }
+  .lotus-lead{ color:#C9D3E2 !important; }
+  .lotus-hero-dots .dot.is-active{ background:var(--brass-bright) !important; }
+
+  .lotus-stat .value{ font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--wide); font-weight:800 !important; color:var(--ink) !important; }
+  .lotus-stat .label{ color:var(--fg-muted) !important; }
+
+  .systems-head h2, .lotus-cta h2{
+    font-family:var(--font-d) !important; font-style:normal !important; font-stretch:var(--mid);
+    font-weight:760 !important; letter-spacing:-0.015em !important;
+  }
+  .systems-head h2{ color:var(--ink) !important; }
+  .systems-head .eyebrow{ font-family:var(--mono) !important; font-weight:400 !important; letter-spacing:.18em !important; color:var(--ink) !important; opacity:.78; }
+  .system-card{ background:var(--bg-2) !important; border:1px solid var(--card-border) !important; border-radius:4px !important; border-top:3px solid var(--ink) !important; }
+  .system-card h3{ color:var(--ink) !important; font-stretch:var(--mid); }
+  .system-num{ color:var(--red) !important; }
+
+  .lotus-cta{ background:var(--ink) !important; }
+  .lotus-cta h2{ color:#fff !important; }
+  .lotus-cta .eyebrow{ font-family:var(--mono) !important; color:var(--steel) !important; letter-spacing:.18em !important; }
+  .btn{ border-radius:3px !important; font-family:var(--mono) !important; font-weight:500 !important; letter-spacing:.14em !important; }
+  .btn--solid{ background:var(--brass-bright) !important; border-color:var(--brass-bright) !important; color:var(--ink) !important; }
+  .btn--solid:hover{ background:#C9A045 !important; }
+  .btn--ghost{ border-color:var(--line-inv) !important; color:#EDF1F7 !important; }
+
+  footer{ background:var(--ink) !important; border-top:1px solid var(--line-inv) !important; color:var(--steel) !important; }
+  .footer-inner{ font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; }
+  .back-link{ border-radius:3px !important; font-family:var(--font-m) !important; font-weight:500 !important; }
+  @media (max-width:900px){ body{ padding-bottom:76px; } }
+</style>
+<meta name="description" content="Rumah Lotus — proyek design-build unggulan IBK di PIK2, Jakarta. IDR 60 miliar, 12 sistem hunian terintegrasi bersama Beta Design Studio." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Rumah Lotus — Proyek Unggulan IBK di PIK2" />
+<meta property="og:description" content="Design-build penuh: struktur, arsitektur, dan MEP dalam satu kontrak — 12 sistem hunian terintegrasi." />
+<meta property="og:image" content="https://rad-centaur-4bf880.netlify.app/images/og-cover.jpg" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-var.woff2" crossorigin />
+<link rel="stylesheet" href="/assets/presisi.css" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
-    <div class="nav__container">
-      <a href="../index.html" class="nav__logo" aria-label="IBK Home">
-    <img src="../images/brand/icon-home.png" alt="IBK Logo">
-  </a>
-      <div class="nav__links" id="nav-links">
-        <a href="../residential.html#about"        class="nav__link" data-i18n="nav.about">Tentang Kami</a>
-        <a href="../residential.html#capabilities" class="nav__link" data-i18n="nav.capabilities">Kemampuan</a>
-        <a href="../residential.html#projects"     class="nav__link" data-i18n="nav.projects">Proyek</a>
-        <a href="../residential.html#contact"      class="nav__link" data-i18n="nav.contact">Kontak</a>
-      </div>
-      <div class="nav__actions">
-        <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language / Ganti bahasa">
-          <span class="lang-toggle__option active" id="lang-id">ID</span>
-          <span class="lang-toggle__divider">/</span>
-          <span class="lang-toggle__option" id="lang-en">EN</span>
-        </button>
-        <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+<header class="p-nav">
+  <div class="p-nav-in">
+    <a href="../index.html" aria-label="IBK — Beranda"><img src="../images/brand-logo.webp" alt="IndoBangun Berjaya Konstruksi" style="height:30px;width:auto" /></a>
+    <nav class="p-links" aria-label="Utama">
+      <a href="../residential.html" data-i18n="pNavRes">Residensial</a>
+      <a href="../commercial.html" data-i18n="pNavCom">Komersial</a>
+      <a href="../proyek-selesai.html" data-i18n="pNavProyek">Proyek Selesai</a>
+      <a href="../index.html#kontak" data-i18n="pNavKontak">Kontak</a>
+    </nav>
+    <a class="back-link" href="../residential.html#projects" style="margin-left:auto">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span data-i18n="navBack">Kembali</span>
+    </a>
+    <div class="p-lang" role="group" aria-label="Bahasa / Language">
+      <button type="button" data-lang="id" class="on">ID</button>
+      <button type="button" data-lang="en">EN</button>
     </div>
-  </nav>
+    <button class="p-burger" aria-expanded="false" aria-controls="pmenu">MENU</button>
+  </div>
+</header>
+<nav class="p-menu" id="pmenu" aria-label="Menu seluler">
+  <a href="../residential.html" data-i18n="pNavRes">Residensial</a>
+  <a href="../commercial.html" data-i18n="pNavCom">Komersial</a>
+  <a href="../proyek-selesai.html" data-i18n="pNavProyek">Proyek Selesai</a>
+  <a href="../index.html#kontak" data-i18n="pNavKontak">Kontak</a>
+</nav>
 
-  <!-- LOTUS HERO -->
-  <section class="lotus-hero" aria-label="Rumah Lotus hero">
-    <div class="lotus-hero__bg" aria-hidden="true">
-      <img src="../images/lotus/lotus-hero.jpg" alt="" class="lotus-hero__bg-img" loading="eager">
-    </div>
-    <div class="container">
-      <div class="lotus-hero__content">
-        <div class="lotus-hero__meta">
-          <a href="../index.html" class="lotus-hero__back" data-i18n="lotus.back">Kembali ke Beranda</a>
-          <span class="lotus-hero__divider" aria-hidden="true"></span>
-          <span class="lotus-hero__eyebrow" data-i18n="lotus.eyebrow">Proyek Unggulan · Residensial Mewah</span>
-        </div>
-        <h1 class="lotus-hero__headline" data-i18n="lotus.headline">Rumah Lotus</h1>
-        <p class="lotus-hero__sub" data-i18n="lotus.sub">Design-Build penuh di PIK2, Jakarta — IDR 60 miliar, dirancang bersama Beta Design Studio. Struktur, arsitektur, dan MEP lengkap dalam satu kontrak.</p>
-        <div class="lotus-status">
-          <span class="lotus-status__pulse" aria-hidden="true"></span>
-          <span data-i18n="lotus.status">Konstruksi 2025 – 2026</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="lotus-hero">
+  <div class="lotus-hero-bg is-active" style="background-image:url('../images/port-lotus-large.webp')"></div>
+  <div class="lotus-hero-bg" style="background-image:url('../images/album-struktur-new1.webp')"></div>
+  <div class="lotus-hero-bg" style="background-image:url('../images/album-struktur-new2.webp')"></div>
+  <div class="lotus-hero-overlay"></div>
+  <div class="container">
+    <p class="lotus-eyebrow" data-i18n="heroEyebrow">Proyek Unggulan · Residensial Mewah</p>
+    <h1 class="lotus-title" data-i18n="heroTitle">Rumah Lotus</h1>
+    <p class="lotus-lead" data-i18n="heroLead">Design-Build penuh di PIK2, Jakarta — IDR 60 miliar, dirancang bersama Beta Design Studio. Struktur, arsitektur, dan MEP lengkap dalam satu kontrak.</p>
+  </div>
+  <div class="lotus-hero-dots" role="tablist">
+    <button class="dot is-active" data-slide="0" aria-label="Slide 1"></button>
+    <button class="dot" data-slide="1" aria-label="Slide 2"></button>
+    <button class="dot" data-slide="2" aria-label="Slide 3"></button>
+  </div>
+</section>
 
-  <!-- OVERVIEW -->
-  <section class="section lotus-overview">
-    <div class="container">
-      <div class="overview-grid">
-        <div class="overview-stat">
-          <span class="overview-stat__label" data-i18n="lotus.stat1_label">Nilai Kontrak</span>
-          <span class="overview-stat__value">60</span>
-          <span class="overview-stat__unit">Miliar <span data-i18n="lotus.stat1_unit">IDR</span></span>
-        </div>
-        <div class="overview-stat">
-          <span class="overview-stat__label" data-i18n="lotus.stat3_label">Mulai</span>
-          <span class="overview-stat__value">2025</span>
-          <span class="overview-stat__unit">&nbsp;</span>
-        </div>
-        <div class="overview-stat">
-          <span class="overview-stat__label" data-i18n="lotus.stat4_label">Target Serah Terima</span>
-          <span class="overview-stat__value">2026</span>
-          <span class="overview-stat__unit">&nbsp;</span>
-        </div>
-      </div>
+<section class="lotus-stats">
+  <div class="container">
+    <div class="lotus-stats-grid">
+      <div class="lotus-stat"><p class="label" data-i18n="statContract">Nilai Kontrak</p><p class="value">60 <span style="font-size:16px;font-style:normal;font-family:var(--sans);color:var(--fg-muted);">Miliar IDR</span></p></div>
+      <div class="lotus-stat"><p class="label" data-i18n="statStart">Mulai</p><p class="value">2025</p></div>
+      <div class="lotus-stat"><p class="label" data-i18n="statTarget">Target Serah Terima</p><p class="value">2026</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- BUILDING TECHNOLOGY (12 items) -->
-  <section class="section lotus-tech">
-    <div class="container">
-      <div class="section__header">
-        <p class="section__eyebrow" data-i18n="lotus.tech_eyebrow">Teknologi Bangunan</p>
-        <h2 class="section__title" data-i18n="lotus.tech_title">Yang Membangun Rumah Lotus</h2>
-        <p class="section__lead" data-i18n="lotus.tech_lead">Dua belas sistem yang bekerja bersama — dari pondasi hingga atap — untuk hunian yang tidak membutuhkan siklus perawatan.</p>
-      </div>
-      <div class="tech-grid">
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">01</div><h3 class="tech-item__title" data-i18n="lotus.tech1_title">Beton K-400</h3><p class="tech-item__text" data-i18n="lotus.tech1_text">Seluruh elemen struktur menggunakan beton K-400 — spesifikasi tinggi dari pondasi ke atas, dirancang untuk tanah pesisir Jakarta.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">02</div><h3 class="tech-item__title" data-i18n="lotus.tech2_title">Sistem Balok Ganda</h3><p class="tech-item__text" data-i18n="lotus.tech2_text">Balok transfer mendistribusikan beban ke dua balok sekaligus, mengendalikan penurunan diferensial di tanah lempung PIK2.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">03</div><h3 class="tech-item__title" data-i18n="lotus.tech3_title">AAC + Celah Seismik</h3><p class="tech-item__text" data-i18n="lotus.tech3_text">Blok AAC dipasang dengan celah yang disengaja terhadap kolom dan balok — memutus transfer pergerakan struktur, mencegah retak rambut.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">04</div><h3 class="tech-item__title" data-i18n="lotus.tech4_title">Panel WPC Dinding &amp; Plafon</h3><p class="tech-item__text" data-i18n="lotus.tech4_text">Panel WPC menggantikan gipsum dan cat sepenuhnya. Tahan air, bebas rayap, dan tidak perlu dicat ulang — selamanya.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">05</div><h3 class="tech-item__title" data-i18n="lotus.tech5_title">Lantai Sintered Stone</h3><p class="tech-item__text" data-i18n="lotus.tech5_text">Lantai format besar yang tidak berpori dan tahan goresan, asam, dan UV. Stabil secara dimensi saat terjadi penurunan tanah — bebas pelapisan atau poles.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">06</div><h3 class="tech-item__title" data-i18n="lotus.tech6_title">Pintu Aluminium Honeycomb</h3><p class="tech-item__text" data-i18n="lotus.tech6_text">Kaku secara struktural, anti melengkung, anti rayap. Tidak mengembang atau retak di kelembaban Indonesia — berfungsi seumur hidup.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">07</div><h3 class="tech-item__title" data-i18n="lotus.tech7_title">Pencahayaan Aqara</h3><p class="tech-item__text" data-i18n="lotus.tech7_text">Otomasi pencahayaan Aqara dan kunci pintar — dikontrol dari app, panel sentuh, atau perintah suara. Terintegrasi penuh dengan ekosistem IBK.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">08</div><h3 class="tech-item__title" data-i18n="lotus.tech8_title">Jaringan Unifi &amp; CCTV</h3><p class="tech-item__text" data-i18n="lotus.tech8_text">Jaringan Unifi mesh di seluruh rumah + CCTV Unifi Protect. Cakupan konsisten dari gerbang depan hingga rooftop.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">09</div><h3 class="tech-item__title" data-i18n="lotus.tech9_title">Solar + Cadangan Baterai</h3><p class="tech-item__text" data-i18n="lotus.tech9_text">Sistem solar atap dengan cadangan baterai dan dasbor pemantauan langsung. Memangkas biaya listrik dan memberi ketahanan terhadap pemadaman.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">10</div><h3 class="tech-item__title" data-i18n="lotus.tech10_title">Finishing Bebas Cat</h3><p class="tech-item__text" data-i18n="lotus.tech10_text">Tidak ada cat di Rumah Lotus. WPC, keramik lembut, dan PU stone menggantikan cat di seluruh bangunan — bebas siklus cat ulang 3–5 tahun.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">11</div><h3 class="tech-item__title" data-i18n="lotus.tech11_title">Plumbing PPR Toro</h3><p class="tech-item__text" data-i18n="lotus.tech11_text">PPR Toro Italy untuk air bersih, Rucika PVC untuk drainase, Magnaplast akustik untuk limbah dapur. Sistem bebas bocor yang bertahan lama.</p></article>
-        <article class="tech-item"><div class="tech-item__num" aria-hidden="true">12</div><h3 class="tech-item__title" data-i18n="lotus.tech12_title">HVAC Midea VRV</h3><p class="tech-item__text" data-i18n="lotus.tech12_text">Variable refrigerant volume untuk efisiensi energi lebih tinggi dan kontrol zona per ruangan — sesuai iklim dan pola hunian Indonesia.</p></article>
-      </div>
+<section class="systems">
+  <div class="container">
+    <div class="systems-head">
+      <p class="eyebrow" data-i18n="sysEyebrow">Teknologi Bangunan</p>
+      <h2 data-i18n="sysTitle">Yang Membangun Rumah Lotus</h2>
+      <p data-i18n="sysDesc">Dua belas sistem yang bekerja bersama — dari pondasi hingga atap — untuk hunian yang tidak membutuhkan siklus perawatan.</p>
     </div>
-  </section>
+    <div class="systems-grid" id="sysGrid"></div>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="section lotus-cta">
-    <div class="container">
-      <p class="section__eyebrow" data-i18n="lotus.cta_eyebrow">Ikuti Progresnya</p>
-      <h2 class="section__title" data-i18n="lotus.cta_title">Proyek Ini Masih Berjalan</h2>
-      <p class="section__lead" data-i18n="lotus.cta_sub">Update progres konstruksi tersedia untuk klien dan prospek serius. Hubungi kami untuk diskusi proyek residensial Anda berikutnya.</p>
-      <div class="lotus-cta-actions">
-        <a href="https://wa.me/6282110952505?text=Halo%20IBK%2C%20saya%20tertarik%20mengikuti%20progres%20Rumah%20Lotus."
-           class="btn btn--primary" target="_blank" rel="noopener noreferrer"
-           data-i18n="lotus.cta_primary">Chat di WhatsApp</a>
-        <a href="../index.html" class="btn btn--ghost" data-i18n="lotus.cta_secondary">Kembali ke Beranda</a>
-      </div>
+<section class="lotus-cta">
+  <div class="container">
+    <p class="eyebrow" data-i18n="ctaEyebrow">Ikuti Progresnya</p>
+    <h2 data-i18n="ctaTitle">Proyek Ini Masih Berjalan</h2>
+    <p data-i18n="ctaDesc">Update progres konstruksi tersedia untuk klien dan prospek serius. Hubungi kami untuk diskusi proyek residensial Anda berikutnya.</p>
+    <div class="cta-btns">
+      <a class="btn btn--solid" href="https://wa.me/6282110952505?text=Halo%20IBK%2C%20saya%20tertarik%20mengikuti%20progres%20Rumah%20Lotus." target="_blank" data-i18n="ctaBtn1">Chat di WhatsApp</a>
+      <a class="btn btn--ghost" href="../residential.html" data-i18n="ctaBtn2">Kembali ke Beranda</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a href="index.html" class="nav__logo" aria-label="IBK Home">
-            <img src="../images/brand/indobangun-logo.png" alt="IBK Logo">
-          </a> <p class="footer__tagline" data-i18n="footer.tagline">Kontraktor design-build terintegrasi penuh di Jakarta.</p>
-        </div>
-        <nav class="footer__links" aria-label="Footer navigation">
-          <h5 class="footer__links-title" data-i18n="footer.nav_title">Navigasi</h5>
-          <a href="../residential.html#about"        data-i18n="nav.about">Tentang Kami</a>
-          <a href="../residential.html#capabilities" data-i18n="nav.capabilities">Kemampuan</a>
-          <a href="../residential.html#projects"     data-i18n="nav.projects">Proyek</a>
-          <a href="../residential.html#contact"      data-i18n="nav.contact">Kontak</a>
-        </nav>
-        <div class="footer__contact">
-          <h5 class="footer__links-title" data-i18n="footer.contact_title">Kontak</h5>
-          <a href="https://wa.me/6282110952505">+62 821 1095 2505</a>
-          <a href="mailto:dixon@ibkonstruksi.com">dixon@ibkonstruksi.com</a>
-          <span data-i18n="contact.address">Pluit, Jakarta Utara · Kantor 6 Lantai</span>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p data-i18n="footer.copyright">© 2025 PT. Indobangun Berjaya Konstruksi. Seluruh hak cipta dilindungi.</p>
-      </div>
-    </div>
-  </footer>
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 IBK — <span data-i18n="footerNote">Design-Build Residensial &amp; Komersial Jakarta.</span></span>
+    <a href="../residential.html" data-i18n="footerBack">← Kembali ke Beranda</a>
+  </div>
+</footer>
 
-  <script src="../js/i18n.js"></script>
-  <script src="../js/nav.js"></script>
-  <script src="../js/main.js"></script>
+<script>
+const SYS = {
+  id: [
+    ["Beton K-400","Seluruh elemen struktur menggunakan beton K-400 — spesifikasi tinggi dari pondasi ke atas, dirancang untuk tanah pesisir Jakarta."],
+    ["Sistem Balok Ganda","Balok transfer mendistribusikan beban ke dua balok sekaligus, mengendalikan penurunan diferensial di tanah lempung PIK2."],
+    ["AAC + Celah Seismik","Blok AAC dipasang dengan celah yang disengaja terhadap kolom dan balok — memutus transfer pergerakan struktur, mencegah retak rambut."],
+    ["Panel WPC Dinding & Plafon","Panel WPC menggantikan gipsum dan cat sepenuhnya. Tahan air, bebas rayap, dan tidak perlu dicat ulang — selamanya."],
+    ["Lantai Sintered Stone","Lantai format besar yang tidak berpori dan tahan goresan, asam, dan UV. Stabil secara dimensi saat terjadi penurunan tanah — bebas pelapisan atau poles."],
+    ["Pintu Aluminium Honeycomb","Kaku secara struktural, anti melengkung, anti rayap. Tidak mengembang atau retak di kelembaban Indonesia — berfungsi seumur hidup."],
+    ["Pencahayaan Aqara","Otomasi pencahayaan Aqara dan kunci pintar — dikontrol dari app, panel sentuh, atau perintah suara. Terintegrasi penuh dengan ekosistem IBK."],
+    ["Jaringan Unifi & CCTV","Jaringan Unifi mesh di seluruh rumah + CCTV Unifi Protect. Cakupan konsisten dari gerbang depan hingga rooftop."],
+    ["Solar + Cadangan Baterai","Sistem solar atap dengan cadangan baterai dan dasbor pemantauan langsung. Memangkas biaya listrik dan memberi ketahanan terhadap pemadaman."],
+    ["Finishing Bebas Cat","Tidak ada cat di Rumah Lotus. WPC, keramik lembut, dan PU stone menggantikan cat di seluruh bangunan — bebas siklus cat ulang 3–5 tahun."],
+    ["Plumbing PPR Toro","PPR Toro Italy untuk air bersih, Rucika PVC untuk drainase, Magnaplast akustik untuk limbah dapur. Sistem bebas bocor yang bertahan lama."],
+    ["HVAC Midea VRV","Variable refrigerant volume untuk efisiensi energi lebih tinggi dan kontrol zona per ruangan — sesuai iklim dan pola hunian Indonesia."]
+  ],
+  en: [
+    ["K-400 Concrete","Every structural element uses K-400 concrete — a high spec from foundation up, engineered for Jakarta's coastal soil."],
+    ["Dual-Beam System","Transfer beams distribute load across two beams at once, controlling differential settlement on PIK2's clay soil."],
+    ["AAC + Seismic Gap","AAC blocks installed with a deliberate gap to columns and beams — decoupling structural movement, preventing hair-line cracks."],
+    ["WPC Wall & Ceiling Panels","WPC panels fully replace gypsum and paint. Waterproof, termite-free, and never need repainting — ever."],
+    ["Sintered Stone Floors","Large-format floors that are non-porous and resistant to scratches, acid, and UV. Dimensionally stable through settlement — no coating or polishing."],
+    ["Aluminium Honeycomb Doors","Structurally rigid, warp-proof, termite-proof. They don't swell or crack in Indonesia's humidity — they work for life."],
+    ["Aqara Lighting","Aqara lighting automation and smart locks — controlled from app, touch panel, or voice. Fully integrated with the IBK ecosystem."],
+    ["Unifi Network & CCTV","Whole-home Unifi mesh network + Unifi Protect CCTV. Consistent coverage from the front gate to the rooftop."],
+    ["Solar + Battery Backup","Rooftop solar with battery backup and a live monitoring dashboard. Cuts electricity costs and adds outage resilience."],
+    ["Paint-Free Finishing","No paint in Rumah Lotus. WPC, soft ceramic, and PU stone replace paint throughout — free of the 3–5-year repaint cycle."],
+    ["PPR Toro Plumbing","PPR Toro Italy for clean water, Rucika PVC for drainage, acoustic Magnaplast for kitchen waste. A leak-free system built to last."],
+    ["Midea VRV HVAC","Variable refrigerant volume for higher energy efficiency and per-room zone control — matched to Indonesia's climate and living patterns."]
+  ]
+};
+
+const I18N = {
+  id: {
+    navBack:"Kembali ke Beranda",
+    heroEyebrow:"Proyek Unggulan · Residensial Mewah",
+    heroTitle:"Rumah Lotus",
+    heroLead:"Design-Build penuh di PIK2, Jakarta — IDR 60 miliar, dirancang bersama Beta Design Studio. Struktur, arsitektur, dan MEP lengkap dalam satu kontrak.",
+    statContract:"Nilai Kontrak", statStart:"Mulai", statTarget:"Target Serah Terima", statStatus:"Status", statStatusV:"Struktur Konstruksi",
+    sysEyebrow:"Teknologi Bangunan", sysTitle:"Yang Membangun Rumah Lotus",
+    sysDesc:"Dua belas sistem yang bekerja bersama — dari pondasi hingga atap — untuk hunian yang tidak membutuhkan siklus perawatan.",
+    ctaEyebrow:"Ikuti Progresnya", ctaTitle:"Proyek Ini Masih Berjalan",
+    ctaDesc:"Update progres konstruksi tersedia untuk klien dan prospek serius. Hubungi kami untuk diskusi proyek residensial Anda berikutnya.",
+    ctaBtn1:"Chat di WhatsApp", ctaBtn2:"Kembali ke Beranda",
+    footerNote:"Design-Build Residensial &amp; Komersial Jakarta.", footerBack:"← Kembali ke Beranda"
+  },
+  en: {
+    navBack:"Back to Home",
+    heroEyebrow:"Featured Project · Luxury Residential",
+    heroTitle:"Rumah Lotus",
+    heroLead:"A full Design-Build in PIK2, Jakarta — IDR 60 billion, designed with Beta Design Studio. Complete structure, architecture, and MEP in one contract.",
+    statContract:"Contract Value", statStart:"Start", statTarget:"Target Handover", statStatus:"Status", statStatusV:"Construction Structure",
+    sysEyebrow:"Building Technology", sysTitle:"What Builds Rumah Lotus",
+    sysDesc:"Twelve systems working together — from foundation to roof — for a home that needs no maintenance cycle.",
+    ctaEyebrow:"Follow the Progress", ctaTitle:"This Project Is Still Underway",
+    ctaDesc:"Construction progress updates are available to clients and serious prospects. Get in touch to discuss your next residential project.",
+    ctaBtn1:"Chat on WhatsApp", ctaBtn2:"Back to Home",
+    footerNote:"Design-Build Residential &amp; Commercial Jakarta.", footerBack:"← Back to Home"
+  }
+};
+
+function renderSystems(lang){
+  const arr = SYS[lang] || SYS.id;
+  document.getElementById("sysGrid").innerHTML = arr.map((s,i) =>
+    '<div class="system-card"><p class="system-num">SYS-'+String(i+1).padStart(2,"0")+'</p><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'
+  ).join("");
+}
+function setLang(lang){
+  if(!I18N[lang]) return;
+  document.documentElement.lang = lang;
+  const dict = I18N[lang];
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const k = el.getAttribute("data-i18n");
+    if(dict[k] !== undefined) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll(".lang-toggle button").forEach(b => b.classList.toggle("is-active", b.dataset.lang === lang));
+  renderSystems(lang);
+  try { localStorage.setItem("ibk-lang", lang); } catch(e){}
+}
+document.querySelectorAll(".lang-toggle button").forEach(btn => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
+const saved = (() => { try { return localStorage.getItem("ibk-lang"); } catch(e){ return null; } })();
+setLang(saved || "id");
+
+// Hero slideshow (3 photos auto-rotate)
+(function(){
+  const slides = document.querySelectorAll(".lotus-hero .lotus-hero-bg");
+  const dots = document.querySelectorAll(".lotus-hero-dots .dot");
+  let cur = 0;
+  function go(i){
+    cur = (i + slides.length) % slides.length;
+    slides.forEach((s,n) => s.classList.toggle("is-active", n === cur));
+    dots.forEach((d,n) => d.classList.toggle("is-active", n === cur));
+  }
+  dots.forEach((d,i) => d.addEventListener("click", () => go(i)));
+  setInterval(() => go(cur+1), 6500);
+})();
+</script>
+
+<div class="p-wa-bar"><a class="p-btn" href="https://wa.me/6282110952505" data-i18n="pWaBar">Diskusi Proyek via WhatsApp</a></div>
+<script>
+Object.assign(I18N.id, {pNavRes:"Residensial", pNavCom:"Komersial", pNavProyek:"Proyek Selesai", pNavKontak:"Kontak", pWaBar:"Diskusi Proyek via WhatsApp"});
+Object.assign(I18N.en, {pNavRes:"Residential", pNavCom:"Commercial", pNavProyek:"Completed Projects", pNavKontak:"Contact", pWaBar:"Discuss a Project on WhatsApp"});
+try { setLang(localStorage.getItem('ibk-lang') || 'id'); } catch(e) {}
+</script>
+<script src="/assets/presisi.js" defer></script>
 </body>
 </html>
