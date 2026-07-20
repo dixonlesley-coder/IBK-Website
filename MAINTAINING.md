@@ -154,7 +154,7 @@ The grid currently orders by `featured` first, then year descending. Change the 
 | Card, hero, phil-table, button styles                   | `css/components.css`        |
 | Commercial/residential/project page styles, lightbox    | `css/pages.css`             |
 | WhatsApp number                                         | `js/main.js` → `WA_NUMBER`, plus every `wa.me/...` link in HTML |
-| Contact email or phone in footer                        | Each HTML file — search for `dixon@ibkonstruksi.com` / `6282110952505` |
+| Contact Instagram, phone, or address in footer          | Each HTML file — search for `indobangun.official` / `6281389798772` |
 
 ## Bilingual Copy (i18n)
 

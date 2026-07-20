@@ -56,10 +56,9 @@ template and must NOT be used.
 - Delivered project value: **IDR 300B+**
 - Base: **Jakarta**, coverage **Java · Nationwide**
 - Design partner: **Beta Design Studio** (exclusive architecture & interior)
-- WhatsApp: **wa.me/6282110952505**
-- Email: **dixon@ibkonstruksi.com**
-- Phone: **+62 821 1095 2505**
-- Instagram: **@ibkonstruksi**
+- WhatsApp: **wa.me/6281389798772**
+- Phone: **+62 813-8979-8772**
+- Instagram: **@indobangun.official**
 
 Positioning in one sentence: *from specialist MEP subcontractor to fully
 integrated design-build contractor — controlling every element from structure

@@ -6,7 +6,7 @@
   'use strict';
 
   /* IBK WhatsApp: country code + number, digits only. */
-  var WA_NUMBER = '6282110952505';
+  var WA_NUMBER = '6281389798772';
 
   /* ── Contact form → WhatsApp redirect ──────────────────── */
   var form = document.getElementById('contact-form');
