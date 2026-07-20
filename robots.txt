@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Add the Sitemap line once the custom domain is live:
+# Sitemap: https://your-domain.example/sitemap.xml

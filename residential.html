@@ -534,7 +534,7 @@ document.getElementById('waForm').addEventListener('submit', function(e){
   const msg = (lang==='en')
     ? `Hello IBK, I'm ${g('nm')||'-'} (${g('wa')||'-'}). Project type: ${g('jn')||'-'}. ${g('ct')||''}`
     : `Halo IBK, saya ${g('nm')||'-'} (${g('wa')||'-'}). Jenis proyek: ${g('jn')||'-'}. ${g('ct')||''}`;
-  window.open('https://wa.me/6281389798772?text='+encodeURIComponent(msg),'_blank');
+  window.open('https://wa.me/6281389798772?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');
 });
 </script>
 <script src="/assets/presisi.js" defer></script>

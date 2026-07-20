@@ -1,0 +1,38 @@
+# ============================================================
+#  Netlify configuration — PT. Indobangun Berjaya Konstruksi
+#  Static site, no build step. Publish from the repo root.
+# ============================================================
+
+[build]
+  publish = "."
+
+# ---- Security headers (applied to every response) ----------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Self-hosted only: allow same-origin resources + inline
+    # <script>/<style> blocks the pages use. Blocks all external
+    # script/style/font/img origins and disallows framing.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=(), payment=(), usb=()"
+
+# ---- Long cache for self-hosted fonts (stable filenames) ----
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ---- Images: cache one week --------------------------------
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# NOTE (custom-domain go-live): set the apex↔www redirect and
+# "Force HTTPS" in the Netlify UI (Domain management). Consider
+# adding `preload` to Strict-Transport-Security only AFTER the
+# domain has served HTTPS reliably for a few days.
