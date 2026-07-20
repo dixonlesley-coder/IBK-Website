@@ -1,6 +1,6 @@
 # IBK Website — Copy & Content Reference
 
-**Source of truth:** `IBK_Company_Profile_2026.pdf` (ID) and `IBK_Company_Profile_2026 en.pdf` (EN).
+**Source of truth:** `IBK_Company_Profile_2026.pdf` (2026 company profile, ID).
 
 This file governs the copy on the site. If the site and this file disagree,
 update the site to match this file — then update this file if the source profile
