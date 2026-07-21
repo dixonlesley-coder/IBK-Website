@@ -1,194 +1,134 @@
 # Maintaining the IBK Website
 
-This site is a zero-build static site — plain HTML, CSS, and vanilla JS. Netlify auto-deploys on push. No framework, no tooling, no database. That's deliberate: content edits should take five minutes, not a deploy pipeline.
+A zero-build static site — plain HTML, CSS, and vanilla JS. **Netlify auto-deploys on
+every push** to the production branch (currently `claude/build-construction-website-Yzy4u`);
+the live site updates in ~30–60s. No framework, no tooling, no database. Content edits
+should take five minutes, not a deploy pipeline.
 
 ---
 
-## Adding a New Project (5 min)
+## Where things live
 
-Every project on the site — the cards on `residential.html` and `commercial.html`, and its detail page with gallery — is powered by a **single entry** in `projects/projects.json`. Add the entry and the site picks it up.
+| Layer | Location |
+|---|---|
+| Design tokens, shared components, fonts | `assets/presisi.css` (see its `:root` for colours/type) |
+| Shared behaviour (mobile menu, language pill) | `assets/presisi.js` |
+| Per-page layout tweaks | a `<style>` block near the top of each page |
+| Per-page behaviour + translations | an inline `<script>` near the bottom of each page |
+| Homepage / Residential / Commercial | `index.html` · `residential.html` · `commercial.html` |
+| Completed-projects grid + data | `proyek-selesai.html` (inline `PROJECTS` array) |
+| Scope pages | `scope/*.html` (sheet system S-01…F-08) |
+| Flagship project page | `projects/rumah-lotus.html` |
+| Copy / spec reference | `CONTENT.md` |
 
-### 1. Drop the images
+There is **no `js/` or `css/` folder and no `projects.json`** — those belonged to an
+earlier architecture and were removed. Styling is `assets/presisi.css` + per-page
+`<style>`; each page owns its own translations inline.
 
-Create a folder under `images/projects/`:
+---
 
-```
-images/projects/<your-slug>/
-├── hero.jpg        # large hero background (wide, ~2000px)
-├── 01.jpg          # gallery image 1
-├── 02.jpg          # gallery image 2
-├── 03.jpg          # …add as many as you want
-```
+## Editing copy
 
-Use lowercase, hyphenated slug names (e.g. `villa-mega`, `office-tower-bsd`). No spaces. Photos should be compressed JPEGs (aim for ≤ 400 KB each).
+Text exists in two forms on each page:
 
-### 2. Append an entry in `projects/projects.json`
+1. **The Indonesian HTML** you can see directly in the markup.
+2. **An inline translation dictionary** — `const I18N = { id:{…}, en:{…} }` in that
+   page's `<script>`. On language switch, `setLang()` walks the page and swaps text.
 
-Open `projects/projects.json` and add a new object inside the `"projects"` array. Copy any existing entry and edit the fields:
+An element pulls from the dictionary when it has a `data-i18n` attribute:
 
-```json
+- `data-i18n="key"` → replaces the element's **text**
+- `data-i18n-html="key"` → replaces the element's **innerHTML** (use for strings with markup)
+
+**Rule:** every key under `id:` must also exist under `en:` (and vice-versa). After
+editing, toggle **ID ⇄ EN** in the nav on that page and eyeball that nothing turns blank.
+To change wording in both languages, edit the value under `id:` *and* `en:`; to change
+the default Indonesian only, edit the visible HTML *and* the `id:` value (they should match).
+
+---
+
+## Changing contact details
+
+All three appear on multiple pages (contact cards, footers, and inside each page's
+`I18N` dict). Search-and-replace across the repo:
+
+| What | Current value | How it appears |
+|---|---|---|
+| WhatsApp / phone | `+62 813-8979-8772` | every link is `wa.me/6281389798772`; search the digits **`6281389798772`** (links) and **`+62 813-8979-8772`** (display text) |
+| Instagram | `@indobangun.official` | links to `https://www.instagram.com/indobangun.official/` — search **`indobangun.official`** |
+| Office address | Pluit Karang Karya 3 Blok B Selatan no 26 | in contact cards, footers, and the i18n keys `footAlamat` / `pFootAlamat` / `ctChLocVal` / `ftAddr` |
+
+When you change the phone number, update **both** the `wa.me/…` links **and** the
+displayed `+62 …` text (they're separate). The residential contact form builds its
+`wa.me` link in the page's inline script — the number is hard-coded there too.
+
+---
+
+## Adding / editing a completed project (portfolio grid)
+
+The filterable grid on `proyek-selesai.html` is built from an inline array. Near the
+top of its `<script>` find `const PROJECTS = [ … ]` and copy an existing entry:
+
+```js
 {
-  "slug": "villa-mega",
-  "name": "Villa Mega",
-  "tracks": ["residential"],
-  "sector": "residential",
-  "status": "completed",
-  "year": "2024",
-  "location":       { "id": "Cipete, Jakarta",    "en": "Cipete, Jakarta" },
-  "value_display":  { "id": "IDR 18 Miliar",      "en": "IDR 18 Billion" },
-  "value_short":    { "id": "IDR 18M",            "en": "IDR 18B" },
-  "scope":          { "id": "Struktur + MEP",     "en": "Structure + MEP" },
-  "card_eyebrow":   { "id": "Residensial · Cipete", "en": "Residential · Cipete" },
-  "card_text":      { "id": "Satu paragraf pendek untuk kartu daftar.", "en": "A short paragraph for the list card." },
-  "intro":          { "id": "Paragraf lebih panjang untuk halaman detail.", "en": "Longer paragraph for the detail page." },
-  "hero_image": "images/projects/villa-mega/hero.jpg",
-  "gallery": [
-    "images/projects/villa-mega/01.jpg",
-    "images/projects/villa-mega/02.jpg",
-    "images/projects/villa-mega/03.jpg"
-  ],
-  "detail_page": "projects/villa-mega.html"
+  title: "Rumah Lotus",
+  sector: "RESIDENSIAL MEWAH · PIK 2, JAKARTA",   // uppercase eyebrow line
+  prov: "DKI Jakarta",                            // province — MUST match a name in the PROVINCES list above (drives the filter)
+  year: 2025, yearStart: 2025, yearEnd: 2026,     // year sorts the grid; start/end render the period
+  value: 60, valueText: "IDR 60M",                // value (number, for sort) + display text; use value:null for undisclosed
+  status: "proses",                               // "proses" = in progress, "selesai" = completed (sets the badge)
+  img: "images/port-lotus.webp",                  // card thumbnail
+  imgs: ["images/port-lotus.webp","images/lotus-card-2.webp","images/lotus-card-3.webp"], // lightbox gallery
+  desc: "Design–build penuh – struktur, arsitektur dan MEP lengkap dalam satu kontrak."   // one-line card description
 }
 ```
 
-#### Required fields
-
-| Field          | Example                                | Notes |
-|----------------|----------------------------------------|-------|
-| `slug`         | `"villa-mega"`                         | Unique, lowercase, hyphenated. |
-| `name`         | `"Villa Mega"`                         | Display name on the card and hero. |
-| `tracks`       | `["residential"]` / `["commercial"]`   | Which portfolio page(s) the card appears on. Use both for cross-listed flagships. |
-| `sector`       | `residential`, `industrial`, `hospitality`, `commercial`, `healthcare`, `datacenter` | Internal label. |
-| `status`       | `"in-progress"` or `"completed"`        | Sets the card badge. |
-| `year`         | `"2024"` or `"2025–2026"`               | Free text. |
-| `location`     | `{ id, en }`                           | Bilingual. |
-| `value_display`| `{ id, en }`                           | Full value, shown on detail page. |
-| `value_short`  | `{ id, en }`                           | Short form, shown on card. |
-| `scope`        | `{ id, en }`                           | What IBK delivered. |
-| `card_eyebrow` | `{ id, en }`                           | Small uppercase line above the card title. |
-| `card_text`    | `{ id, en }`                           | 1–2 sentences on the card. |
-| `intro`        | `{ id, en }`                           | Longer paragraph on the detail page. |
-| `hero_image`   | `"images/projects/<slug>/hero.jpg"`    | Relative to site root. |
-| `gallery`      | `[ "images/projects/<slug>/01.jpg", … ]` | Empty `[]` is OK — gallery section is hidden when empty. |
-| `detail_page`  | `"projects/<slug>.html"`               | The URL the card links to. |
-
-#### Optional fields
-
-| Field      | Example                            | Notes |
-|------------|------------------------------------|-------|
-| `owner`    | `"PT. Layana Buana Hotelindo"`     | Client / building owner. Hidden on the detail page if omitted. |
-| `brand`    | `"Hilton Hotels & Resorts"`        | Hotel brand, retailer, etc. Hidden if omitted. |
-| `standard` | `{ id, en }`                       | Certification / reference standard. Hidden if omitted. |
-| `featured` | `true`                             | Renders as the full-width hero card on residential. Only set true on **one** project per track. |
-
-### 3. Create the detail page
-
-Copy the template:
-
-```bash
-cp projects/_template.html projects/villa-mega.html
-```
-
-Open `projects/villa-mega.html` and change **line 2** only:
-
-```html
-<script>window.PROJECT_SLUG = 'villa-mega';</script>
-```
-
-That's it. Everything else — hero image, stats, gallery, intro, CTA — renders automatically from `projects.json`. Open it in a browser and it should work immediately.
-
-### 4. Test locally
-
-```bash
-cd IBK-Website
-python3 -m http.server 8000
-```
-
-Visit:
-
-- `http://localhost:8000/residential.html` — new card should appear (if `tracks` includes `residential`)
-- `http://localhost:8000/commercial.html` — new card should appear (if `tracks` includes `commercial`)
-- `http://localhost:8000/projects/villa-mega.html` — detail page with gallery; click any photo to open the lightbox
-- Toggle ID/EN in the nav and re-check everything
-
-### 5. Commit and push
-
-```bash
-git add projects/projects.json projects/villa-mega.html images/projects/villa-mega/
-git commit -m "feat: add Villa Mega project"
-git push
-```
-
-Netlify deploys in ~30 seconds.
+Add your images to `images/` first (see below). The counts shown on the page
+(e.g. "19+ proyek") are copy in the `I18N` dict — bump them if needed.
 
 ---
 
-## Editing an Existing Project
+## Adding a project detail page
 
-Just edit its entry in `projects/projects.json` and commit. No need to touch the HTML — the detail page reads from the JSON on every load.
+Detail pages are **bespoke, self-contained** — there's no template generator. The
+model is `projects/rumah-lotus.html`:
 
-## Removing a Project
-
-1. Delete the entry from `projects/projects.json`
-2. Delete `projects/<slug>.html`
-3. Optional: delete `images/projects/<slug>/`
-
-Commit, push, done.
-
-## Reordering Cards
-
-The grid currently orders by `featured` first, then year descending. Change the `year` value if you need to bump a project up. For a manual order, edit `js/projects-grid.js` → `list.sort(...)`.
+1. Copy it: `cp projects/rumah-lotus.html projects/<slug>.html`
+2. Edit the copy — title, meta tags (incl. `canonical` + `og:url` for the new path),
+   hero, stats, systems, gallery, and the inline `I18N` dict.
+3. Link to it from wherever the project should appear (e.g. a card on
+   `residential.html`/`commercial.html`, or the completed-projects grid).
+4. Add it to `sitemap.xml` (copy a `<url>` block, set the new `loc`).
 
 ---
 
-## Other Common Edits
+## Images
 
-| Want to change…                                         | Edit this file              |
-|---------------------------------------------------------|-----------------------------|
-| Hero copy, homepage sections, section titles            | `js/i18n.js` (find the key via `data-i18n="..."` in the HTML) |
-| Residential page layout or sections                     | `residential.html`          |
-| Commercial page layout or sections                      | `commercial.html`           |
-| Homepage                                                | `index.html`                |
-| Rumah Lotus flagship detail page (custom layout)        | `projects/rumah-lotus.html` |
-| Card colors, typography, spacing tokens                 | `css/base.css`              |
-| Card, hero, phil-table, button styles                   | `css/components.css`        |
-| Commercial/residential/project page styles, lightbox    | `css/pages.css`             |
-| WhatsApp number                                         | `js/main.js` → `WA_NUMBER`, plus every `wa.me/...` link in HTML |
-| Contact Instagram, phone, or address in footer          | Each HTML file — search for `indobangun.official` / `6281389798772` |
+- Put files in `images/` and reference them relative to the site root.
+- Use **optimised WebP** (photos ~q80, ≤ ~300 KB each). Hero images can be larger.
+- Broken images fail gracefully — the dark gradients underneath read as intentional.
+- If you add a share image, the Open Graph tag on each page points at
+  `https://ibkonstruksi.com/images/og-cover.jpg`.
 
-## Bilingual Copy (i18n)
+---
 
-Every user-visible string lives in `js/i18n.js` as a key under both `id:` and `en:` blocks. HTML elements reference the key with `data-i18n="<key>"`.
+## Deployment & domain
 
-**Rule**: if a key exists in `id`, the exact same key must exist in `en`. Run the parity check before committing:
+- **Push to the production branch → Netlify builds & publishes** in ~30–60s.
+- `netlify.toml` controls the publish directory and the HTTP **security headers**.
+  ⚠️ The `Content-Security-Policy` there allows **same-origin + inline** only —
+  if you ever add an external script, stylesheet, font, or embed, it will be
+  **blocked** until you widen the CSP. Prefer self-hosting (drop the asset in
+  `assets/` or `images/`).
+- **Domain:** `ibkonstruksi.com` → **Cloudflare** DNS → Netlify origin
+  (apex `A` → `75.2.60.5`, `www` `CNAME` → `rad-centaur-4bf880.netlify.app`).
+  HTTPS is auto (Let's Encrypt via Netlify). If you ever proxy through Cloudflare
+  (orange cloud), set Cloudflare SSL/TLS to **Full (strict)**, never "Flexible".
 
-```bash
-python3 -c "
-import re, pathlib
-used = set()
-for p in pathlib.Path('.').rglob('*.html'):
-  used.update(re.findall(r'data-i18n(?:-placeholder)?=\"([^\"]+)\"', p.read_text()))
-j = pathlib.Path('js/i18n.js').read_text()
-id_keys = set(re.findall(r\"'([^']+)':\s*['\\\"]\", j[:j.index('en:')]))
-en_keys = set(re.findall(r\"'([^']+)':\s*['\\\"]\", j[j.index('en:'):]))
-print('used', len(used), 'id', len(id_keys), 'en', len(en_keys))
-print('MISSING ID:', sorted(used - id_keys))
-print('MISSING EN:', sorted(used - en_keys))
-print('ORPHAN ID:', sorted(id_keys - used))
-print('ORPHAN EN:', sorted(en_keys - used))
-"
-```
+---
 
-`proj.badge_progress` and `proj.badge_done` will show as "orphan" — that's expected. They're injected dynamically by `js/projects-grid.js` when rendering cards, so the static scanner doesn't see them.
+## Canonical specs (don't drift)
 
-## Canonical Specs (don't drift)
-
-See `CONTENT.md` for the spec reference (K-400 concrete, TS-420 steel, triple-layer waterproofing, Zero Paint, etc.). These are the values in the 2026 company profile PDF — the site must match them exactly.
-
-## Deployment
-
-- **Development branch**: `claude/add-commercial-property-section-X4xTU`
-- **Netlify watches**: `claude/build-construction-website-Yzy4u`
-- **Production**: `main`
-
-Each commit gets pushed to all three so Netlify can pick up the latest regardless of which branch it's watching.
+`CONTENT.md` holds the reference wording and technical specs (concrete grade, steel
+reference, waterproofing, etc.) taken from the 2026 company profile
+(`IBK_Company_Profile_2026.pdf`). Keep the site consistent with it.

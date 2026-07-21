@@ -1,174 +1,123 @@
 # IBK Website
 
-Static marketing website for **PT. Indobangun Berjaya Konstruksi (IBK)** — a fully integrated design-build contractor based in Jakarta.
+Static marketing website for **PT. Indobangun Berjaya Konstruksi (IBK)** — a fully
+integrated design-build contractor based in Jakarta.
 
-Plain HTML/CSS/JS. No build step. No framework. Just open `index.html` in a browser.
+Plain HTML/CSS/JS, **no build step, no framework**. Every page is self-contained and
+loads one shared stylesheet + one shared script. Live at **https://ibkonstruksi.com**.
 
 ---
 
 ## Project structure
 
 ```
-ibk-website/
-├── index.html              ← homepage
+IBK-Website/
+├── index.html                 ← homepage
+├── residential.html           ← Residential (luxury homes)
+├── commercial.html            ← Commercial (industry / hospitality / data centres)
+├── proyek-selesai.html        ← Completed Projects (filterable portfolio grid)
+├── scope/                     ← 8 scope pages, drawing-sheet system S-01…F-08
+│   ├── struktur.html   arsitektur.html   elektrikal.html   hvac.html
+│   └── plumbing.html   furnitur.html     lighting-smart-home.html   interior-build.html
 ├── projects/
-│   └── rumah-lotus.html    ← Rumah Lotus project page
-├── css/
-│   ├── base.css            ← variables, reset, typography, buttons
-│   ├── components.css      ← nav, cards, form, footer
-│   └── pages.css           ← hero + page-specific layouts
-├── js/
-│   ├── i18n.js             ← bilingual ID/EN toggle (localStorage persistence)
-│   ├── nav.js              ← scroll state + mobile hamburger
-│   └── main.js             ← contact form → WhatsApp, smooth scroll
-├── images/
-│   ├── hero/               ← homepage hero background
-│   ├── projects/           ← project card thumbnails
-│   └── lotus/              ← Rumah Lotus page assets
-└── README.md
+│   └── rumah-lotus.html       ← flagship project detail page (bespoke layout)
+├── assets/
+│   ├── presisi.css            ← shared PRESISI design system (tokens + components)
+│   ├── presisi.js             ← shared behaviour (mobile menu + language toggle)
+│   ├── favicon.svg
+│   └── fonts/                 ← self-hosted Archivo Variable + IBM Plex Mono (.woff2)
+├── images/                    ← optimised WebP imagery
+├── 404.html                   ← branded not-found page
+├── netlify.toml               ← publish dir + security headers + caching
+├── robots.txt  ·  sitemap.xml
+├── CONTENT.md                 ← copy & spec reference (source of truth for wording)
+├── IBK_Company_Profile_2026.pdf
+├── README.md  ·  MAINTAINING.md
 ```
+
+There is **no bundler, package.json, or `js/`/`css/` folder** — styling lives in
+`assets/presisi.css` plus a small `<style>` block per page, and behaviour lives in
+`assets/presisi.js` plus a small inline `<script>` per page.
 
 ---
 
 ## Running locally
 
-No build required. Any static file server works:
+Any static file server works — no build:
 
 ```bash
-# Python 3
-python3 -m http.server 8000
-
-# Node (if you have npx)
-npx serve .
-
-# Or just double-click index.html
+python3 -m http.server 8000      # then open http://localhost:8000
 ```
 
-Then visit `http://localhost:8000`.
+(Or `npx serve .`, or just open `index.html`.)
 
 ---
 
-## Configuration
+## Design system — PRESISI
 
-### 1. WhatsApp number
+The look is driven by `assets/presisi.css`: a "drawing set becomes the interface"
+system with sheet numbers (LBR / SHT codes), dimension lines, and title-block
+metadata. Colour + type tokens live in its `:root`:
 
-The contact form and all WhatsApp links currently point to a **placeholder** number (`6281234567890` / `+62 812-3456-7890`). Replace it in **four places**:
+- `--beton` `#EAE8E2` (paper), `--ink` `#0D1B2E` (dark chapters)
+- `--red` `#D5372D` (annotation), `--brass` / `--brass-bright` (actions)
+- Type: **Archivo Variable** (display) + **IBM Plex Mono** (labels), both self-hosted
 
-| File | What to change |
-|---|---|
-| `js/main.js` | `var WA_NUMBER = '6281234567890';` → real digits only, with country code |
-| `index.html` | Two `wa.me/6281234567890` links (in Contact section + Footer) + the display text `+62 812-3456-7890` |
-| `projects/rumah-lotus.html` | One `wa.me/6281234567890?text=...` link in the CTA + one in the Footer + display text |
-
-Format: country code + number, digits only. Example: `+62 812 3456 7890` → `6281234567890`.
-
-### 2. Email address
-
-Replace `hello@ibk-konstruksi.com` in `index.html` (contact + footer) and `projects/rumah-lotus.html` (footer).
-
-### 3. Copy / content
-
-All copy lives in two places:
-- **Initial (Indonesian) HTML content** in `index.html` and `projects/rumah-lotus.html`
-- **English translations** in `js/i18n.js` under the `translations.en` object
-
-Edit a key in `i18n.js` and it updates everywhere that uses that `data-i18n` attribute. Any element with `data-i18n="some.key"` gets its `innerHTML` swapped on language change; `data-i18n-placeholder="some.key"` swaps the `placeholder` attribute.
+Everything is self-hosted — the site makes **no external requests at runtime**
+(no Google Fonts, no CDNs). Keep it that way; the Content-Security-Policy in
+`netlify.toml` blocks external scripts/styles/fonts.
 
 ---
 
-## Image conventions
+## Bilingual toggle (ID / EN)
 
-Drop images into the folders below using **exactly these filenames**. All images should be optimised JPGs (80–85% quality, ≤ 300 KB each). Use 2× for HiDPI if you want retina-sharp results.
+- Default language **Indonesian (ID)**; the nav pill flips to **English (EN)**.
+- Each page carries its **own** `const I18N = { id:{…}, en:{…} }` in an inline
+  `<script>`, plus a `setLang()` assigned to `window.setLang`. `assets/presisi.js`
+  wires the pill buttons to it.
+- Elements use `data-i18n="key"` (swaps text) or `data-i18n-html="key"` (swaps
+  markup). Choice persists in `localStorage` under `ibk-lang`; `<html lang>` updates.
 
-### Homepage hero
-
-| File | Target dimensions | Aspect | Notes |
-|---|---|---|---|
-| `images/hero/hero-bg.jpg` | **1920 × 1080** (2560 × 1440 for 2×) | 16:9 | Dark / moody, architectural detail. Displayed at 18% opacity over gold-tinted gradient — so mid-tones read best. |
-
-### Project cards (homepage Projects section)
-
-All project thumbnails should be **800 × 500 px** (16:10), lazy-loaded.
-
-| File | Project |
-|---|---|
-| `images/projects/lotus-featured.jpg` | Rumah Lotus (displayed larger — upload **1400 × 900** min) |
-| `images/projects/villa-semarang.jpg` | Villa Semarang |
-| `images/projects/ruko-bintaro.jpg`   | Ruko Bintaro |
-| `images/projects/kantor-tangerang.jpg` | Kantor Tangerang |
-| `images/projects/rumah-bekasi.jpg`   | Rumah Bekasi |
-
-### Rumah Lotus page
-
-| File | Target dimensions | Aspect | Notes |
-|---|---|---|---|
-| `images/lotus/lotus-hero.jpg` | **1920 × 1080** | 16:9 | Displayed at 15% opacity over gradient — prioritise strong composition over detail. |
-
-### Missing images
-
-Broken images are auto-hidden (`main.js` has an `onerror` handler that sets opacity to 0). The gradient backgrounds underneath look intentional, so the site won't break if an image fails.
+See **MAINTAINING.md** for how to add or edit strings.
 
 ---
 
-## Bilingual toggle (i18n)
+## Contact details
 
-- Default language: **Indonesian (ID)**
-- Toggle in the top nav flips to **English (EN)**
-- Choice is persisted in `localStorage` under key `ibk-lang`
-- `<html lang="">` attribute updates on change (for screen readers / SEO)
+Current values (used across every page and in each page's `I18N` dict):
 
-To add a new translatable string:
+- **WhatsApp / phone:** `+62 813-8979-8772` → all links use `wa.me/6281389798772`
+- **Instagram:** `@indobangun.official` → `https://www.instagram.com/indobangun.official/`
+- **Office:** Pluit Karang Karya 3 Blok B Selatan no 26
 
-1. Add the key+value to `translations.id` and `translations.en` in `js/i18n.js`
-2. Add `data-i18n="your.key"` to the HTML element (its `innerHTML` gets swapped)
-3. For `<input>`/`<textarea>` placeholders, use `data-i18n-placeholder="your.key"` instead
-
----
-
-## Contact form
-
-The form **does not POST anywhere**. On submit, it:
-
-1. Reads the form fields
-2. Formats a message in the user's active language (ID or EN)
-3. Opens `https://wa.me/<NUMBER>?text=<encoded message>` in a new tab
-
-No backend required, no third-party service, no keys to manage. The conversation lands directly in IBK's WhatsApp inbox.
+The contact form (on `residential.html`) does **not** POST anywhere — on submit it
+opens a pre-filled `wa.me` link in a new tab. No backend, no keys. See MAINTAINING.md
+to change any of these.
 
 ---
 
 ## Deployment
 
-### Netlify (recommended)
+Hosted on **Netlify**, which **auto-deploys on every push** to the production
+branch (currently `claude/build-construction-website-Yzy4u`) — live in ~30–60s.
 
-1. Push this repo to GitHub
-2. Log into [netlify.com](https://netlify.com) → **Add new site** → **Import existing project**
-3. Pick the GitHub repo
-4. **Build command**: leave empty (no build step)
-5. **Publish directory**: `.` (the repo root)
-6. Deploy
+- `netlify.toml` sets the publish directory (`.`) and the security headers
+  (CSP, HSTS, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy) +
+  long-cache headers for fonts/images.
+- **Domain:** `ibkonstruksi.com` — DNS runs through **Cloudflare** (apex `A` → Netlify
+  `75.2.60.5`, `www` `CNAME` → `rad-centaur-4bf880.netlify.app`); Netlify issues the
+  Let's Encrypt certificate automatically.
 
-Custom domain → Site settings → Domain management → Add custom domain. Netlify provisions HTTPS automatically.
-
-### GitHub Pages
-
-1. Push to GitHub
-2. Repo → **Settings** → **Pages**
-3. **Source**: Deploy from a branch
-4. **Branch**: `main` (or whichever), folder `/ (root)`
-5. Save → site goes live at `https://<user>.github.io/<repo>/` within ~1 minute
-
-For a custom domain, add a `CNAME` file at the root containing just the domain (e.g. `ibk-konstruksi.com`) and point your DNS A/ALIAS records to GitHub's Pages IPs.
-
-### Cloudflare Pages / Vercel / any static host
-
-Same deal — point at the repo root, no build command, publish directory `.`.
+Any static host can serve the files, but the security headers are Netlify-specific
+(`netlify.toml`), so Netlify is the supported path.
 
 ---
 
 ## Browser support
 
-Modern evergreen browsers (Chrome, Safari, Firefox, Edge — last 2 versions). Uses `backdrop-filter`, CSS custom properties, `aspect-ratio`, and `clamp()`. No transpilation.
+Modern evergreen browsers (Chrome, Safari, Firefox, Edge — last 2 versions). Uses CSS
+custom properties, `clamp()`, `aspect-ratio`, variable fonts, and view transitions.
+No transpilation.
 
 ---
 
